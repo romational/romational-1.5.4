@@ -1,0 +1,1047 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10080E8B24C76DE4000F2549 /* PasswordReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10080E8A24C76DE4000F2549 /* PasswordReminderViewController.swift */; };
+		101BA20C23FF2D890056C2BB /* FactorSelectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101BA20B23FF2D890056C2BB /* FactorSelectivity.swift */; };
+		101BA20E23FF2DB20056C2BB /* FactorSelectivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101BA20D23FF2DB20056C2BB /* FactorSelectivityModel.swift */; };
+		101BA211240735F90056C2BB /* MyDemos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101BA210240735F90056C2BB /* MyDemos.swift */; };
+		101BA213240736DD0056C2BB /* MyDemosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101BA212240736DD0056C2BB /* MyDemosModel.swift */; };
+		101DD76324520FD600F5C229 /* FactorAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD76224520FD600F5C229 /* FactorAnswerTableViewCell.swift */; };
+		101DD76A245225E700F5C229 /* FactorAnswerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD769245225E700F5C229 /* FactorAnswerTableViewController.swift */; };
+		101DD77024522C0800F5C229 /* MyRankedFactorAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD76F24522C0800F5C229 /* MyRankedFactorAnswers.swift */; };
+		101DD77224522C1200F5C229 /* MyRankedFactorAnswersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DD77124522C1200F5C229 /* MyRankedFactorAnswersModel.swift */; };
+		102A56232435266700D50FBE /* RomtypeWeightsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102A56222435266700D50FBE /* RomtypeWeightsModel.swift */; };
+		102B87AC2644323600A2D198 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102B87AB2644323600A2D198 /* extensions.swift */; };
+		1031C2B824576E6D00BAF996 /* SelectivityAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1031C2B724576E6D00BAF996 /* SelectivityAnalysisViewController.swift */; };
+		1031C2BE2458C89800BAF996 /* SelectivityRankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1031C2BD2458C89800BAF996 /* SelectivityRankingsViewController.swift */; };
+		1031C2CB245B3A2800BAF996 /* MyExclusivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1031C2CA245B3A2800BAF996 /* MyExclusivity.swift */; };
+		103CDA9F26A077FE00C0E46D /* CompareIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CDA9E26A077FE00C0E46D /* CompareIntroViewController.swift */; };
+		103CDAA126A08C9100C0E46D /* myRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CDAA026A08C9000C0E46D /* myRequests.swift */; };
+		103CDAA326A08D1E00C0E46D /* myRequestsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CDAA226A08D1E00C0E46D /* myRequestsModel.swift */; };
+		103CDAA526A08E3C00C0E46D /* MyRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CDAA426A08E3C00C0E46D /* MyRequestsViewController.swift */; };
+		103CDAA726A08ECD00C0E46D /* MyRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CDAA626A08ECD00C0E46D /* MyRequestsTableViewController.swift */; };
+		103CDAA926A08F5800C0E46D /* MyRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CDAA826A08F5800C0E46D /* MyRequestsTableViewCell.swift */; };
+		103CDAB226A76C2F00C0E46D /* CompareShareInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CDAB126A76C2D00C0E46D /* CompareShareInfoViewController.swift */; };
+		10457931242BF2E800FF27B1 /* FactorCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10457930242BF2E800FF27B1 /* FactorCompleteViewController.swift */; };
+		1045AB8823745B290093A3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045AB8723745B290093A3B7 /* AppDelegate.swift */; };
+		1045AB8A23745B290093A3B7 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045AB8923745B290093A3B7 /* MainMenuViewController.swift */; };
+		1045AB8D23745B290093A3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1045AB8B23745B290093A3B7 /* Main.storyboard */; };
+		1045AB8F23745B290093A3B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1045AB8E23745B290093A3B7 /* Assets.xcassets */; };
+		1045AB9223745B290093A3B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1045AB9023745B290093A3B7 /* LaunchScreen.storyboard */; };
+		1045AB9A237706790093A3B7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045AB99237706790093A3B7 /* ProfileViewController.swift */; };
+		1045AB9C237706B50093A3B7 /* FactorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045AB9B237706B50093A3B7 /* FactorViewController.swift */; };
+		1045ABA0238750860093A3B7 /* radioButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045AB9F238750860093A3B7 /* radioButtonController.swift */; };
+		1045ABA2238750E60093A3B7 /* radioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045ABA1238750E60093A3B7 /* radioButton.swift */; };
+		1045ABA4238C5BBB0093A3B7 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045ABA3238C5BBB0093A3B7 /* ReportViewController.swift */; };
+		1045ABA6239593170093A3B7 /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045ABA5239593170093A3B7 /* GaugeView.swift */; };
+		1045ABAE2396FA390093A3B7 /* MyFactorDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045ABAD2396FA390093A3B7 /* MyFactorDataCollectionViewCell.swift */; };
+		1045ABB0239F50300093A3B7 /* AGCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045ABAF239F50300093A3B7 /* AGCollectionView.swift */; };
+		1046FA86268B9AE000809E9D /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FA85268B9AE000809E9D /* ScannerViewController.swift */; };
+		1046FA88268B9AFC00809E9D /* MyComparesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FA87268B9AFC00809E9D /* MyComparesViewController.swift */; };
+		1046FA8A268CF55F00809E9D /* CompareLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FA89268CF55F00809E9D /* CompareLevelOneViewController.swift */; };
+		105448462694DE7A004AD33A /* NewCompareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105448452694DE7A004AD33A /* NewCompareViewController.swift */; };
+		1054484A2694DEAD004AD33A /* MyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105448492694DEAD004AD33A /* MyQRCodeViewController.swift */; };
+		1054484C26962F81004AD33A /* CompareLevelTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1054484B26962F81004AD33A /* CompareLevelTwoViewController.swift */; };
+		1054484E269638EB004AD33A /* CompareLevelThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1054484D269638EB004AD33A /* CompareLevelThreeViewController.swift */; };
+		1054485026975BFC004AD33A /* MyComparesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1054484F26975BFC004AD33A /* MyComparesTableViewController.swift */; };
+		1054485426975DC3004AD33A /* myComparesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1054485326975DC3004AD33A /* myComparesModel.swift */; };
+		10544856269762DE004AD33A /* MyComparesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10544855269762DE004AD33A /* MyComparesTableViewCell.swift */; };
+		1056391B24917E150080A796 /* MethodologyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056391A24917E140080A796 /* MethodologyViewController.swift */; };
+		105BB983268626CB00E93A95 /* HelloTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105BB982268626CB00E93A95 /* HelloTwoViewController.swift */; };
+		106009A9264D7BE200E66BA5 /* innerShadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106009A8264D7BE200E66BA5 /* innerShadows.swift */; };
+		1063D36323CD18E1003F46D9 /* FactorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063D36223CD18E1003F46D9 /* FactorList.swift */; };
+		1063D36523CD195E003F46D9 /* FactorListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063D36423CD195E003F46D9 /* FactorListModel.swift */; };
+		1063D36723CE4365003F46D9 /* RomtypeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063D36623CE4365003F46D9 /* RomtypeList.swift */; };
+		1063D36923CE44B0003F46D9 /* RomtypeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063D36823CE44B0003F46D9 /* RomtypeListModel.swift */; };
+		1063D36B23CE542D003F46D9 /* RomtypeQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063D36A23CE542D003F46D9 /* RomtypeQuestions.swift */; };
+		1063D36F23CE656B003F46D9 /* RomtypeQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063D36E23CE656B003F46D9 /* RomtypeQuestionModel.swift */; };
+		1073B94024745FB00044CB2D /* UserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073B93F24745FB00044CB2D /* UserAccountViewController.swift */; };
+		107811F723F5C7490010598A /* RomtypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107811F623F5C7490010598A /* RomtypeModel.swift */; };
+		107811FB23F5DA680010598A /* MyRomtypeAnswersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107811FA23F5DA680010598A /* MyRomtypeAnswersModel.swift */; };
+		107811FD23F5DE050010598A /* MyFactorAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107811FC23F5DE050010598A /* MyFactorAnswers.swift */; };
+		107A599624B60DF6006B3022 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A599324B60DF5006B3022 /* SignupViewController.swift */; };
+		107A59A024B614D2006B3022 /* Users in Resources */ = {isa = PBXBuildFile; fileRef = 107A599F24B614D1006B3022 /* Users */; };
+		107F3977249947460016445F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107F3976249947460016445F /* WebKit.framework */; };
+		1082E8B723F1D3A000A3BBC1 /* MyRomtypeAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082E8B623F1D39F00A3BBC1 /* MyRomtypeAnswers.swift */; };
+		1082E8B923F1D4DD00A3BBC1 /* MyFactorAnswersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082E8B823F1D4DD00A3BBC1 /* MyFactorAnswersModel.swift */; };
+		1088690623AAE1A600D90E9C /* MyFactorDataCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088690523AAE1A600D90E9C /* MyFactorDataCollectionViewController.swift */; };
+		1088D8502433C65600D073B7 /* AllRomtypesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088D84F2433C65600D073B7 /* AllRomtypesCollectionViewController.swift */; };
+		1088D8522433C66500D073B7 /* AllRomtypesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088D8512433C66500D073B7 /* AllRomtypesCollectionViewCell.swift */; };
+		1088D8552433CA3700D073B7 /* RTQList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088D8542433CA3700D073B7 /* RTQList.swift */; };
+		1088D8572433CAF900D073B7 /* RTQListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088D8562433CAF900D073B7 /* RTQListModel.swift */; };
+		108B244923D0DA5B00C6F775 /* RomtypeWeights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108B244823D0DA5B00C6F775 /* RomtypeWeights.swift */; };
+		108B244B23D7740900C6F775 /* RomtypeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108B244A23D7740900C6F775 /* RomtypeInfoViewController.swift */; };
+		1094BC4B242005D000A78451 /* ProfileQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BC4A242005D000A78451 /* ProfileQuestions.swift */; };
+		1094BC4D242005E300A78451 /* ProfileQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BC4C242005E300A78451 /* ProfileQuestionModel.swift */; };
+		1094BC4F2421630000A78451 /* UserOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BC4E2421630000A78451 /* UserOptionsViewController.swift */; };
+		1094BC5124216D7900A78451 /* IntroSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BC5024216D7900A78451 /* IntroSurveyViewController.swift */; };
+		1094BC532421742000A78451 /* MyProfileQAs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BC522421742000A78451 /* MyProfileQAs.swift */; };
+		1094BC5524217EB900A78451 /* MyProfileQAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BC5424217EB900A78451 /* MyProfileQAModel.swift */; };
+		109DD57D23B29EA9008F94BC /* SelectivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109DD57C23B29EA9008F94BC /* SelectivityViewController.swift */; };
+		109DD57F23B2AC5D008F94BC /* RomtypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109DD57E23B2AC5D008F94BC /* RomtypeViewController.swift */; };
+		109DD58123BA9DF3008F94BC /* AllFactorsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109DD58023BA9DF3008F94BC /* AllFactorsCollectionViewController.swift */; };
+		109DD58323BA9EE1008F94BC /* AllFactorsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109DD58223BA9EE1008F94BC /* AllFactorsCollectionViewCell.swift */; };
+		109DD58623BBD901008F94BC /* Romational.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 109DD58423BBD901008F94BC /* Romational.xcdatamodeld */; };
+		109DD5A923C52003008F94BC /* RomtypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109DD5A823C52003008F94BC /* RomtypeTableViewController.swift */; };
+		109F6690242434DD008832CF /* RomtypeReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F668F242434DD008832CF /* RomtypeReportViewController.swift */; };
+		10AB5B8226EBCCF200CF5678 /* myCompares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB5B8126EBCCF200CF5678 /* myCompares.swift */; };
+		10AB5B8426EBCD5200CF5678 /* compareRomtypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB5B8326EBCD5200CF5678 /* compareRomtypes.swift */; };
+		10B094CE2497F487005DDB38 /* UserLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B094CD2497F487005DDB38 /* UserLogs.swift */; };
+		10B094D22497F681005DDB38 /* UserLogsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B094D12497F681005DDB38 /* UserLogsModel.swift */; };
+		10B3F24B243B918000442DAD /* RTQIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B3F24A243B918000442DAD /* RTQIntroViewController.swift */; };
+		10B3F24D243BA02400442DAD /* VCSInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B3F24C243BA02400442DAD /* VCSInfo.swift */; };
+		10B3F24F243BA03E00442DAD /* VCSInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B3F24E243BA03E00442DAD /* VCSInfoModel.swift */; };
+		10B3F252243BB65100442DAD /* FQIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B3F251243BB65100442DAD /* FQIntroViewController.swift */; };
+		10B5C7A824463109008588E2 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5C7A724463109008588E2 /* ConfirmViewController.swift */; };
+		10B5C7AC24463A69008588E2 /* AboutRomationalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5C7AB24463A69008588E2 /* AboutRomationalViewController.swift */; };
+		10B5C7B424479D14008588E2 /* FactorIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5C7B324479D14008588E2 /* FactorIcons.swift */; };
+		10B5C7B624479D22008588E2 /* FactorIconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5C7B524479D22008588E2 /* FactorIconModel.swift */; };
+		10B5C7BC2448FB07008588E2 /* ExclusivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5C7BB2448FB07008588E2 /* ExclusivityViewController.swift */; };
+		10BA54CA268529AF005CA48B /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA54C9268529AF005CA48B /* ConnectViewController.swift */; };
+		10C9A51824634A3D0073192D /* MyRomtypeDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A51724634A3D0073192D /* MyRomtypeDataViewController.swift */; };
+		10C9A51C24635CA90073192D /* MyFactorDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A51B24635CA90073192D /* MyFactorDataViewController.swift */; };
+		10C9A51E24635F9B0073192D /* MyRomtypeDataCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A51D24635F9B0073192D /* MyRomtypeDataCollectionViewController.swift */; };
+		10C9A52024635FBB0073192D /* MyRomtypeDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A51F24635FBB0073192D /* MyRomtypeDataCollectionViewCell.swift */; };
+		10C9A52E246477830073192D /* MyFactorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A52D246477830073192D /* MyFactorData.swift */; };
+		10C9A532246477910073192D /* MyFactorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A531246477910073192D /* MyFactorDataModel.swift */; };
+		10C9A536246480730073192D /* MyRomtypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A535246480730073192D /* MyRomtypeData.swift */; };
+		10C9A53A2464807D0073192D /* MyRomtypeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A5392464807D0073192D /* MyRomtypeDataModel.swift */; };
+		10CB8A7223E21E260036804C /* RomtypeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8A7123E21E260036804C /* RomtypeInfo.swift */; };
+		10CB8A7523EA15890036804C /* FactorQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8A7423EA15890036804C /* FactorQuestions.swift */; };
+		10CB8A7723EA15990036804C /* FactorQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8A7623EA15990036804C /* FactorQuestionModel.swift */; };
+		10CE31842686425500752B71 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 105997C82686376400473038 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		10D0367F24E45BF5009941D7 /* SpinnerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0367E24E45BF4009941D7 /* SpinnerExtension.swift */; };
+		10D0368324E46ECA009941D7 /* gifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0368224E46ECA009941D7 /* gifImage.swift */; };
+		10D0368524E48233009941D7 /* RomtypeFoundationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0368424E48233009941D7 /* RomtypeFoundationViewController.swift */; };
+		10D0368724E482D9009941D7 /* RomtypeMindsetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0368624E482D9009941D7 /* RomtypeMindsetViewController.swift */; };
+		10DB1136268E566100DBEEE6 /* CompareOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB1135268E566100DBEEE6 /* CompareOptionsViewController.swift */; };
+		10E1228526E135F9006B8481 /* flexScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E1228426E135F9006B8481 /* flexScore.swift */; };
+		10E560D62669371700A5EFDE /* gradientCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E560D52669371700A5EFDE /* gradientCircle.swift */; };
+		10E64E0224253F0700B93288 /* MyRomtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E64E0124253F0700B93288 /* MyRomtype.swift */; };
+		10E68CE024C0B54F0040BEED /* UserLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E68CDF24C0B54F0040BEED /* UserLoginInfo.swift */; };
+		10E795D92507F458002F9E9C /* SelectivityRanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E795D82507F458002F9E9C /* SelectivityRanges.swift */; };
+		10E795DD2507F520002F9E9C /* RangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E795DC2507F520002F9E9C /* RangeModel.swift */; };
+		10EA893E242A911E00CA633D /* RomtypeCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA893D242A911E00CA633D /* RomtypeCompleteViewController.swift */; };
+		10EA8941242A996100CA633D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA8940242A996100CA633D /* globals.swift */; };
+		10EDD053241ACCB5002752EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD052241ACCB5002752EC /* LoginViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		105997C72686376400473038 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 105997C22686376400473038 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		105997C92686376400473038 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 105997C22686376400473038 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		108B245B23DA13C600C6F775 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				10CE31842686425500752B71 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		10080E8A24C76DE4000F2549 /* PasswordReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordReminderViewController.swift; sourceTree = "<group>"; };
+		101BA20B23FF2D890056C2BB /* FactorSelectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorSelectivity.swift; sourceTree = "<group>"; };
+		101BA20D23FF2DB20056C2BB /* FactorSelectivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorSelectivityModel.swift; sourceTree = "<group>"; };
+		101BA210240735F90056C2BB /* MyDemos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDemos.swift; sourceTree = "<group>"; };
+		101BA212240736DD0056C2BB /* MyDemosModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDemosModel.swift; sourceTree = "<group>"; };
+		101DD76224520FD600F5C229 /* FactorAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorAnswerTableViewCell.swift; sourceTree = "<group>"; };
+		101DD769245225E700F5C229 /* FactorAnswerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorAnswerTableViewController.swift; sourceTree = "<group>"; };
+		101DD76F24522C0800F5C229 /* MyRankedFactorAnswers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRankedFactorAnswers.swift; sourceTree = "<group>"; };
+		101DD77124522C1200F5C229 /* MyRankedFactorAnswersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRankedFactorAnswersModel.swift; sourceTree = "<group>"; };
+		102A56222435266700D50FBE /* RomtypeWeightsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomtypeWeightsModel.swift; sourceTree = "<group>"; };
+		102B87AB2644323600A2D198 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		1031C2B724576E6D00BAF996 /* SelectivityAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectivityAnalysisViewController.swift; sourceTree = "<group>"; };
+		1031C2BD2458C89800BAF996 /* SelectivityRankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectivityRankingsViewController.swift; sourceTree = "<group>"; };
+		1031C2CA245B3A2800BAF996 /* MyExclusivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyExclusivity.swift; sourceTree = "<group>"; };
+		103CDA9B269F5D6300C0E46D /* Romational.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Romational.entitlements; sourceTree = "<group>"; };
+		103CDA9E26A077FE00C0E46D /* CompareIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareIntroViewController.swift; sourceTree = "<group>"; };
+		103CDAA026A08C9000C0E46D /* myRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRequests.swift; sourceTree = "<group>"; };
+		103CDAA226A08D1E00C0E46D /* myRequestsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRequestsModel.swift; sourceTree = "<group>"; };
+		103CDAA426A08E3C00C0E46D /* MyRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestsViewController.swift; sourceTree = "<group>"; };
+		103CDAA626A08ECD00C0E46D /* MyRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestsTableViewController.swift; sourceTree = "<group>"; };
+		103CDAA826A08F5800C0E46D /* MyRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestsTableViewCell.swift; sourceTree = "<group>"; };
+		103CDAB126A76C2D00C0E46D /* CompareShareInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareShareInfoViewController.swift; sourceTree = "<group>"; };
+		10457930242BF2E800FF27B1 /* FactorCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorCompleteViewController.swift; sourceTree = "<group>"; };
+		1045AB8423745B290093A3B7 /* Romational.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Romational.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1045AB8723745B290093A3B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1045AB8923745B290093A3B7 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		1045AB8C23745B290093A3B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1045AB8E23745B290093A3B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1045AB9123745B290093A3B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1045AB9323745B290093A3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1045AB99237706790093A3B7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1045AB9B237706B50093A3B7 /* FactorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorViewController.swift; sourceTree = "<group>"; };
+		1045AB9F238750860093A3B7 /* radioButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = radioButtonController.swift; sourceTree = "<group>"; };
+		1045ABA1238750E60093A3B7 /* radioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = radioButton.swift; sourceTree = "<group>"; };
+		1045ABA3238C5BBB0093A3B7 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		1045ABA5239593170093A3B7 /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
+		1045ABAD2396FA390093A3B7 /* MyFactorDataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFactorDataCollectionViewCell.swift; sourceTree = "<group>"; };
+		1045ABAF239F50300093A3B7 /* AGCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGCollectionView.swift; sourceTree = "<group>"; };
+		1046FA85268B9AE000809E9D /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		1046FA87268B9AFC00809E9D /* MyComparesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComparesViewController.swift; sourceTree = "<group>"; };
+		1046FA89268CF55F00809E9D /* CompareLevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareLevelOneViewController.swift; sourceTree = "<group>"; };
+		105448452694DE7A004AD33A /* NewCompareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCompareViewController.swift; sourceTree = "<group>"; };
+		105448492694DEAD004AD33A /* MyQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewController.swift; sourceTree = "<group>"; };
+		1054484B26962F81004AD33A /* CompareLevelTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareLevelTwoViewController.swift; sourceTree = "<group>"; };
+		1054484D269638EB004AD33A /* CompareLevelThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareLevelThreeViewController.swift; sourceTree = "<group>"; };
+		1054484F26975BFC004AD33A /* MyComparesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComparesTableViewController.swift; sourceTree = "<group>"; };
+		1054485326975DC3004AD33A /* myComparesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myComparesModel.swift; sourceTree = "<group>"; };
+		10544855269762DE004AD33A /* MyComparesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComparesTableViewCell.swift; sourceTree = "<group>"; };
+		1056391A24917E140080A796 /* MethodologyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyViewController.swift; sourceTree = "<group>"; };
+		105997C22686376400473038 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		105BB982268626CB00E93A95 /* HelloTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloTwoViewController.swift; sourceTree = "<group>"; };
+		106009A8264D7BE200E66BA5 /* innerShadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = innerShadows.swift; sourceTree = "<group>"; };
+		1063D36223CD18E1003F46D9 /* FactorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorList.swift; sourceTree = "<group>"; };
+		1063D36423CD195E003F46D9 /* FactorListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorListModel.swift; sourceTree = "<group>"; };
+		1063D36623CE4365003F46D9 /* RomtypeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomtypeList.swift; sourceTree = "<group>"; };
+		1063D36823CE44B0003F46D9 /* RomtypeListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomtypeListModel.swift; sourceTree = "<group>"; };
+		1063D36A23CE542D003F46D9 /* RomtypeQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomtypeQuestions.swift; sourceTree = "<group>"; };
+		1063D36E23CE656B003F46D9 /* RomtypeQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomtypeQuestionModel.swift; sourceTree = "<group>"; };
+		1073B93F24745FB00044CB2D /* UserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewController.swift; sourceTree = "<group>"; };
+		107811F623F5C7490010598A /* RomtypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeModel.swift; sourceTree = "<group>"; };
+		107811FA23F5DA680010598A /* MyRomtypeAnswersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRomtypeAnswersModel.swift; sourceTree = "<group>"; };
+		107811FC23F5DE050010598A /* MyFactorAnswers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFactorAnswers.swift; sourceTree = "<group>"; };
+		107A599324B60DF5006B3022 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		107A599F24B614D1006B3022 /* Users */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Users; sourceTree = "<group>"; };
+		107F3976249947460016445F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		1082E8B623F1D39F00A3BBC1 /* MyRomtypeAnswers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRomtypeAnswers.swift; sourceTree = "<group>"; };
+		1082E8B823F1D4DD00A3BBC1 /* MyFactorAnswersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFactorAnswersModel.swift; sourceTree = "<group>"; };
+		1088690523AAE1A600D90E9C /* MyFactorDataCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFactorDataCollectionViewController.swift; sourceTree = "<group>"; };
+		1088D84F2433C65600D073B7 /* AllRomtypesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRomtypesCollectionViewController.swift; sourceTree = "<group>"; };
+		1088D8512433C66500D073B7 /* AllRomtypesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRomtypesCollectionViewCell.swift; sourceTree = "<group>"; };
+		1088D8542433CA3700D073B7 /* RTQList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTQList.swift; sourceTree = "<group>"; };
+		1088D8562433CAF900D073B7 /* RTQListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTQListModel.swift; sourceTree = "<group>"; };
+		108B244823D0DA5B00C6F775 /* RomtypeWeights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomtypeWeights.swift; sourceTree = "<group>"; };
+		108B244A23D7740900C6F775 /* RomtypeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeInfoViewController.swift; sourceTree = "<group>"; };
+		1094BC4A242005D000A78451 /* ProfileQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileQuestions.swift; sourceTree = "<group>"; };
+		1094BC4C242005E300A78451 /* ProfileQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileQuestionModel.swift; sourceTree = "<group>"; };
+		1094BC4E2421630000A78451 /* UserOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOptionsViewController.swift; sourceTree = "<group>"; };
+		1094BC5024216D7900A78451 /* IntroSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroSurveyViewController.swift; sourceTree = "<group>"; };
+		1094BC522421742000A78451 /* MyProfileQAs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileQAs.swift; sourceTree = "<group>"; };
+		1094BC5424217EB900A78451 /* MyProfileQAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileQAModel.swift; sourceTree = "<group>"; };
+		109DD57C23B29EA9008F94BC /* SelectivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectivityViewController.swift; sourceTree = "<group>"; };
+		109DD57E23B2AC5D008F94BC /* RomtypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeViewController.swift; sourceTree = "<group>"; };
+		109DD58023BA9DF3008F94BC /* AllFactorsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFactorsCollectionViewController.swift; sourceTree = "<group>"; };
+		109DD58223BA9EE1008F94BC /* AllFactorsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFactorsCollectionViewCell.swift; sourceTree = "<group>"; };
+		109DD58523BBD901008F94BC /* romUserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = romUserModel.xcdatamodel; sourceTree = "<group>"; };
+		109DD5A823C52003008F94BC /* RomtypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeTableViewController.swift; sourceTree = "<group>"; };
+		109F668F242434DD008832CF /* RomtypeReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeReportViewController.swift; sourceTree = "<group>"; };
+		10AB5B8126EBCCF200CF5678 /* myCompares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCompares.swift; sourceTree = SOURCE_ROOT; };
+		10AB5B8326EBCD5200CF5678 /* compareRomtypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = compareRomtypes.swift; sourceTree = SOURCE_ROOT; };
+		10B094CD2497F487005DDB38 /* UserLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogs.swift; sourceTree = "<group>"; };
+		10B094D12497F681005DDB38 /* UserLogsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogsModel.swift; sourceTree = "<group>"; };
+		10B3F24A243B918000442DAD /* RTQIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTQIntroViewController.swift; sourceTree = "<group>"; };
+		10B3F24C243BA02400442DAD /* VCSInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCSInfo.swift; sourceTree = "<group>"; };
+		10B3F24E243BA03E00442DAD /* VCSInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCSInfoModel.swift; sourceTree = "<group>"; };
+		10B3F251243BB65100442DAD /* FQIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQIntroViewController.swift; sourceTree = "<group>"; };
+		10B5C7A724463109008588E2 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		10B5C7AB24463A69008588E2 /* AboutRomationalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRomationalViewController.swift; sourceTree = "<group>"; };
+		10B5C7B324479D14008588E2 /* FactorIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorIcons.swift; sourceTree = "<group>"; };
+		10B5C7B524479D22008588E2 /* FactorIconModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorIconModel.swift; sourceTree = "<group>"; };
+		10B5C7BB2448FB07008588E2 /* ExclusivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExclusivityViewController.swift; sourceTree = "<group>"; };
+		10BA54C9268529AF005CA48B /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		10C9A51724634A3D0073192D /* MyRomtypeDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRomtypeDataViewController.swift; sourceTree = "<group>"; };
+		10C9A51B24635CA90073192D /* MyFactorDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFactorDataViewController.swift; sourceTree = "<group>"; };
+		10C9A51D24635F9B0073192D /* MyRomtypeDataCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRomtypeDataCollectionViewController.swift; sourceTree = "<group>"; };
+		10C9A51F24635FBB0073192D /* MyRomtypeDataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRomtypeDataCollectionViewCell.swift; sourceTree = "<group>"; };
+		10C9A52D246477830073192D /* MyFactorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFactorData.swift; sourceTree = "<group>"; };
+		10C9A531246477910073192D /* MyFactorDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFactorDataModel.swift; sourceTree = "<group>"; };
+		10C9A535246480730073192D /* MyRomtypeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRomtypeData.swift; sourceTree = "<group>"; };
+		10C9A5392464807D0073192D /* MyRomtypeDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRomtypeDataModel.swift; sourceTree = "<group>"; };
+		10CB8A7123E21E260036804C /* RomtypeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomtypeInfo.swift; sourceTree = "<group>"; };
+		10CB8A7423EA15890036804C /* FactorQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorQuestions.swift; sourceTree = "<group>"; };
+		10CB8A7623EA15990036804C /* FactorQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorQuestionModel.swift; sourceTree = "<group>"; };
+		10D0367E24E45BF4009941D7 /* SpinnerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerExtension.swift; sourceTree = "<group>"; };
+		10D0368224E46ECA009941D7 /* gifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifImage.swift; sourceTree = "<group>"; };
+		10D0368424E48233009941D7 /* RomtypeFoundationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeFoundationViewController.swift; sourceTree = "<group>"; };
+		10D0368624E482D9009941D7 /* RomtypeMindsetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeMindsetViewController.swift; sourceTree = "<group>"; };
+		10DB1135268E566100DBEEE6 /* CompareOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareOptionsViewController.swift; sourceTree = "<group>"; };
+		10E1228426E135F9006B8481 /* flexScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flexScore.swift; sourceTree = "<group>"; };
+		10E560D52669371700A5EFDE /* gradientCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradientCircle.swift; sourceTree = "<group>"; };
+		10E64E0124253F0700B93288 /* MyRomtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRomtype.swift; sourceTree = "<group>"; };
+		10E68CDF24C0B54F0040BEED /* UserLoginInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginInfo.swift; sourceTree = "<group>"; };
+		10E795D82507F458002F9E9C /* SelectivityRanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectivityRanges.swift; sourceTree = "<group>"; };
+		10E795DC2507F520002F9E9C /* RangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeModel.swift; sourceTree = "<group>"; };
+		10EA893D242A911E00CA633D /* RomtypeCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeCompleteViewController.swift; sourceTree = "<group>"; };
+		10EA8940242A996100CA633D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
+		10EDD052241ACCB5002752EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1045AB8123745B290093A3B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				107F3977249947460016445F /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1031C2C9245B37D700BAF996 /* Exlusivity Report */ = {
+			isa = PBXGroup;
+			children = (
+				1031C2CA245B3A2800BAF996 /* MyExclusivity.swift */,
+				10E1228426E135F9006B8481 /* flexScore.swift */,
+				10B5C7BB2448FB07008588E2 /* ExclusivityViewController.swift */,
+			);
+			path = "Exlusivity Report";
+			sourceTree = "<group>";
+		};
+		10457932242BF3F500FF27B1 /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				101BA210240735F90056C2BB /* MyDemos.swift */,
+				101BA212240736DD0056C2BB /* MyDemosModel.swift */,
+				1045ABA1238750E60093A3B7 /* radioButton.swift */,
+				1045AB9F238750860093A3B7 /* radioButtonController.swift */,
+			);
+			path = Demos;
+			sourceTree = "<group>";
+		};
+		10457933242BF42800FF27B1 /* Profile Qs */ = {
+			isa = PBXGroup;
+			children = (
+				1094BC5024216D7900A78451 /* IntroSurveyViewController.swift */,
+				1094BC4A242005D000A78451 /* ProfileQuestions.swift */,
+				1094BC4C242005E300A78451 /* ProfileQuestionModel.swift */,
+				1094BC522421742000A78451 /* MyProfileQAs.swift */,
+				1094BC5424217EB900A78451 /* MyProfileQAModel.swift */,
+			);
+			path = "Profile Qs";
+			sourceTree = "<group>";
+		};
+		10457934242BF44000FF27B1 /* Romtype Qs */ = {
+			isa = PBXGroup;
+			children = (
+				10B3F24A243B918000442DAD /* RTQIntroViewController.swift */,
+				1088D84F2433C65600D073B7 /* AllRomtypesCollectionViewController.swift */,
+				1088D8512433C66500D073B7 /* AllRomtypesCollectionViewCell.swift */,
+				1088D8542433CA3700D073B7 /* RTQList.swift */,
+				1088D8562433CAF900D073B7 /* RTQListModel.swift */,
+				109DD57E23B2AC5D008F94BC /* RomtypeViewController.swift */,
+				107811F623F5C7490010598A /* RomtypeModel.swift */,
+				1063D36623CE4365003F46D9 /* RomtypeList.swift */,
+				1063D36823CE44B0003F46D9 /* RomtypeListModel.swift */,
+				1063D36A23CE542D003F46D9 /* RomtypeQuestions.swift */,
+				1063D36E23CE656B003F46D9 /* RomtypeQuestionModel.swift */,
+				1082E8B623F1D39F00A3BBC1 /* MyRomtypeAnswers.swift */,
+				107811FA23F5DA680010598A /* MyRomtypeAnswersModel.swift */,
+				10EA893D242A911E00CA633D /* RomtypeCompleteViewController.swift */,
+			);
+			path = "Romtype Qs";
+			sourceTree = "<group>";
+		};
+		10457935242BF45A00FF27B1 /* Factor Qs */ = {
+			isa = PBXGroup;
+			children = (
+				10B3F251243BB65100442DAD /* FQIntroViewController.swift */,
+				109DD58023BA9DF3008F94BC /* AllFactorsCollectionViewController.swift */,
+				109DD58223BA9EE1008F94BC /* AllFactorsCollectionViewCell.swift */,
+				1045AB9B237706B50093A3B7 /* FactorViewController.swift */,
+				1063D36223CD18E1003F46D9 /* FactorList.swift */,
+				1063D36423CD195E003F46D9 /* FactorListModel.swift */,
+				10CB8A7423EA15890036804C /* FactorQuestions.swift */,
+				10CB8A7623EA15990036804C /* FactorQuestionModel.swift */,
+				107811FC23F5DE050010598A /* MyFactorAnswers.swift */,
+				1082E8B823F1D4DD00A3BBC1 /* MyFactorAnswersModel.swift */,
+				10457930242BF2E800FF27B1 /* FactorCompleteViewController.swift */,
+			);
+			path = "Factor Qs";
+			sourceTree = "<group>";
+		};
+		10457936242BF48F00FF27B1 /* Romtype Report */ = {
+			isa = PBXGroup;
+			children = (
+				109F668F242434DD008832CF /* RomtypeReportViewController.swift */,
+				10D0368424E48233009941D7 /* RomtypeFoundationViewController.swift */,
+				10D0368624E482D9009941D7 /* RomtypeMindsetViewController.swift */,
+				10E64E0124253F0700B93288 /* MyRomtype.swift */,
+				108B244823D0DA5B00C6F775 /* RomtypeWeights.swift */,
+				102A56222435266700D50FBE /* RomtypeWeightsModel.swift */,
+				109DD5A823C52003008F94BC /* RomtypeTableViewController.swift */,
+				108B244A23D7740900C6F775 /* RomtypeInfoViewController.swift */,
+				10CB8A7123E21E260036804C /* RomtypeInfo.swift */,
+			);
+			path = "Romtype Report";
+			sourceTree = "<group>";
+		};
+		10457937242BF4A400FF27B1 /* Selectivity Report */ = {
+			isa = PBXGroup;
+			children = (
+				109DD57C23B29EA9008F94BC /* SelectivityViewController.swift */,
+				1045ABA5239593170093A3B7 /* GaugeView.swift */,
+				10E560D52669371700A5EFDE /* gradientCircle.swift */,
+				10B5C7B324479D14008588E2 /* FactorIcons.swift */,
+				10B5C7B524479D22008588E2 /* FactorIconModel.swift */,
+				1031C2B724576E6D00BAF996 /* SelectivityAnalysisViewController.swift */,
+				101BA20B23FF2D890056C2BB /* FactorSelectivity.swift */,
+				101BA20D23FF2DB20056C2BB /* FactorSelectivityModel.swift */,
+				1031C2BD2458C89800BAF996 /* SelectivityRankingsViewController.swift */,
+				101DD76F24522C0800F5C229 /* MyRankedFactorAnswers.swift */,
+				101DD77124522C1200F5C229 /* MyRankedFactorAnswersModel.swift */,
+				101DD769245225E700F5C229 /* FactorAnswerTableViewController.swift */,
+				101DD76224520FD600F5C229 /* FactorAnswerTableViewCell.swift */,
+			);
+			path = "Selectivity Report";
+			sourceTree = "<group>";
+		};
+		10457938242BF4B000FF27B1 /* My Data Report */ = {
+			isa = PBXGroup;
+			children = (
+				10C9A53B246480920073192D /* My Romtype Data */,
+				10C9A53C2464809D0073192D /* MyFactor Data */,
+			);
+			path = "My Data Report";
+			sourceTree = "<group>";
+		};
+		10457939242BF4ED00FF27B1 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				1045ABA3238C5BBB0093A3B7 /* ReportViewController.swift */,
+				105997C22686376400473038 /* Charts.xcodeproj */,
+				10457936242BF48F00FF27B1 /* Romtype Report */,
+				10457937242BF4A400FF27B1 /* Selectivity Report */,
+				1031C2C9245B37D700BAF996 /* Exlusivity Report */,
+				10457938242BF4B000FF27B1 /* My Data Report */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
+		1045793A242BF51100FF27B1 /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				10457934242BF44000FF27B1 /* Romtype Qs */,
+				10457935242BF45A00FF27B1 /* Factor Qs */,
+			);
+			path = Questions;
+			sourceTree = "<group>";
+		};
+		1045793B242BF52D00FF27B1 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				10E68CDF24C0B54F0040BEED /* UserLoginInfo.swift */,
+				10B094CD2497F487005DDB38 /* UserLogs.swift */,
+				10B094D12497F681005DDB38 /* UserLogsModel.swift */,
+				1045AB99237706790093A3B7 /* ProfileViewController.swift */,
+				1073B93F24745FB00044CB2D /* UserAccountViewController.swift */,
+				10457932242BF3F500FF27B1 /* Demos */,
+				10457933242BF42800FF27B1 /* Profile Qs */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		1045AB7B23745B290093A3B7 = {
+			isa = PBXGroup;
+			children = (
+				1045AB8623745B290093A3B7 /* Romational */,
+				1045AB8523745B290093A3B7 /* Products */,
+				107F3973249947450016445F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1045AB8523745B290093A3B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1045AB8423745B290093A3B7 /* Romational.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1045AB8623745B290093A3B7 /* Romational */ = {
+			isa = PBXGroup;
+			children = (
+				103CDA9B269F5D6300C0E46D /* Romational.entitlements */,
+				1045AB8723745B290093A3B7 /* AppDelegate.swift */,
+				1045ABAF239F50300093A3B7 /* AGCollectionView.swift */,
+				1045AB9323745B290093A3B7 /* Info.plist */,
+				109DD58423BBD901008F94BC /* Romational.xcdatamodeld */,
+				1045AB9023745B290093A3B7 /* LaunchScreen.storyboard */,
+				1045AB8B23745B290093A3B7 /* Main.storyboard */,
+				1045AB8E23745B290093A3B7 /* Assets.xcassets */,
+				1046FA83268B959B00809E9D /* global includes */,
+				1046FA82268B953B00809E9D /* Intro Login Signup */,
+				1045AB8923745B290093A3B7 /* MainMenuViewController.swift */,
+				1094BC4E2421630000A78451 /* UserOptionsViewController.swift */,
+				1046FA7F268B94C700809E9D /* Addtl Pages */,
+				1045793B242BF52D00FF27B1 /* Users */,
+				107A599F24B614D1006B3022 /* Users */,
+				1045793A242BF51100FF27B1 /* Questions */,
+				10457939242BF4ED00FF27B1 /* Reports */,
+				1046FA84268B95B500809E9D /* Connect */,
+			);
+			path = Romational;
+			sourceTree = "<group>";
+		};
+		1046FA7F268B94C700809E9D /* Addtl Pages */ = {
+			isa = PBXGroup;
+			children = (
+				10B5C7AB24463A69008588E2 /* AboutRomationalViewController.swift */,
+				1056391A24917E140080A796 /* MethodologyViewController.swift */,
+			);
+			path = "Addtl Pages";
+			sourceTree = "<group>";
+		};
+		1046FA82268B953B00809E9D /* Intro Login Signup */ = {
+			isa = PBXGroup;
+			children = (
+				105BB982268626CB00E93A95 /* HelloTwoViewController.swift */,
+				10EDD052241ACCB5002752EC /* LoginViewController.swift */,
+				10080E8A24C76DE4000F2549 /* PasswordReminderViewController.swift */,
+				107A599324B60DF5006B3022 /* SignupViewController.swift */,
+				10B5C7A724463109008588E2 /* ConfirmViewController.swift */,
+			);
+			path = "Intro Login Signup";
+			sourceTree = "<group>";
+		};
+		1046FA83268B959B00809E9D /* global includes */ = {
+			isa = PBXGroup;
+			children = (
+				10EA8940242A996100CA633D /* globals.swift */,
+				102B87AB2644323600A2D198 /* extensions.swift */,
+				10D0367E24E45BF4009941D7 /* SpinnerExtension.swift */,
+				10D0368224E46ECA009941D7 /* gifImage.swift */,
+				106009A8264D7BE200E66BA5 /* innerShadows.swift */,
+				10B3F24C243BA02400442DAD /* VCSInfo.swift */,
+				10B3F24E243BA03E00442DAD /* VCSInfoModel.swift */,
+				10E795D82507F458002F9E9C /* SelectivityRanges.swift */,
+				10E795DC2507F520002F9E9C /* RangeModel.swift */,
+			);
+			path = "global includes";
+			sourceTree = "<group>";
+		};
+		1046FA84268B95B500809E9D /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				10BA54C9268529AF005CA48B /* ConnectViewController.swift */,
+				105448492694DEAD004AD33A /* MyQRCodeViewController.swift */,
+				1046FA85268B9AE000809E9D /* ScannerViewController.swift */,
+				10DF88F326EBC9F100DC152A /* Compare Reports */,
+				10DF88F226EBC9CE00DC152A /* My Connections */,
+				10DB1135268E566100DBEEE6 /* CompareOptionsViewController.swift */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		105997C32686376400473038 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				105997C82686376400473038 /* Charts.framework */,
+				105997CA2686376400473038 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		107F3973249947450016445F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				107F3976249947460016445F /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10C9A53B246480920073192D /* My Romtype Data */ = {
+			isa = PBXGroup;
+			children = (
+				10C9A51724634A3D0073192D /* MyRomtypeDataViewController.swift */,
+				10C9A51D24635F9B0073192D /* MyRomtypeDataCollectionViewController.swift */,
+				10C9A51F24635FBB0073192D /* MyRomtypeDataCollectionViewCell.swift */,
+				10C9A535246480730073192D /* MyRomtypeData.swift */,
+				10C9A5392464807D0073192D /* MyRomtypeDataModel.swift */,
+			);
+			path = "My Romtype Data";
+			sourceTree = "<group>";
+		};
+		10C9A53C2464809D0073192D /* MyFactor Data */ = {
+			isa = PBXGroup;
+			children = (
+				10C9A51B24635CA90073192D /* MyFactorDataViewController.swift */,
+				1088690523AAE1A600D90E9C /* MyFactorDataCollectionViewController.swift */,
+				1045ABAD2396FA390093A3B7 /* MyFactorDataCollectionViewCell.swift */,
+				10C9A52D246477830073192D /* MyFactorData.swift */,
+				10C9A531246477910073192D /* MyFactorDataModel.swift */,
+			);
+			path = "MyFactor Data";
+			sourceTree = "<group>";
+		};
+		10DF88F226EBC9CE00DC152A /* My Connections */ = {
+			isa = PBXGroup;
+			children = (
+				1046FA87268B9AFC00809E9D /* MyComparesViewController.swift */,
+				10AB5B8126EBCCF200CF5678 /* myCompares.swift */,
+				1054485326975DC3004AD33A /* myComparesModel.swift */,
+				1054484F26975BFC004AD33A /* MyComparesTableViewController.swift */,
+				10544855269762DE004AD33A /* MyComparesTableViewCell.swift */,
+				103CDAA426A08E3C00C0E46D /* MyRequestsViewController.swift */,
+				103CDAA026A08C9000C0E46D /* myRequests.swift */,
+				103CDAA226A08D1E00C0E46D /* myRequestsModel.swift */,
+				103CDAA626A08ECD00C0E46D /* MyRequestsTableViewController.swift */,
+				103CDAA826A08F5800C0E46D /* MyRequestsTableViewCell.swift */,
+				105448452694DE7A004AD33A /* NewCompareViewController.swift */,
+			);
+			path = "My Connections";
+			sourceTree = "<group>";
+		};
+		10DF88F326EBC9F100DC152A /* Compare Reports */ = {
+			isa = PBXGroup;
+			children = (
+				10AB5B8326EBCD5200CF5678 /* compareRomtypes.swift */,
+				103CDA9E26A077FE00C0E46D /* CompareIntroViewController.swift */,
+				1046FA89268CF55F00809E9D /* CompareLevelOneViewController.swift */,
+				1054484B26962F81004AD33A /* CompareLevelTwoViewController.swift */,
+				1054484D269638EB004AD33A /* CompareLevelThreeViewController.swift */,
+				103CDAB126A76C2D00C0E46D /* CompareShareInfoViewController.swift */,
+			);
+			path = "Compare Reports";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1045AB8323745B290093A3B7 /* Romational */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1045AB9623745B290093A3B7 /* Build configuration list for PBXNativeTarget "Romational" */;
+			buildPhases = (
+				1045AB8023745B290093A3B7 /* Sources */,
+				1045AB8123745B290093A3B7 /* Frameworks */,
+				1045AB8223745B290093A3B7 /* Resources */,
+				108B245B23DA13C600C6F775 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Romational;
+			packageProductDependencies = (
+			);
+			productName = Romational;
+			productReference = 1045AB8423745B290093A3B7 /* Romational.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1045AB7C23745B290093A3B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Paholo Inc";
+				TargetAttributes = {
+					1045AB8323745B290093A3B7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1045AB7F23745B290093A3B7 /* Build configuration list for PBXProject "Romational" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1045AB7B23745B290093A3B7;
+			packageReferences = (
+			);
+			productRefGroup = 1045AB8523745B290093A3B7 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 105997C32686376400473038 /* Products */;
+					ProjectRef = 105997C22686376400473038 /* Charts.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1045AB8323745B290093A3B7 /* Romational */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		105997C82686376400473038 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 105997C72686376400473038 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		105997CA2686376400473038 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 105997C92686376400473038 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1045AB8223745B290093A3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1045AB9223745B290093A3B7 /* LaunchScreen.storyboard in Resources */,
+				1045AB8F23745B290093A3B7 /* Assets.xcassets in Resources */,
+				1045AB8D23745B290093A3B7 /* Main.storyboard in Resources */,
+				107A59A024B614D2006B3022 /* Users in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1045AB8023745B290093A3B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1045ABA4238C5BBB0093A3B7 /* ReportViewController.swift in Sources */,
+				1054484A2694DEAD004AD33A /* MyQRCodeViewController.swift in Sources */,
+				10D0368724E482D9009941D7 /* RomtypeMindsetViewController.swift in Sources */,
+				1088690623AAE1A600D90E9C /* MyFactorDataCollectionViewController.swift in Sources */,
+				10C9A536246480730073192D /* MyRomtypeData.swift in Sources */,
+				1046FA8A268CF55F00809E9D /* CompareLevelOneViewController.swift in Sources */,
+				10E64E0224253F0700B93288 /* MyRomtype.swift in Sources */,
+				1082E8B723F1D3A000A3BBC1 /* MyRomtypeAnswers.swift in Sources */,
+				10D0367F24E45BF5009941D7 /* SpinnerExtension.swift in Sources */,
+				1073B94024745FB00044CB2D /* UserAccountViewController.swift in Sources */,
+				1045AB9A237706790093A3B7 /* ProfileViewController.swift in Sources */,
+				1094BC5524217EB900A78451 /* MyProfileQAModel.swift in Sources */,
+				101BA211240735F90056C2BB /* MyDemos.swift in Sources */,
+				1088D8572433CAF900D073B7 /* RTQListModel.swift in Sources */,
+				10B3F252243BB65100442DAD /* FQIntroViewController.swift in Sources */,
+				10B5C7B624479D22008588E2 /* FactorIconModel.swift in Sources */,
+				10DB1136268E566100DBEEE6 /* CompareOptionsViewController.swift in Sources */,
+				10D0368324E46ECA009941D7 /* gifImage.swift in Sources */,
+				109DD57F23B2AC5D008F94BC /* RomtypeViewController.swift in Sources */,
+				10EA893E242A911E00CA633D /* RomtypeCompleteViewController.swift in Sources */,
+				1082E8B923F1D4DD00A3BBC1 /* MyFactorAnswersModel.swift in Sources */,
+				1045ABA0238750860093A3B7 /* radioButtonController.swift in Sources */,
+				103CDAB226A76C2F00C0E46D /* CompareShareInfoViewController.swift in Sources */,
+				1094BC5124216D7900A78451 /* IntroSurveyViewController.swift in Sources */,
+				1046FA88268B9AFC00809E9D /* MyComparesViewController.swift in Sources */,
+				101DD77024522C0800F5C229 /* MyRankedFactorAnswers.swift in Sources */,
+				1045AB8A23745B290093A3B7 /* MainMenuViewController.swift in Sources */,
+				103CDAA126A08C9100C0E46D /* myRequests.swift in Sources */,
+				10E795D92507F458002F9E9C /* SelectivityRanges.swift in Sources */,
+				1045ABA2238750E60093A3B7 /* radioButton.swift in Sources */,
+				109DD57D23B29EA9008F94BC /* SelectivityViewController.swift in Sources */,
+				101DD76A245225E700F5C229 /* FactorAnswerTableViewController.swift in Sources */,
+				109DD5A923C52003008F94BC /* RomtypeTableViewController.swift in Sources */,
+				10457931242BF2E800FF27B1 /* FactorCompleteViewController.swift in Sources */,
+				1054485026975BFC004AD33A /* MyComparesTableViewController.swift in Sources */,
+				1063D36723CE4365003F46D9 /* RomtypeList.swift in Sources */,
+				103CDAA326A08D1E00C0E46D /* myRequestsModel.swift in Sources */,
+				10B094D22497F681005DDB38 /* UserLogsModel.swift in Sources */,
+				101BA20C23FF2D890056C2BB /* FactorSelectivity.swift in Sources */,
+				1054484E269638EB004AD33A /* CompareLevelThreeViewController.swift in Sources */,
+				10B5C7AC24463A69008588E2 /* AboutRomationalViewController.swift in Sources */,
+				1056391B24917E150080A796 /* MethodologyViewController.swift in Sources */,
+				10B3F24B243B918000442DAD /* RTQIntroViewController.swift in Sources */,
+				10B5C7A824463109008588E2 /* ConfirmViewController.swift in Sources */,
+				1094BC4B242005D000A78451 /* ProfileQuestions.swift in Sources */,
+				10B5C7BC2448FB07008588E2 /* ExclusivityViewController.swift in Sources */,
+				101BA213240736DD0056C2BB /* MyDemosModel.swift in Sources */,
+				1063D36F23CE656B003F46D9 /* RomtypeQuestionModel.swift in Sources */,
+				1063D36323CD18E1003F46D9 /* FactorList.swift in Sources */,
+				1063D36B23CE542D003F46D9 /* RomtypeQuestions.swift in Sources */,
+				10C9A53A2464807D0073192D /* MyRomtypeDataModel.swift in Sources */,
+				1094BC4F2421630000A78451 /* UserOptionsViewController.swift in Sources */,
+				102B87AC2644323600A2D198 /* extensions.swift in Sources */,
+				10B094CE2497F487005DDB38 /* UserLogs.swift in Sources */,
+				10544856269762DE004AD33A /* MyComparesTableViewCell.swift in Sources */,
+				10C9A51E24635F9B0073192D /* MyRomtypeDataCollectionViewController.swift in Sources */,
+				109DD58323BA9EE1008F94BC /* AllFactorsCollectionViewCell.swift in Sources */,
+				10C9A52024635FBB0073192D /* MyRomtypeDataCollectionViewCell.swift in Sources */,
+				10CB8A7223E21E260036804C /* RomtypeInfo.swift in Sources */,
+				10B5C7B424479D14008588E2 /* FactorIcons.swift in Sources */,
+				10AB5B8226EBCCF200CF5678 /* myCompares.swift in Sources */,
+				1031C2BE2458C89800BAF996 /* SelectivityRankingsViewController.swift in Sources */,
+				10EDD053241ACCB5002752EC /* LoginViewController.swift in Sources */,
+				1031C2B824576E6D00BAF996 /* SelectivityAnalysisViewController.swift in Sources */,
+				103CDAA926A08F5800C0E46D /* MyRequestsTableViewCell.swift in Sources */,
+				1054485426975DC3004AD33A /* myComparesModel.swift in Sources */,
+				10E795DD2507F520002F9E9C /* RangeModel.swift in Sources */,
+				10CB8A7723EA15990036804C /* FactorQuestionModel.swift in Sources */,
+				10080E8B24C76DE4000F2549 /* PasswordReminderViewController.swift in Sources */,
+				1054484C26962F81004AD33A /* CompareLevelTwoViewController.swift in Sources */,
+				101BA20E23FF2DB20056C2BB /* FactorSelectivityModel.swift in Sources */,
+				109DD58123BA9DF3008F94BC /* AllFactorsCollectionViewController.swift in Sources */,
+				103CDAA726A08ECD00C0E46D /* MyRequestsTableViewController.swift in Sources */,
+				108B244923D0DA5B00C6F775 /* RomtypeWeights.swift in Sources */,
+				1063D36523CD195E003F46D9 /* FactorListModel.swift in Sources */,
+				10C9A51C24635CA90073192D /* MyFactorDataViewController.swift in Sources */,
+				105448462694DE7A004AD33A /* NewCompareViewController.swift in Sources */,
+				109DD58623BBD901008F94BC /* Romational.xcdatamodeld in Sources */,
+				10BA54CA268529AF005CA48B /* ConnectViewController.swift in Sources */,
+				1088D8502433C65600D073B7 /* AllRomtypesCollectionViewController.swift in Sources */,
+				105BB983268626CB00E93A95 /* HelloTwoViewController.swift in Sources */,
+				1045AB8823745B290093A3B7 /* AppDelegate.swift in Sources */,
+				1045ABA6239593170093A3B7 /* GaugeView.swift in Sources */,
+				1094BC532421742000A78451 /* MyProfileQAs.swift in Sources */,
+				107811FB23F5DA680010598A /* MyRomtypeAnswersModel.swift in Sources */,
+				101DD76324520FD600F5C229 /* FactorAnswerTableViewCell.swift in Sources */,
+				10B3F24F243BA03E00442DAD /* VCSInfoModel.swift in Sources */,
+				1045ABB0239F50300093A3B7 /* AGCollectionView.swift in Sources */,
+				1046FA86268B9AE000809E9D /* ScannerViewController.swift in Sources */,
+				109F6690242434DD008832CF /* RomtypeReportViewController.swift in Sources */,
+				10E68CE024C0B54F0040BEED /* UserLoginInfo.swift in Sources */,
+				10D0368524E48233009941D7 /* RomtypeFoundationViewController.swift in Sources */,
+				1088D8522433C66500D073B7 /* AllRomtypesCollectionViewCell.swift in Sources */,
+				1063D36923CE44B0003F46D9 /* RomtypeListModel.swift in Sources */,
+				106009A9264D7BE200E66BA5 /* innerShadows.swift in Sources */,
+				10C9A51824634A3D0073192D /* MyRomtypeDataViewController.swift in Sources */,
+				10CB8A7523EA15890036804C /* FactorQuestions.swift in Sources */,
+				107811F723F5C7490010598A /* RomtypeModel.swift in Sources */,
+				10C9A52E246477830073192D /* MyFactorData.swift in Sources */,
+				10E560D62669371700A5EFDE /* gradientCircle.swift in Sources */,
+				1045ABAE2396FA390093A3B7 /* MyFactorDataCollectionViewCell.swift in Sources */,
+				102A56232435266700D50FBE /* RomtypeWeightsModel.swift in Sources */,
+				1045AB9C237706B50093A3B7 /* FactorViewController.swift in Sources */,
+				1094BC4D242005E300A78451 /* ProfileQuestionModel.swift in Sources */,
+				103CDAA526A08E3C00C0E46D /* MyRequestsViewController.swift in Sources */,
+				107811FD23F5DE050010598A /* MyFactorAnswers.swift in Sources */,
+				10C9A532246477910073192D /* MyFactorDataModel.swift in Sources */,
+				103CDA9F26A077FE00C0E46D /* CompareIntroViewController.swift in Sources */,
+				108B244B23D7740900C6F775 /* RomtypeInfoViewController.swift in Sources */,
+				107A599624B60DF6006B3022 /* SignupViewController.swift in Sources */,
+				10AB5B8426EBCD5200CF5678 /* compareRomtypes.swift in Sources */,
+				101DD77224522C1200F5C229 /* MyRankedFactorAnswersModel.swift in Sources */,
+				1088D8552433CA3700D073B7 /* RTQList.swift in Sources */,
+				10EA8941242A996100CA633D /* globals.swift in Sources */,
+				10E1228526E135F9006B8481 /* flexScore.swift in Sources */,
+				1031C2CB245B3A2800BAF996 /* MyExclusivity.swift in Sources */,
+				10B3F24D243BA02400442DAD /* VCSInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1045AB8B23745B290093A3B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1045AB8C23745B290093A3B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1045AB9023745B290093A3B7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1045AB9123745B290093A3B7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1045AB9423745B290093A3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1045AB9523745B290093A3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1045AB9723745B290093A3B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Romational/Romational.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HU346F8TSZ;
+				INFOPLIST_FILE = Romational/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = romational.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1045AB9823745B290093A3B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Romational/Romational.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HU346F8TSZ;
+				INFOPLIST_FILE = Romational/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = romational.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1045AB7F23745B290093A3B7 /* Build configuration list for PBXProject "Romational" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1045AB9423745B290093A3B7 /* Debug */,
+				1045AB9523745B290093A3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1045AB9623745B290093A3B7 /* Build configuration list for PBXNativeTarget "Romational" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1045AB9723745B290093A3B7 /* Debug */,
+				1045AB9823745B290093A3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		109DD58423BBD901008F94BC /* Romational.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				109DD58523BBD901008F94BC /* romUserModel.xcdatamodel */,
+			);
+			currentVersion = 109DD58523BBD901008F94BC /* romUserModel.xcdatamodel */;
+			path = Romational.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1045AB7C23745B290093A3B7 /* Project object */;
+}

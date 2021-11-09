@@ -296,9 +296,6 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         let pageInfo = VCS["SelectivityAnalysis"] as? VCSInfoModel
         

@@ -197,6 +197,53 @@ class MyRequestsTableViewController: UITableViewController, MyRequestsProtocol {
         return cell
     }
 
+    // delete
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            print ("delete this")
+            
+            //let thisIdea = allIdeas[indexPath[1]] as! IdeasListModel
+            //print (thisIdea)
+            //deleteMyIdea(ideaId: String(thisIdea.id!), indexPath: indexPath)
+            
+            let thisRequest = myRequestsList[indexPath[1]] as? MyRequestsModel
+            print (thisRequest)
+            
+            let compareUserId = thisRequest?.compareUserId ?? 0
+            
+            deleteCompare(userId: String(userId), compareUserId: String(compareUserId))
+            
+            //allIdeas.removeObject(at: Int([indexPath]) )
+            //allIdeas.remove(at: indexPath.row)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+    
+    func deleteCompare(userId: String, compareUserId: String) {
+        
+        postWithCompletion(parameters: [userId, compareUserId], urlString: "http://romdat.com/compare/delete/\(userId)/\(compareUserId)") { success, result in
+        
+            print (result)
+            
+            if result["response"] as? String == "deleted" {
+                print ("deleted")
+                //self.tableView.reloadData()
+            
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let destination = storyboard.instantiateViewController(withIdentifier: "MyRequests") as! MyRequestsViewController
+                destination.modalPresentationStyle = .fullScreen
+                self.present(destination, animated: false)
+            }
+            
+        }
+    }
+    
+    
     // compare links
     @objc func gotoIntroCompare(sender: UIButton){
         let compareUserId = sender.tag

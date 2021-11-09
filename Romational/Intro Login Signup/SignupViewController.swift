@@ -32,10 +32,27 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmField: UITextField!
     
+    @IBOutlet weak var checkboxButton: UIButton!
+    @IBAction func btn_box(sender: UIButton) {
+        if (checkboxButton.isSelected == true)
+        {
+            checkboxButton.setBackgroundImage(UIImage(named: "checkbox-empty"), for: .normal)
+
+            checkboxButton.isSelected = false;
+        }
+        else
+        {
+            checkboxButton.setBackgroundImage(UIImage(named: "checkbox-marked"), for: .normal)
+
+            checkboxButton.isSelected = true;
+        }
+    }
+    
     @IBOutlet weak var nameError: UILabel!
     @IBOutlet weak var emailError: UILabel!
     @IBOutlet weak var passwordError: UILabel!
     @IBOutlet weak var confirmError: UILabel!
+    @IBOutlet weak var confirmAgeError: UILabel!
     
     @IBOutlet weak var createBkgd: UIButton!
     @IBOutlet weak var createButton: UIButton!
@@ -83,6 +100,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             confirmError.text = "Password mis-match"
         }
         
+        if checkboxButton.isSelected != true {
+            valid = "no"
+            confirmAgeError.text = "Confirm You Are 18+ Years Old"
+            confirmAgeError.textColor = red
+        }
+        
         if valid == "yes" {
             createUser(firstName: firstNameField.text!, lastName: lastNameField.text!, email: emailField.text!, password: passwordField.text!)
         }
@@ -96,10 +119,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
 
-        // v4 design navbar
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         
         let pageInfo = VCS["Signup"] as? VCSInfoModel
         
@@ -117,6 +136,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         emailField.delegate     = self
         passwordField.delegate  = self
         confirmField.delegate   = self
+        
+        checkboxButton.setBackgroundImage(UIImage(named: "checkbox-empty"), for: .normal)
+
+        checkboxButton.isSelected = false;
         
         // style the fields (v4)
         firstNameField.addBottomBorder(height: 1, color: romDarkGray)

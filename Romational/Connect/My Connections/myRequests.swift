@@ -74,7 +74,7 @@ class MyRequests: NSObject, URLSessionDataDelegate {
             
             let myRequests = MyRequestsModel()
             
-             print (jsonElement)
+             //print (jsonElement)
             
             // check for results to avoid empty set
             if  jsonElement["success"] as? String == "no" {

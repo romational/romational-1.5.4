@@ -138,9 +138,6 @@ class RomtypeCompleteViewController: UIViewController, RomtypeQuestionProtocol, 
 
         confirmBox.isHidden = true
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         congratsText.gradientColors = [romTeal.cgColor, romOrange.cgColor, romPink.cgColor]
         

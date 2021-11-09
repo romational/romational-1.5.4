@@ -163,8 +163,12 @@ func postWithCompletion(parameters : Array<String>, urlString : String, completi
             }
              */
             
-           // print (data!)
-           // print("Response String: \(response)")
+            if let JSONString = String(data: request.httpBody!, encoding: String.Encoding.utf8) {
+               print(JSONString)
+            }
+            
+            print (data!)
+            print("Response String: \(response)")
             
             /*.responseString { response in              print("Response String: \(response.result.value)")          }
             */
@@ -172,13 +176,13 @@ func postWithCompletion(parameters : Array<String>, urlString : String, completi
             do {
                 if let json = try JSONSerialization.jsonObject(with: data!, options: [.allowFragments]) as? NSDictionary {
                     // process "json" as a dictionary
-                    print ("dict")
-                    print (json)
+                    print ("completion result is dictionary")
+                    //print (json)
                     completion("results", json as! NSDictionary)
                 } else if let json = try JSONSerialization.jsonObject(with: data!, options:[.allowFragments]) as? NSArray {
                     // process "json" as an array
-                    print ("array")
-                    print (json)
+                    print ("completion result is array")
+                    //print (json)
                     completion("results", json[0] as! NSDictionary)
                     
                 } else {

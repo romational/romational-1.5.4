@@ -188,10 +188,12 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
     
     @IBOutlet weak var navBar: UIView!
     
+   
     @IBOutlet weak var compareResult: GradientLabel!
     @IBOutlet weak var compareImage: UIImageView!
     @IBOutlet weak var compareName: UILabel!
     
+
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     
@@ -208,7 +210,8 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
     }
     
     @IBAction func doContinue(_ sender: Any) {
-    
+        
+        print ("hey ok continue")
         updateCompareUser(compareUserId: compareUserId, compareStatus: "approved")
     
     }
@@ -219,9 +222,6 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         introButton.underline()
         print (qrcodeString)
         
@@ -246,6 +246,7 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
         buttons.forEach { btn in
             
             // button styling
+            btn.isUserInteractionEnabled = true
             btn.layer.masksToBounds = false
             btn.layer.shadowColor = romDarkGray.cgColor
             btn.layer.shadowOpacity = 0.3

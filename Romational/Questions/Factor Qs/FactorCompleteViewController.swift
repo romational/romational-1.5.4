@@ -225,8 +225,6 @@ class FactorCompleteViewController: UIViewController, FactorListProtocol, MyFact
 
         confirmBox.isHidden = true
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 75)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
     
         let factorList = FactorList()
         factorList.delegate = self

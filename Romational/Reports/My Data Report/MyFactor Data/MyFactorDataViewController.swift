@@ -189,9 +189,7 @@ class MyFactorDataViewController: UIViewController {
             // myAnswerTitle.text = pageInfo!.title
         }
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
+
         
         // Do any additional setup after loading the view.
     }

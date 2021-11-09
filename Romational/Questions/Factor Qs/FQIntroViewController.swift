@@ -190,9 +190,6 @@ class FQIntroViewController: UIViewController, UserLogsProtocol {
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 75)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         // reload the user logs
         let getUserLogs = UserLogs()

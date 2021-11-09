@@ -189,10 +189,10 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
                 
             }
             
-            else if  (thisReq.level1StatusMe == "undecided" ||  thisReq.level1StatusMe == "new") && (thisReq.introStatusThem != "undecided" || thisReq.introStatusThem != "new") {
+            else if  (thisReq.level1StatusMe == "undecided" ||  thisReq.level1StatusMe == "new") && (thisReq.introStatusThem != "undecided" && thisReq.introStatusThem != "new") {
                 
                 let newActionNeeded = UIButton(frame: CGRect(x: 0, y: y, width: vcWidth, height: 60))
-                newActionNeeded.setTitle( "Action needed on an Level 1 Request", for: .normal)
+                newActionNeeded.setTitle( "Action needed on a Level 1 Request", for: .normal)
                 newActionNeeded.layer.backgroundColor = romPink.withAlphaComponent(0.9).cgColor
                 
                 newActionNeeded.tag = compareUserId
@@ -204,9 +204,9 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
                 y = y + 70
             }
             
-            else if  (thisReq.level2StatusMe == "undecided" || thisReq.level2StatusMe == "new") && (thisReq.level1StatusThem != "undecided" || thisReq.level1StatusThem != "new") {
+            else if  (thisReq.level2StatusMe == "undecided" || thisReq.level2StatusMe == "new") && (thisReq.level1StatusThem != "undecided" && thisReq.level1StatusThem != "new") && (thisReq.introStatusThem != "undecided" && thisReq.introStatusThem != "new" ) {
                 let newActionNeeded = UIButton(frame: CGRect(x: 0, y: y, width: vcWidth, height: 60))
-                newActionNeeded.setTitle( "Action needed on an Level 2 Request", for: .normal)
+                newActionNeeded.setTitle( "Action needed on a Level 2 Request", for: .normal)
                 newActionNeeded.layer.backgroundColor = romPink.withAlphaComponent(0.9).cgColor
                
                 newActionNeeded.tag = compareUserId
@@ -218,9 +218,9 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
                 
             }
             
-            else if  (thisReq.level3StatusMe == "undecided" || thisReq.level3StatusMe == "new") && (thisReq.level2StatusThem != "undecided" || thisReq.level2StatusThem != "undecided" ) {
+            else if  (thisReq.level3StatusMe == "undecided" || thisReq.level3StatusMe == "new") && (thisReq.level2StatusThem != "undecided" && thisReq.level2StatusThem != "new" ) && (thisReq.level1StatusThem != "undecided" && thisReq.level1StatusThem != "new" ) && (thisReq.introStatusThem != "undecided" && thisReq.introStatusThem != "new" ) {
                 let newActionNeeded = UIButton(frame: CGRect(x: 10, y: y, width: vcWidth-20, height: 60))
-                newActionNeeded.setTitle ( "Action needed on an Level 3 Request", for: .normal)
+                newActionNeeded.setTitle ( "Action needed on a Level 3 Request", for: .normal)
                 newActionNeeded.layer.backgroundColor = romPink.withAlphaComponent(0.9).cgColor
                 
                 newActionNeeded.tag = compareUserId
@@ -381,9 +381,6 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         // my compares
         let getMyCompares = MyCompares()
         getMyCompares.delegate = self
@@ -457,11 +454,11 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
         
         postWithCompletion(parameters: [userId], urlString: "https://romdat.com/compares/\(userId)/new") { success, result in
             
-            print (result)
+            //print (result)
             
             if result["success"] as! String == "yes" {
                 
-                print ("new compares")
+                //print ("new compares")
                 self.newConnects.isHidden = false
                 self.newConnects.text = String(result["count"] as! Int)
                 self.newConnects.layer.cornerRadius = 10

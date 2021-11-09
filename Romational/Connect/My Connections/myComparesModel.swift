@@ -15,6 +15,7 @@ class MyComparesModel: NSObject {
     
     var id: Int?
     var userId: Int?
+    var compareUserId: Int?
     var nickName: String?
     var firstName: String?
     var lastName: String?

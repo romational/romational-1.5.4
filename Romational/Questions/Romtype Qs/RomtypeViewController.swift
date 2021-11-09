@@ -344,9 +344,6 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
         
         super.viewDidLoad()
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         //spacerView.layer.addBorder(edge: UIRectEdge.bottom, color: romDarkGray, thickness: 1.0)
         

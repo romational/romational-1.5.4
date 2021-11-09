@@ -70,7 +70,7 @@ class UserLogs: NSObject, URLSessionDataDelegate {
             
             jsonElement = jsonResult[i] as! NSDictionary
             
-            print (jsonElement)
+            //print (jsonElement)
             
             //let userLog = UserLogsModel()
             

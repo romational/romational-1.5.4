@@ -25,6 +25,7 @@ class MyRequestsViewController: UIViewController, MyComparesProtocol, MyRequests
         
         myComparesList.forEach { req in
             let thisCompare = req as! MyComparesModel
+            /*
             if thisCompare.introStatusMe == "new" {
                 compCt = compCt + 1
             }
@@ -39,7 +40,26 @@ class MyRequestsViewController: UIViewController, MyComparesProtocol, MyRequests
             }
             else {
                 
+            }*/
+            
+            if thisCompare.introStatusMe == "undecided"  || thisCompare.introStatusMe == "new" {
+                compCt = compCt + 1
             }
+            else if (thisCompare.level1StatusMe == "undecided" || thisCompare.level1StatusMe == "new") && (thisCompare.introStatusThem != "undecided" && thisCompare.introStatusThem != "new" ) {
+                compCt = compCt + 1
+            }
+            else if (thisCompare.level2StatusMe == "undecided" || thisCompare.level2StatusMe == "new") && (thisCompare.level1StatusThem != "undecided" && thisCompare.level1StatusThem != "new" ) && (thisCompare.introStatusThem != "undecided" && thisCompare.introStatusThem != "new" ) {
+                compCt = compCt + 1
+            }
+            else if (thisCompare.level3StatusMe == "undecided" || thisCompare.level3StatusMe == "new")  && (thisCompare.level2StatusThem != "undecided" && thisCompare.level2StatusThem != "new" ) && (thisCompare.level1StatusThem != "undecided" && thisCompare.level1StatusThem != "new") && (thisCompare.level2StatusThem != "undecided" && thisCompare.level2StatusThem != "new" )
+            {
+                compCt = compCt + 1
+            }
+            else {
+                
+            }
+            
+            
         }
         
         newComps.text = ("\(compCt)")
@@ -228,8 +248,6 @@ class MyRequestsViewController: UIViewController, MyComparesProtocol, MyRequests
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         /*
         myCompareButton.layer.masksToBounds = false

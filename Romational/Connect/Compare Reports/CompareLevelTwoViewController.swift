@@ -17,7 +17,7 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
     func myDemosDownloaded(demoInfo: NSArray) {
         
         myDemoInfo = demoInfo
-        print (myDemoInfo)
+        //print (myDemoInfo)
         
         if (myDemoInfo.count > 0) {
             let profile = (myDemoInfo[0] as? MyDemosModel)!
@@ -47,7 +47,7 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
         
         myRomtype = myRomtypeInfo
         
-        print (myRomtype)
+        //print (myRomtype)
         if let first = myRomtype[0] as? [String: Any] {
     
             let firstImage  = first["image"] as? String
@@ -78,7 +78,7 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
     func compareRomtypeDownloaded(compareRomtypeInfo: NSArray) {
         
         compareRomtype = compareRomtypeInfo
-        print (compareRomtype)
+        //print (compareRomtype)
         if let first = compareRomtype[0] as? [String: Any] {
     
             let firstImage  = first["image"] as? String
@@ -320,8 +320,6 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         L2Button.underline()
         
@@ -500,6 +498,8 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
                 
                 self.myFlexScore.text = String(Int(Double(result["flexScore"] as! String)! * 100))
                 
+                selectivityIndex = Int(Double(result["flexScore"] as! String)! * 100)
+                
                 flexbilityColors(flexScoreLabel: myFlexScore, flexibility: Int(Double(result["flexScore"] as! String)! * 100))
              
                 //print ("ranges here")
@@ -514,7 +514,7 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
                     let rangeInfo = thisRange!["info"] as? String
                     
                     if (selectivityIndex > lowRange) && (selectivityIndex <= highRange) {
-                        
+                        print ("hello \(lowRange) \(highRange)")
                         mySelectivity.setTitle(rangeName!, for: .normal)
                         
                     }
@@ -556,7 +556,7 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
                     let highRange = Int((thisRange!["high"] as? String)!)!
                     let rangeInfo = thisRange!["info"] as? String
                     
-                    if (selectivityIndex > lowRange) && (selectivityIndex <= highRange) {
+                    if (selectivityIndex  > lowRange) && (selectivityIndex  <= highRange) {
                         
                         theirSelectivity.setTitle(rangeName!, for: .normal)
                         
@@ -575,7 +575,7 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
         
         postWithCompletion(parameters: [userId], urlString: compareURLString) { success, result in
             
-            print (result)
+            //print (result)
             
             if result["success"] as! String == "yes" {
                 
@@ -588,9 +588,9 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
               
                 
                 compareResults.forEach { cr in
-                    print (cr["rtqId"])
-                    print ("\(cr["myAnswerId"]) -  \(cr["myAnswer"])")
-                    print ("\(cr["theirAnswerId"]) - \(cr["theirAnswer"])")
+                    //print (cr["rtqId"])
+                    //print ("\(cr["myAnswerId"]) -  \(cr["myAnswer"])")
+                    //print ("\(cr["theirAnswerId"]) - \(cr["theirAnswer"])")
                     
                     if (cr["myAnswerId"] as? Int != nil) && (cr["theirAnswerId"] as? Int != nil) {
                         if cr["myAnswerId"] as! Int == cr["theirAnswerId"] as! Int {
@@ -630,9 +630,9 @@ class CompareLevelTwoViewController: UIViewController, MyDemosProtocol, MyRomtyp
                 let compareResults = result["compareFactors"] as! [[String:Any]]
                 
                 compareResults.forEach { cr in
-                    print (cr["factorId"])
-                    print ("\(cr["myAnswerId"]) -  \(cr["myAnswer"])")
-                    print ("\(cr["theirAnswerId"]) - \(cr["theirAnswer"])")
+                    //print (cr["factorId"])
+                    //print ("\(cr["myAnswerId"]) -  \(cr["myAnswer"])")
+                    //print ("\(cr["theirAnswerId"]) - \(cr["theirAnswer"])")
                     
                     if (cr["myAnswerId"] as? Int != nil) && (cr["theirAnswerId"] as? Int != nil) {
                         if cr["myAnswerId"] as! Int == cr["theirAnswerId"] as! Int {

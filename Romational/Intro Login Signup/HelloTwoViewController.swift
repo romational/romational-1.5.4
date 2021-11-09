@@ -123,8 +123,13 @@ class HelloTwoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
+        
+        // navbar bkgd image colorbar
+        let bkgdImage = UIImageView(frame: CGRect(x: 0, y: self.navBar.frame.origin.y+20, width: self.view.bounds.size.width, height: 60))
+        bkgdImage.image = UIImage(named: "Header-2000x250.png.png")
+        view.addSubview(bkgdImage)
+        view.sendSubview(toBack: bkgdImage)
+        
         
         let pageInfo = VCS["Hello"] as? VCSInfoModel
         

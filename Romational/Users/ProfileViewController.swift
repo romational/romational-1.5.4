@@ -310,9 +310,6 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // v4 design navbar
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         // user logs
         if (profileStarted == "") {

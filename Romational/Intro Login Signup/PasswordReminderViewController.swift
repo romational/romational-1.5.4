@@ -46,10 +46,6 @@ class PasswordReminderViewController: UIViewController {
         super.viewDidLoad()
         
         
-        // v4 design navbar
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         // button shadow
         reminderButton.layer.cornerRadius = 20
         reminderButton.layer.masksToBounds = false

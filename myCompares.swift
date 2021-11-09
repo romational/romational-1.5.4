@@ -73,7 +73,7 @@ class MyCompares: NSObject, URLSessionDataDelegate {
             
             let myCompares = MyComparesModel()
             
-            print (jsonElement)
+            //print (jsonElement)
             
             // check for results avoid empty set print
             if  jsonElement["success"] as? String == "no" {
@@ -102,6 +102,7 @@ class MyCompares: NSObject, URLSessionDataDelegate {
                     
                     myCompares.id            = Int(id)
                     myCompares.userId        = Int(compareUserId)
+                    myCompares.compareUserId = Int(userId)
                     myCompares.nickName      = compareUserNickName
                     myCompares.firstName     = compareUserNameFirst
                     myCompares.lastName      = compareUserNameLast
@@ -120,7 +121,7 @@ class MyCompares: NSObject, URLSessionDataDelegate {
                     myCompares.level3StatusThem  = jsonElement["userCompare_level-3_status-them"] as? String
                     myCompares.level4StatusThem  = jsonElement["userCompare_level-4_status-them"] as? String
                     
-                    print (myCompares)
+                    //print (myCompares)
                 }
                 
                 allComparesList.add(myCompares)

@@ -190,10 +190,7 @@ class RomtypeInfoViewController: UIViewController, RomtypeInfoProtocol, RomtypeL
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
+   
         let allRomtypeInfo = RomtypeInfo()
         allRomtypeInfo.delegate = self
         allRomtypeInfo.downloadInfo(romtype: viewRomTypeName)

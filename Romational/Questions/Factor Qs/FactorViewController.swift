@@ -392,10 +392,6 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             updateUserLogs(userid: userId, item: "flexibility-started")
         }
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         
         // create button arrays
         answerBkgds.append(A1View)
@@ -441,6 +437,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         sliderBox.backgroundColor = UIColor.clear
         
         sliderValue.delegate = self
+        //sliderValue.keyboardType = .numberPad
         
         importanceSlider.thumbTintColor = yellow
         importanceSlider.value = 0.50
@@ -927,6 +924,34 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         }
         
         
+    }
+    
+    /*
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+            let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
+            
+            return string.rangeOfCharacter(from: invalidCharacters) == nil
+        }
+    */
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        // check decimal restriction
+        let replacementStringIsLegal = string.rangeOfCharacter(from: CharacterSet(charactersIn:"0123456789").inverted ) == nil
+
+        if !replacementStringIsLegal {
+            return false
+        }
+        let nsString = textField.text as NSString?
+        let newString = nsString!.replacingCharacters(in: range, with: string)
+
+        // check maximum length
+        if newString.characters.count > 2 {
+            return false
+        }
+        return true
+
     }
     
     

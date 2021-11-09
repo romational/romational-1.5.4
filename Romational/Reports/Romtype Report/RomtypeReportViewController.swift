@@ -21,7 +21,9 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
     func myRomtypeDownloaded(myRomtypeInfo: NSArray) {
         
         myRomtype = myRomtypeInfo
-        //print (myRomtype)
+        
+        print (myRomtype)
+        
         if let first = myRomtype[0] as? [String: Any] {
     
             let firstImage  = first["image"] as? String
@@ -240,7 +242,9 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
     func weightsDownloaded(weights: NSArray) {
         
         romWeights = weights
-        //print (romWeights)
+        
+        print (romWeights)
+        
         var ballPositions = [Double]()
         
         var i = 0
@@ -516,9 +520,6 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
         
         super.viewDidLoad()
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 10, opacity: 60, color: black)
         
         scrollView.isScrollEnabled = true
         

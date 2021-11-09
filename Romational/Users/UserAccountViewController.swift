@@ -189,8 +189,6 @@ class UserAccountViewController: UIViewController, UserLoginInfoProtocol, UIText
         super.viewDidLoad()
 
     
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         let loginInfo = UserLoginInfo()
         loginInfo.delegate = self

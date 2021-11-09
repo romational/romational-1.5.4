@@ -131,18 +131,29 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     @IBAction func doCompare(_ sender: Any) {
     
-        let compareURL = URL(string: messageLabel.text!)!
-        let compareUserId = compareURL.valueOf("userId")!
+        if messageLabel.text!.matches(pattern:"romational.com") {
+            print ("matches romational")
         
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let destination = storyboard.instantiateViewController(withIdentifier: "CompareIntro") as! CompareIntroViewController
-        
-        destination.qrcodeString = messageLabel.text!
-        
-        destination.modalPresentationStyle = .fullScreen
-        self.present(destination, animated: false)
-        
+            let compareURL = URL(string: messageLabel.text!)!
+            
+            
+            let compareUserId = compareURL.valueOf("userId")!
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let destination = storyboard.instantiateViewController(withIdentifier: "CompareIntro") as! CompareIntroViewController
+            
+            destination.qrcodeString = messageLabel.text!
+            
+            destination.modalPresentationStyle = .fullScreen
+            self.present(destination, animated: false)
+        }
+        else {
+            print ("doesn't match")
+            compareButton.setTitle("Invalid QRCode", for: .normal)
+            compareButton.setTitleColor(white, for: .normal) 
+            compareButton.layer.backgroundColor = romPink.cgColor
+        }
     }
     
     @IBOutlet weak var messageLabel: UILabel!
@@ -153,9 +164,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         
         compareButton.layer.cornerRadius = 20
         

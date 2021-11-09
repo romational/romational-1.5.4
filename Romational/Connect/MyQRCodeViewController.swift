@@ -135,9 +135,7 @@ class MyQRCodeViewController: UIViewController, MyDemosProtocol {
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
+
         qrcodeImage.image = generateQRCode(from: "http://romational.com?userId=\(userId)")
         
         let myDemo = MyDemos()

@@ -108,13 +108,14 @@ class MyComparesViewController: UIViewController, MyComparesProtocol, MyRequests
             if thisReq.introStatusMe == "undecided"  || thisReq.introStatusMe == "new" {
                 reqCt = reqCt + 1
             }
-            else if thisReq.level1StatusMe == "undecided" || thisReq.level1StatusMe == "new" {
+            else if (thisReq.level1StatusMe == "undecided" || thisReq.level1StatusMe == "new") && (thisReq.introStatusThem != "undecided" && thisReq.introStatusThem != "new" ) {
                 reqCt = reqCt + 1
             }
-            else if thisReq.level2StatusMe == "undecided" || thisReq.level2StatusMe == "new" {
+            else if (thisReq.level2StatusMe == "undecided" || thisReq.level2StatusMe == "new") && (thisReq.level1StatusThem != "undecided" && thisReq.level1StatusThem != "new" ) && (thisReq.introStatusThem != "undecided" && thisReq.introStatusThem != "new" ) {
                 reqCt = reqCt + 1
             }
-            else if thisReq.level3StatusMe == "undecided" || thisReq.level3StatusMe == "new"  {
+            else if (thisReq.level3StatusMe == "undecided" || thisReq.level3StatusMe == "new")  && (thisReq.level2StatusThem != "undecided" && thisReq.level2StatusThem != "new" ) && (thisReq.level1StatusThem != "undecided" && thisReq.level1StatusThem != "new") && (thisReq.level2StatusThem != "undecided" && thisReq.level2StatusThem != "new" )
+            {
                 reqCt = reqCt + 1
             }
             else {
@@ -231,10 +232,6 @@ class MyComparesViewController: UIViewController, MyComparesProtocol, MyRequests
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         
         newReqs.isHidden = true
         

@@ -90,14 +90,16 @@ class AboutRomationalViewController: UIViewController {
     // view vars
     @IBOutlet weak var navBar: UIView!
     
-    
+    // v3 vars
     @IBOutlet weak var aboutTitle: UILabel!
-    
     @IBOutlet weak var aboutIntro: UILabel!
-    
     @IBOutlet weak var webView: WKWebView!
     
+    // v4 vars
+    @IBOutlet weak var newStandard: GradientLabel!
+    @IBOutlet weak var newLanguage: GradientLabel!
     
+    @IBOutlet weak var moreButton: UIButton!
     
     @IBAction func gotoWebsite(_ sender: Any) {
         //UIApplication.shared.openURL(URL(string: "http://www.romational.com")!)
@@ -109,9 +111,6 @@ class AboutRomationalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         // Do any additional setup after loading the view.
         let pageInfo = VCS["AboutRomational"] as? VCSInfoModel
@@ -121,13 +120,24 @@ class AboutRomationalViewController: UIViewController {
         }
         
         if (pageInfo?.info != nil) {
-             
             //aboutIntro.text = pageInfo!.info
         }
         
-        let myURL = URL(string:"http://www.romational.com")
-               let myRequest = URLRequest(url: myURL!)
-               webView.load(myRequest)
+        //let myURL = URL(string:"http://www.romational.com")
+        //let myRequest = URLRequest(url: myURL!)
+        //webView.load(myRequest)
+        
+        // gradient text
+        newStandard.gradientColors = [romTeal.cgColor, romOrange.cgColor, romPink.cgColor]
+        newLanguage.gradientColors = [romTeal.cgColor, romOrange.cgColor, romPink.cgColor]
+        
+        moreButton.layer.masksToBounds = false
+        moreButton.layer.shadowColor = romDarkGray.cgColor
+        moreButton.layer.shadowOpacity = 0.3
+        moreButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        moreButton.layer.shadowRadius = 4
+    
+        moreButton.layer.cornerRadius = 30
         
     }
     

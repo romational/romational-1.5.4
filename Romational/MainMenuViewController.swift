@@ -16,7 +16,7 @@ class MainMenuViewController: UIViewController, UserLogsProtocol {
         
         userLog = userLogs
         
-        print ("profile started? \(profileStarted)")
+        //print ("profile started? \(profileStarted)")
         
   
         // user logs
@@ -182,8 +182,12 @@ class MainMenuViewController: UIViewController, UserLogsProtocol {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-       
+        
+        /*let bkgdImage = UIImageView(frame: CGRect(x: 0, y: self.navBar.frame.origin.y , width: self.view.bounds.size.width, height: 60))
+        bkgdImage.image = UIImage(named: "Header-2000x250.png.png")
+        view.addSubview(bkgdImage)
+        view.sendSubview(toBack: bkgdImage)
+        */
         
         logoImage.image  = UIImage(named:"romational-logo-v4.png")
 
@@ -253,7 +257,7 @@ class MainMenuViewController: UIViewController, UserLogsProtocol {
     override func viewDidAppear(_ animated: Bool) {
         
         checkNewCompares()
-        
+     
     }
     
     
@@ -261,11 +265,11 @@ class MainMenuViewController: UIViewController, UserLogsProtocol {
         
         postWithCompletion(parameters: [userId], urlString: "https://romdat.com/compares/\(userId)/new") { success, result in
             
-            print (result)
+            //print (result)
             
             if result["success"] as! String == "yes" {
                 
-                print ("new compares")
+                //print ("new compares")
                 self.newConnects.isHidden = false
                 self.newConnects.text = String(result["count"] as! Int)
                 self.newConnects.layer.cornerRadius = 10

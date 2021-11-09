@@ -249,8 +249,6 @@ class CompareShareInfoViewController: UIViewController, MyDemosProtocol {
         
         super.viewDidLoad()
 
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
         
         shareButton.underline()
         

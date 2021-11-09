@@ -212,10 +212,6 @@ class RTQIntroViewController: UIViewController, UserLogsProtocol {
         
         goBack = ""
         
-        navBar.setBackgroundImage(imageName: "rom-rainbow.png", buffer: 80)
-        
-        navBar.setDropShadow(height: 4, opacity: 30, color: romDarkGray)
-        
         let pageInfo = VCS["RTQIntro"] as? VCSInfoModel
        
         if (pageInfo?.title != nil) {

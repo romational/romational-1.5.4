@@ -140,14 +140,14 @@ extension UIView {
         
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: buffer, height: Int(height)))
         
-        imageView.contentMode =  UIViewContentMode.scaleToFill
+        imageView.contentMode =  UIView.ContentMode.scaleToFill
         
         imageView.clipsToBounds = false
         imageView.image = background
         imageView.center = center
         
         addSubview(imageView)
-        sendSubview(toBack: imageView)
+        sendSubviewToBack(imageView)
     }
     
     func setDropShadow(height: Int, opacity: Int, color: UIColor) {
@@ -168,7 +168,7 @@ extension UIView {
         flash.duration = duration
         flash.fromValue = 1 // alpha
         flash.toValue = 0 // alpha
-        flash.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         flash.autoreverses = true
         flash.repeatCount = repeatCount
 
@@ -188,7 +188,7 @@ extension UILabel {
     func underline() {
         if let textString = self.text {
             let attributedString = NSMutableAttributedString(string: textString)
-            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: attributedString.length - 1))
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributedString.length - 1))
             attributedText = attributedString
         }
     }
@@ -219,7 +219,7 @@ extension UIButton
         //NSAttributedStringKey.foregroundColor : UIColor.blue
         attributedString.addAttribute(NSAttributedString.Key.underlineColor, value: self.titleColor(for: .normal)!, range: NSRange(location: 0, length: text.count))
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: self.titleColor(for: .normal)!, range: NSRange(location: 0, length: text.count))
-        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: text.count))
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: text.count))
         self.setAttributedTitle(attributedString, for: .normal)
     }
     

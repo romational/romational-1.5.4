@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+//import Charts
 
 class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
    
@@ -18,34 +18,31 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
     func myRomtypeDownloaded(myRomtypeInfo: NSArray) {
         
         myRomtype = myRomtypeInfo
-        //print (myRomtype)
+       
+        /*
         if let first = myRomtype[0] as? [String: Any] {
     
-            let firstImage  = first["image"] as? String
+          let firstImage  = first["image"] as? String
             let firstName   = first["name"] as? String
             let firstInfo   = first["info"] as? String
             let firstDefine = first["define"] as? String
             
         }
+        */
         
         if let stats = myRomtype[2] as? [String: Any] {
             
-      
             let cas = stats["cas"] as! String
             let dat = stats["dat"] as! String
             let com = stats["com"] as! String
-      
-            
+                  
             let types = ["Casual", "Dating", "Committed"]
             let myVals = [Double(cas), Double(dat), Double(com)]
             
             buildStackedBar(labels: types, data: myVals.map{ Double($0!) } )
-            
         
         }
         
-        
-        //print (myRomtype[3])
         
         if let romtypesArray = myRomtype[3] as? [String:Any] {
             
@@ -55,25 +52,22 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
             
             if let romtypeQuestions = romtypesArray["questions"] as? [[String: Any]] {
             
-                //print (romtypeQuestions)
                 
                 for question in romtypeQuestions {
                 
-                    //print (question.key)
-                    //print (question)
                 
-                    var rtqIcon = UIImageView()
+                    let rtqIcon = UIImageView()
                     
                     rtqIcon.frame = CGRect(x: 10, y: posY, width: 60, height: 60)
                     
-                    var label = UILabel(frame: CGRect(x: 80, y: posY+20, width: 100, height: 20))
+                    let label = UILabel(frame: CGRect(x: 80, y: posY+20, width: 100, height: 20))
                     
-                    
-                    if let answerStats = question as?  [String:Any] {
+                    // took out if loop to solve always succeeds error 11.17.21
+                    let answerStats = question
                         
                         print (answerStats)
-                        // rtq label
-                        label.text = answerStats["name"] as! String
+                      
+                        label.text = answerStats["name"] as? String
                      
                         breakdownView.addSubview(label)
                         
@@ -127,7 +121,7 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
                             let noResult = UIView(frame: CGRect(x: 180, y:  Int(posY), width: 180, height: 60))
                             let label = UILabel(frame: CGRect(x: 0, y: 20, width: 180, height: 20))
                             
-                            print (answerStats["answer"])
+                        
                             
                             if (answerStats["answer"] == nil) {
                                 label.text = "not answered yet"
@@ -149,7 +143,7 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
                     posY = posY + 70
                     
                 }
-            }
+            
             
             // update view for scrolling?
             view.setNeedsLayout()
@@ -165,7 +159,7 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
     
     @IBAction func gotoUserMenu(_ sender: Any) {
     
-        controller = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        controller = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as? UserOptionsViewController
             
         
          
@@ -202,7 +196,7 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
              
          self.view.insertSubview(self.controller.view, at: 20)
              //addChildViewController(controller)
-         self.controller.didMove(toParentViewController: self)
+         self.controller.didMove(toParent: self)
              
          showMenu = true
         
@@ -267,7 +261,7 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
     @IBOutlet weak var breakdownView: UIView!
     @IBOutlet weak var questionBreakdown: UILabel!
     
-    @IBOutlet weak var barChartView: BarChartView!
+    //@IBOutlet weak var barChartView: BarChartView!
     
     
     
@@ -341,7 +335,7 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
     
     func buildStackedBar(labels: Array<String>, data: Array<Double>) {
         
-        
+        /*
         // 1. Set ChartDataEntry
              var dataEntries: [ChartDataEntry] = []
              for i in 0..<labels.count {
@@ -368,16 +362,19 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
             //xAxis.granularity = 1
             xAxis.labelCount = 3
         
-            let chartFormatter = MindsetChartLabelFormatter()
-
+       let chartFormatter = MindsetChartLabelFormatter()
+        /* take out to get it to go live 11.17.21
             for i in 0..<labels.count {
+                
                 chartFormatter.stringForValue(Double(i), axis: xAxis)
             }
-
-            barChartView.xAxis.valueFormatter = chartFormatter
+         */
+        
+        // as? AxisValueFormatter removed for 11.17.21 fixes
+        barChartView.xAxis.valueFormatter = chartFormatter
             
             
-            let leftAxisFormatter = NumberFormatter()
+            //let leftAxisFormatter = NumberFormatter()
             
             let leftAxis = barChartView.leftAxis
             leftAxis.enabled = false
@@ -412,7 +409,7 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
             barChartView.data = barChartData
         
        
-        
+        */
     }
     
     private func dimensionColors(numbersOfColor: Int) -> [UIColor] {
@@ -437,8 +434,8 @@ class RomtypeMindsetViewController: UIViewController, MyRomtypeProtocol {
     
 }
 
-
-final class MindsetChartLabelFormatter: NSObject, IAxisValueFormatter {
+/*
+final class MindsetChartLabelFormatter: NSObject, AxisValueFormatter {
     
     var columnLabels: [String]! = ["Casual", "Dating", "Committed"]
     
@@ -446,3 +443,4 @@ final class MindsetChartLabelFormatter: NSObject, IAxisValueFormatter {
         return columnLabels[Int(value)]
     }
 }
+*/

@@ -23,7 +23,11 @@ class MyRomtype: NSObject, URLSessionDataDelegate {
     func downloadMyRomtype(userid: String) {
         
        // let urlPath = "http://romadmin.com/myRomtype.php?userId=\(userid)"
+        
+        // prod link
         let urlPath = "https://www.romdat.com/user/\(userid)/romtype/report"
+        // dev link 12.14.21
+        //let urlPath = "http://www.romdat-dev.com/user/\(userid)/romtype/report"
         
         let url: URL = URL(string: urlPath)!
         
@@ -63,7 +67,7 @@ class MyRomtype: NSObject, URLSessionDataDelegate {
         
         //print (jsonResult)
         
-        let myRomtype = NSArray()
+        //let myRomtype = NSArray()
         
         /*
         var jsonElement = NSDictionary()

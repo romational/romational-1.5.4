@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+//import Charts
 import SceneKit
 
 
@@ -17,6 +17,7 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
     // bring in romtype info
     var myRomtype = NSArray()
     var thisRomtype = ""
+    var romLink = ""
     
     func myRomtypeDownloaded(myRomtypeInfo: NSArray) {
         
@@ -26,12 +27,19 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
         
         if let first = myRomtype[0] as? [String: Any] {
     
+            thisRomtype = (first["type"] as? String)!
+            
             let firstImage  = first["image"] as? String
             let firstName   = first["name"] as? String
-            thisRomtype = (first["type"] as? String)!
+           
+            let firstUrl    = first["url"] as? String
             let firstInfo   = first["info"] as? String
             let firstDefine = first["define"] as? String
             
+            romLink = firstUrl!
+            myTypeUrl.setTitle("Learn More", for: .normal)
+            //myTypeUrl.addTarget(self, action: Selector(("didTapLink")), for: .touchUpInside)
+        
             myTypeImage.image = UIImage(named: "\(firstImage!)")
             myTypeImage.addBkgdShadowToImage(color: romDarkGray, offsetX: 4, offsetY: 4, opacity: 80, shadowSize: 4)
             myTypeName.text = firstName!.uppercased()
@@ -243,7 +251,7 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
         
         romWeights = weights
         
-        print (romWeights)
+        //print (romWeights)
         
         var ballPositions = [Double]()
         
@@ -252,9 +260,9 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
             
             let thisWeight = romWeights[i] as! RomtypeWeightsModel
             
-            print (thisWeight.percent!)
+            //print (thisWeight.percent!)
             let thisPercent = Double(thisWeight.percent!) / 100.0
-            print (thisPercent)
+            //print (thisPercent)
             let lineHeight = 240 - (thisPercent * 240)
             ballPositions.append(lineHeight)
             
@@ -383,7 +391,7 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -437,7 +445,14 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
     @IBOutlet weak var myTypeImage: UIImageView!
     @IBOutlet weak var myTypeName: UILabel!
     @IBOutlet weak var myTypeInfo: UITextView!
+    @IBOutlet weak var myTypeUrl: UIButton!
     @IBOutlet weak var myTypeSummary: UITextView!
+    
+    // for link urls
+
+    @IBAction func openRomLink(_ sender: Any) {
+        UIApplication.shared.open(URL(string: romLink)!)
+    }
     
     @IBOutlet weak var drawPins: UIView!
     
@@ -451,6 +466,17 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
     
     }
     
+    
+    @IBOutlet weak var startFlexButton: UIButton!
+    
+    @IBAction func startFlexScore(_ sender: Any) {
+    
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let destination = storyboard.instantiateViewController(withIdentifier: "FQIntro") as! FQIntroViewController
+        
+            destination.modalPresentationStyle = .fullScreen
+            self.present(destination, animated: false, completion: nil)
+    }
     
     @IBOutlet weak var col1: UIView!
     @IBOutlet weak var col2: UIView!
@@ -599,14 +625,33 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
         mGrids.forEach { mGrid in
             mGrid.layer.addBorder(edge: .bottom, color: romLightGray, thickness: 1)
         }
-   
+        
+        
+        // romtype url button link
+        myTypeUrl.layer.masksToBounds = false
+        myTypeUrl.layer.shadowColor = romDarkGray.cgColor
+        myTypeUrl.layer.shadowOpacity = 0.3
+        myTypeUrl.layer.shadowOffset = CGSize(width: 4, height: 4)
+        myTypeUrl.layer.shadowRadius = 4
+        myTypeUrl.layer.cornerRadius = 30
+        
+        
+        // style bottom buttons
         viewAnswersButton.layer.masksToBounds = false
         viewAnswersButton.layer.shadowColor = romDarkGray.cgColor
         viewAnswersButton.layer.shadowOpacity = 0.3
         viewAnswersButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         viewAnswersButton.layer.shadowRadius = 4
-    
         viewAnswersButton.layer.cornerRadius = 30
+        
+        startFlexButton.layer.masksToBounds = false
+        startFlexButton.layer.shadowColor = romDarkGray.cgColor
+        startFlexButton.layer.shadowOpacity = 0.3
+        startFlexButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        startFlexButton.layer.shadowRadius = 4
+        startFlexButton.layer.cornerRadius = 30
+        
+        
         
     }
     
@@ -620,8 +665,7 @@ class RomtypeReportViewController: UIViewController, MyRomtypeProtocol, RomtypeW
     }
     */
     
-    
-    
+   
 
     // in view functions
      

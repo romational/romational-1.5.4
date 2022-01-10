@@ -25,7 +25,8 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
         printRomtypeQuestions(rq : RQ)
         
         let rtQuestions = romtypeQuestions[RQIndex] as! RomtypeQuestionModel
-
+        //print (rtQuestions)
+        
         romTypeInfo.text = rtQuestions.info
         
         // nav light bar
@@ -125,6 +126,9 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
         
     }
     
+   
+    
+    
     var slideController : UserOptionsViewController!
     
     @IBAction func showSlideout(_ sender: Any) {
@@ -161,7 +165,7 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
             
         self.view.insertSubview(self.slideController.view, at: 50)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -374,7 +378,7 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
             ckb.layer.borderWidth = 0
             ckb.layer.cornerRadius = 10
             
-            ckb.textContainerInset = UIEdgeInsetsMake(5, 10, 5, 10);
+            ckb.textContainerInset = UIEdgeInsets.init(top: 5, left: 10, bottom: 5, right: 10);
             ckb.centerVertically()
         }
         
@@ -420,6 +424,18 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
     }
 
 
+    // =======================================================
+    //                  IN VIEW FUNCTIONS
+    // =======================================================
+
+    
+    // these variables are for the popup overlay before question is displayed
+    var beforeView = UIView()
+    
+    var beforeTitle = UILabel()
+    var beforeTextView = UITextView()
+    var logoView = UIImageView()
+    
     
     func printRomtypeQuestions(rq : Int) {
         
@@ -434,7 +450,7 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
             ckb.layer.borderWidth = 0
             ckb.layer.cornerRadius = 10
             ckb.layer.backgroundColor = UIColor.clear.cgColor
-            ckb.textContainerInset = UIEdgeInsetsMake(5, 10, 5, 10);
+            ckb.textContainerInset = UIEdgeInsets.init(top: 5, left: 10, bottom: 5, right: 10);
             ckb.centerVertically()
             ckb.font = UIFont(name:"HelveticaNeue", size: 17.0)
        
@@ -445,6 +461,9 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
         radios.forEach { radio in
             radio.setImage(offImage, for: .normal)
         }
+        
+        // clear the before logo/icon view
+        logoView.image = UIImage(named: "")
         
         //q ct
         let totalRQs = romtypeQuestions.count
@@ -507,6 +526,7 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
         
             // ** need to limit out of bounds on this **
             rtQuestions = romtypeQuestions[RQIndex] as! RomtypeQuestionModel
+            print (rtQuestions)
             
             let rtqId       = rtQuestions.id!
             let rtqOrder    = rtQuestions.order!
@@ -516,8 +536,104 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
             
             //print ("order is \(rtqOrder)")
                 
+            
+            // yes I used this old variable to bring in a title 12.1.21
+            var beforeTitleText = rtQuestions.beforeTitle ?? "Did You Know?"
+            if beforeTitleText == "" {
+                beforeTitleText = "Did You Know?"
+            }
+            
+            let beforeText = rtQuestions.beforeText!
+            
+            var beforeButton = rtQuestions.beforeButton ?? "OK"
+            if beforeButton == "" {
+                beforeButton = "OK"
+            }
+            
+            var beforeImage = rtQuestions.beforeImage ?? "romational-icon-v4"
+            if beforeImage == "" {
+                beforeImage = "romational-icon-v4"
+            }
+            
+            print ("before image is \(beforeImage)")
+           
+            
+            if beforeText != "" {
+                print ("ok this is before")
+                self.beforeView.isHidden = false
+                
+                let vcWidth   = view.bounds.width
+                let vcHeight = view.bounds.height
+                
+                let navHeight = navBar.frame.height
+                
+                // moved outside function for access by objc func for button
+                //var myView = UIView(frame: CGRect(x: 0, y: 0, width: vcWidth, height: vcHeight))
+                
+                beforeView.frame = CGRect(x: vcWidth, y: 100, width: vcWidth, height: vcHeight)
+                beforeView.backgroundColor = romBkgd
+                beforeView.alpha = 0.0
+                
+                // logo
+                //var logoView : UIImageView
+                logoView  = UIImageView(frame: CGRect(x: ((vcWidth-320)/2)+80, y: 100, width: 160, height: 160));
+                logoView.image = UIImage(named:beforeImage)
+               
+                beforeView.addSubview(logoView)
+                
+                // before title
+              
+                beforeTitle.frame = CGRect(x: 30, y: 300, width: vcWidth-60, height: 30)
+                
+                beforeTitle.layer.backgroundColor = UIColor.clear.cgColor
+                beforeTitle.text = beforeTitleText
+                beforeTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 24.0)
+                beforeTitle.textColor = romDarkGray
+                beforeTitle.textAlignment = .center
+                
+                beforeView.addSubview(beforeTitle)
+                
+                // before text
+                //let beforeTextView = UITextView(frame: CGRect(x: 30, y: 400, width: vcWidth-60, height: 200))
+                beforeTextView.frame = CGRect(x: 30, y: 350, width: vcWidth-60, height: 120)
+                beforeTextView.centerVertically()
+                beforeTextView.backgroundColor = .clear
+                beforeTextView.text = beforeText
+                beforeTextView.font = UIFont(name:"HelveticaNeue", size: 18.0)
+                beforeTextView.textColor = romDarkGray
+                beforeTextView.textAlignment = .center
+                
+                beforeView.addSubview(beforeTextView)
+                
+                // before text
+                let beforeTextOK = UIButton(frame: CGRect(x: 60, y: 500, width: vcWidth-120, height: 60))
+                beforeTextOK.setTitle(beforeButton, for: .normal)
+                beforeTextOK.addTarget(self, action: "okButtonClicked:", for: .touchUpInside)
+                beforeTextOK.setTitleColor(romRed, for: .normal)
+                beforeTextOK.backgroundColor = romBkgd
+
+                beforeTextOK.layer.masksToBounds = false
+                beforeTextOK.layer.shadowColor = romDarkGray.cgColor
+                beforeTextOK.layer.shadowOpacity = 0.3
+                beforeTextOK.layer.shadowOffset = CGSize(width: 4, height: 4)
+                beforeTextOK.layer.shadowRadius = 4
+            
+                beforeTextOK.layer.cornerRadius = 30
+                
+                
+                beforeView.addSubview(beforeTextOK)
+                
+                view.addSubview(beforeView)
+                UIView.animate(withDuration: 0.25) { () -> Void in
+                    self.beforeView.alpha = 1.0
+                    self.beforeView.frame = CGRect(x: 0, y: 100, width: vcWidth, height: vcHeight-100)
+                }
+                
+                
+            }
+            
             // load up question
-        questionNumber.text = ("Question \(RQ) of \(totalRQs)")
+            questionNumber.text = ("Question \(RQ) of \(totalRQs)")
             questionTitle.text = rtqName.uppercased()
             romTypeInfo.text = rtQuestions.info!
                 
@@ -715,6 +831,24 @@ class RomtypeViewController: UIViewController, RomtypeQuestionProtocol, MyRomtyp
         
     }
     
+    // ok button on before text display
+    @objc func okButtonClicked(_ sender: AnyObject?) {
+        
+        
+        let vcWidth   = self.view.bounds.width
+        let vcHeight = self.view.bounds.height
+        
+        
+        UIView.animate(withDuration: 0.25) { () -> Void in
+            self.beforeView.alpha = 0.0
+            self.beforeView.frame = CGRect(x: -vcWidth, y: 100, width: vcWidth, height: vcHeight-100)
+            self.beforeView.isHidden = true
+        }
+        
+        
+        self.beforeTextView.text = ""
+        
+    }
     
     class MyTapGesture: UITapGestureRecognizer {
         var title = String()

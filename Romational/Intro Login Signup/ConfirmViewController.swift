@@ -134,7 +134,7 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
             cd.backgroundColor = romTeal
             cd.delegate = self
             cd.keyboardType = .numberPad
-            cd.addTarget(self, action: #selector(ConfirmViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+            cd.addTarget(self, action: #selector(ConfirmViewController.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         }
         
         // MARK: button array

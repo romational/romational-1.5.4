@@ -93,7 +93,7 @@ class HelloTwoViewController: UIViewController {
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -128,7 +128,7 @@ class HelloTwoViewController: UIViewController {
         let bkgdImage = UIImageView(frame: CGRect(x: 0, y: self.navBar.frame.origin.y+20, width: self.view.bounds.size.width, height: 60))
         bkgdImage.image = UIImage(named: "Header-2000x250.png.png")
         view.addSubview(bkgdImage)
-        view.sendSubview(toBack: bkgdImage)
+        view.sendSubviewToBack(bkgdImage)
         
         
         let pageInfo = VCS["Hello"] as? VCSInfoModel

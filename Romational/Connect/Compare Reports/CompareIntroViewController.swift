@@ -114,7 +114,7 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -197,8 +197,10 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     
+    // view vars used to reload the view controller
     var compareUserId = ""
     var qrcodeString = ""
+    var romMeCode = ""
     
     var buttons = [UIButton]()
     
@@ -216,6 +218,7 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
     
     }
     
+    
     // load view
     
     override func viewDidLoad() {
@@ -223,21 +226,31 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
         super.viewDidLoad()
 
         introButton.underline()
-        print (qrcodeString)
+        print ("QR String is\(qrcodeString)")
         
         if qrcodeString != "" {
             let compareURL = URL(string: qrcodeString)!
             compareUserId = compareURL.valueOf("userId")!
+            
+            addCompareUser(compareUserId: compareUserId)
+            
+            // my info
+            let myDemo = MyDemos()
+            myDemo.delegate = self
+            myDemo.downloadMyDemos(userid: compareUserId)
+        }
+        
+        print ("romMe Code is \(romMeCode)")
+        if romMeCode != "" {
+            
+            getUserId(code: romMeCode)
+            // add compare is done in this function
         }
         
         print (compareUserId)
         
-        addCompareUser(compareUserId: compareUserId)
         
-        // my info
-        let myDemo = MyDemos()
-        myDemo.delegate = self
-        myDemo.downloadMyDemos(userid: compareUserId)
+        
         
         
         buttons.append(endButton)
@@ -262,7 +275,62 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
         
     }
     
+    
+    
     // view functions
+    
+    // get user id from rom me code
+    func getUserId(code: String) {
+        
+        // prod
+        let urlPath = "https://romdat.com/user/romme/\(code)"
+        // dev
+        //let urlPath = "http://romdat-dev.com/user/romme/\(code)"
+        
+        let url: URL = URL(string: urlPath)!
+        
+        var request = URLRequest(url: url)
+        request.addValue(myApiKey, forHTTPHeaderField: "APIKey")
+        
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to get user id")
+            }
+            else {
+                print("get user id results")
+            
+                
+                var jsonResult = NSDictionary()
+                
+                do{
+                    jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+                    
+                } catch let error as NSError {
+                    print(error)
+                    
+                }
+                
+                print (jsonResult)
+                self.compareUserId = String(jsonResult["userId"]! as! Int)
+                
+                self.addCompareUser(compareUserId: self.compareUserId)
+                
+                // my info
+                let myDemo = MyDemos()
+                myDemo.delegate = self
+                myDemo.downloadMyDemos(userid: self.compareUserId)
+                
+            }
+            
+        }
+        
+        task.resume()
+        
+    }
+    
     
     func addCompareUser(compareUserId: String) {
         
@@ -330,6 +398,8 @@ class CompareIntroViewController: UIViewController, MyDemosProtocol {
         }
         
     }
+    
+   
     
     // MARK: image downloading
     

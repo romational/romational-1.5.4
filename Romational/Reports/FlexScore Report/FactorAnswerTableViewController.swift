@@ -61,8 +61,8 @@ class FactorAnswerTableViewController: UITableViewController, MyRankedFactorsPro
         let thisFactorAnswer = myRankedFactors[indexPath[1]] as? MyRankedFactorAnswersModel
         
         let factorId    = thisFactorAnswer?.factorId
-        let factorName  = thisFactorAnswer?.factorName as! String
-        let factorImage = thisFactorAnswer?.factorImage as! String
+        let factorName  = (thisFactorAnswer?.factorName)! 
+        let factorImage = (thisFactorAnswer?.factorImage)! 
         
         
         let tap = MyTapGesture(target: self, action: #selector(tappedMe))
@@ -83,9 +83,9 @@ class FactorAnswerTableViewController: UITableViewController, MyRankedFactorsPro
         //print (factorId)
        
         
-        let thisSelectivity = thisFactorAnswer?.selectivity as! String
+        let thisSelectivity = (thisFactorAnswer?.selectivity)! 
         
-        cell.displayFactorAnswers(fqid: factorId!, factor: factorName, image: factorImage, selectivity: thisSelectivity)
+        cell.displayFactorAnswers(fqid: factorId!, rank: indexPath[1] + 1, factor: factorName, image: factorImage, selectivity: thisSelectivity)
         
         return cell
     }

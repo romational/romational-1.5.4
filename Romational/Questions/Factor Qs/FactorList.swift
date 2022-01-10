@@ -18,9 +18,11 @@ class FactorList: NSObject, URLSessionDataDelegate {
     //properties
     
     weak var delegate: FactorListProtocol!
-    
+    // prod
     let urlPath = "https://www.romdat.com/factors" //this will be changed to the path where service.php lives
-    
+    // dev
+    //let urlPath = "http://www.romdat-dev.com/factors" //this will be changed to the path where service.php lives
+
     func downloadItems() {
         
         
@@ -80,16 +82,23 @@ class FactorList: NSObject, URLSessionDataDelegate {
                 let name = jsonElement["factor_name"] as? String,
                 let order = jsonElement["factor_order"] as? String,
                 let image = jsonElement["factor_image"] as? String,
-                let info = jsonElement["factor_info"] as? String
+                let info = jsonElement["factor_info"] as? String,
+                let beforeImage = jsonElement["factor_before_image"] as? String,
+                let beforeTitle = jsonElement["factor_before_title"] as? String,
+                let beforeText = jsonElement["factor_before_text"] as? String,
+                let beforeButton = jsonElement["factor_before_button"] as? String
                 
             {
                 
-                factorList.id = Int(id)
-                factorList.name = name
-                factorList.order = Int(order)
-                factorList.image = image
-                factorList.info = info
-                
+                factorList.id           = Int(id)
+                factorList.name         = name
+                factorList.order        = Int(order)
+                factorList.image        = image
+                factorList.info         = info
+                factorList.beforeImage  = beforeImage
+                factorList.beforeTitle  = beforeTitle
+                factorList.beforeText   = beforeText
+                factorList.beforeButton = beforeButton
                 
                 //print (factorList)
             }

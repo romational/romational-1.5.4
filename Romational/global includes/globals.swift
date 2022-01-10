@@ -167,8 +167,8 @@ func postWithCompletion(parameters : Array<String>, urlString : String, completi
                print(JSONString)
             }
             
-            print (data!)
-            print("Response String: \(response)")
+            //print (data!)
+            //print("Response String: \(response)")
             
             /*.responseString { response in              print("Response String: \(response.result.value)")          }
             */
@@ -178,7 +178,7 @@ func postWithCompletion(parameters : Array<String>, urlString : String, completi
                     // process "json" as a dictionary
                     print ("completion result is dictionary")
                     //print (json)
-                    completion("results", json as! NSDictionary)
+                    completion("results", json )
                 } else if let json = try JSONSerialization.jsonObject(with: data!, options:[.allowFragments]) as? NSArray {
                     // process "json" as an array
                     print ("completion result is array")

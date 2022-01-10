@@ -10,18 +10,19 @@ import UIKit
 
 class FactorAnswerTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var factorRank: UILabel!
     @IBOutlet weak var factorImage: UIImageView!
     @IBOutlet weak var factorName: UILabel!
     @IBOutlet weak var factorRange: UILabel!
     
-    func displayFactorAnswers (fqid: Int, factor: String, image: String, selectivity: String) {
+    func displayFactorAnswers (fqid: Int, rank: Int, factor: String, image: String, selectivity: String) {
         
         let thisSelectivity = Double(selectivity)!
         let printSelectivity = Int(thisSelectivity * 100)
         
         self.factorImage.image = UIImage(named: image)
         
-        
+        self.factorRank.text = ("#\(rank)")
         self.factorName.text = ("\(factor)")
         self.factorRange.text = ("\(printSelectivity)")
         

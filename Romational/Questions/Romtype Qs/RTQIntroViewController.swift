@@ -106,7 +106,7 @@ class RTQIntroViewController: UIViewController, UserLogsProtocol {
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        

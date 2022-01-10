@@ -17,7 +17,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            view.bringSubview(toFront: messageLabel)
+            view.bringSubviewToFront(messageLabel)
             messageLabel.text = "No QR code is detected"
             return
         }
@@ -32,9 +32,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             // this is where a QR code string is found
             if metadataObj.stringValue != nil {
-                view.bringSubview(toFront: messageLabel)
+                view.bringSubviewToFront(messageLabel)
                 messageLabel.text = metadataObj.stringValue
-                view.bringSubview(toFront: compareButton)
+                view.bringSubviewToFront(compareButton)
                 
             }
         }
@@ -111,7 +111,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -206,7 +206,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                 qrCodeFrameView.layer.borderWidth = 2
                 view.addSubview(qrCodeFrameView)
-                view.bringSubview(toFront: qrCodeFrameView)
+                view.bringSubviewToFront(qrCodeFrameView)
             }
             
         } catch {
@@ -215,7 +215,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             return
         }
         
-        view.bringSubview(toFront: closeScanner)
+        view.bringSubviewToFront(closeScanner)
        
     }
     

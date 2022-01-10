@@ -66,7 +66,7 @@ class MyFactorDataCollectionViewController: UICollectionViewController, MyFactor
         
         let thisFactor = factorData[indexPath[1]] as! MyFactorDataModel
         
-        let factorId        = thisFactor.id ?? 0
+       // let factorId        = thisFactor.id ?? 0
         let factorOrder     = thisFactor.order ?? 1
         let factorName      = thisFactor.name ?? "empty"
         let factorImage     = thisFactor.image ?? "empty"

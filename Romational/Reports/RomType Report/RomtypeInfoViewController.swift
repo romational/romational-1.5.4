@@ -16,13 +16,25 @@ class RomtypeInfoViewController: UIViewController, RomtypeInfoProtocol, RomtypeL
     var nextRomtype = 0
     var prevRomtype = 0
     
+    var romLink = ""
+    
+    @IBOutlet weak var learnMoreButton: UIButton!
+    
+    @IBAction func gotoURL(_ sender: Any) {
+    
+        UIApplication.shared.open(URL(string: romLink)!)
+    }
+    
     // downloads
     func infoDownloaded(info: NSDictionary) {
         romTypeInfo = info
+        print (romTypeInfo)
         
         titleBar.text = ("About \(romTypeInfo["romtype_name"] as! String)").uppercased()
         romtypeName.text = (romTypeInfo["romtype_name"] as! String).uppercased()
         let romImage = romTypeInfo["romtype_image"] as! String
+        
+        romLink = romTypeInfo["romtype_url"] as! String
         
         romtypeImage.image = UIImage(named: romImage)
         
@@ -122,7 +134,7 @@ class RomtypeInfoViewController: UIViewController, RomtypeInfoProtocol, RomtypeL
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -201,6 +213,14 @@ class RomtypeInfoViewController: UIViewController, RomtypeInfoProtocol, RomtypeL
         getRomtypes.delegate = self
         getRomtypes.downloadRomtypes()
        
+        
+        learnMoreButton.layer.masksToBounds = false
+        learnMoreButton.layer.shadowColor = romDarkGray.cgColor
+        learnMoreButton.layer.shadowOpacity = 0.3
+        learnMoreButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        learnMoreButton.layer.shadowRadius = 4
+        learnMoreButton.layer.cornerRadius = 20
+        
     }
 
     override func viewWillLayoutSubviews() {

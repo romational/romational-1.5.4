@@ -315,7 +315,7 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -331,12 +331,14 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
     
     
     @IBOutlet weak var myQRCodeBkgd: UIButton!
+    @IBOutlet weak var enterCodeBkgd: UIButton!
     @IBOutlet weak var scannerBkgd: UIButton!
     @IBOutlet weak var myComparesBkgd: UIButton!
 
     var bkgds = [UIButton]()
     
     @IBOutlet weak var myQRCodeButton: UIButton!
+    @IBOutlet weak var enterCodeButton: UIButton!
     @IBOutlet weak var scannerButton: UIButton!
     @IBOutlet weak var myComparesButton: UIButton!
     
@@ -374,6 +376,14 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
         
     }
     
+    @IBAction func enterCode(_ sender: Any) {
+  
+         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+         let destination = storyboard.instantiateViewController(withIdentifier: "EnterCode") as! EnterCodeViewController
+         destination.modalPresentationStyle = .fullScreen
+         self.present(destination, animated: false)
+        
+    }
     
     
     // load view
@@ -395,6 +405,7 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
         
         // button styling
         bkgds.append(myQRCodeBkgd)
+        bkgds.append(enterCodeBkgd)
         bkgds.append(scannerBkgd)
         bkgds.append(myComparesBkgd)
         
@@ -412,6 +423,7 @@ class ConnectViewController: UIViewController, MyDemosProtocol, MyComparesProtoc
         }
         
         buttons.append(myQRCodeButton)
+        buttons.append(enterCodeButton)
         buttons.append(scannerButton)
         buttons.append(myComparesButton)
         

@@ -40,7 +40,7 @@ class MyQRCodeViewController: UIViewController, MyDemosProtocol {
                 downloadImage(from: url)
             }
             */
-            
+            romMeCode.text = ("PIN \(profile.romMeCode!)")
        
         }
         
@@ -79,7 +79,7 @@ class MyQRCodeViewController: UIViewController, MyDemosProtocol {
     
     @IBAction func showSlideout(_ sender: Any) {
     
-        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as? UserOptionsViewController
            
             
         let height = self.view.frame.height
@@ -116,7 +116,7 @@ class MyQRCodeViewController: UIViewController, MyDemosProtocol {
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -127,7 +127,10 @@ class MyQRCodeViewController: UIViewController, MyDemosProtocol {
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var qrcodeImage: UIImageView!
     
+    @IBOutlet weak var qrCodeBox: UIView!
     
+    
+    @IBOutlet weak var romMeCode: UILabel!
     
     // load view
     
@@ -137,6 +140,9 @@ class MyQRCodeViewController: UIViewController, MyDemosProtocol {
 
 
         qrcodeImage.image = generateQRCode(from: "http://romational.com?userId=\(userId)")
+        
+        qrCodeBox.layer.masksToBounds = true
+        qrCodeBox.layer.cornerRadius = 20
         
         let myDemo = MyDemos()
         myDemo.delegate = self
@@ -157,8 +163,19 @@ class MyQRCodeViewController: UIViewController, MyDemosProtocol {
             filter.setValue(data, forKey: "inputMessage")
             let transform = CGAffineTransform(scaleX: 3, y: 3)
 
+            
+            
+            
             if let output = filter.outputImage?.transformed(by: transform) {
-                return UIImage(ciImage: output)
+                
+                // Change the color using CIFilter
+                let colorParameters = [
+                    "inputColor0": CIColor(color: white), // Foreground
+                    "inputColor1": CIColor(color: .clear) // Background
+                ]
+                let colored = output.applyingFilter("CIFalseColor", parameters: colorParameters)
+                
+                return UIImage(ciImage: colored)
             }
         }
 

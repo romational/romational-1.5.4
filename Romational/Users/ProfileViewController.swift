@@ -67,8 +67,8 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
                 
                 //let dob = DateComponents(calendar: .current, year: 2000, month: 6, day: 30).date!
                 //let age = dob.age
-                let now = Date()
-                let calendar = Calendar.current
+                //let now = Date()
+                //let calendar = Calendar.current
                 //let ageComponents = calendar.dateComponents([.year], from: birthdate, to: now)
                 //let age = ageComponents.year
                 
@@ -135,7 +135,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
     
     @IBAction func showSlideout(_ sender: Any) {
     
-        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as? UserOptionsViewController
            
             
         let height = self.view.frame.height
@@ -172,7 +172,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -500,7 +500,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
             picker.translatesAutoresizingMaskIntoConstraints = false
             
             profileScrollView.addSubview(picker)
-            profileScrollView.bringSubview(toFront:picker)
+            profileScrollView.bringSubviewToFront(picker)
             
             pickerList.append(picker)
             
@@ -583,7 +583,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
         
         // bring pickers to front z-index
         pickerList.forEach { pick in
-            profileScrollView.bringSubview(toFront:pick)
+            profileScrollView.bringSubviewToFront(pick)
         }
         //print (pickerOptions)
         
@@ -868,7 +868,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
         let cameraAction : UIAlertAction = UIAlertAction(title: "Camera", style: .default, handler: {(cameraAction) in
             print("camera Selected...")
 
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) == true {
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) == true {
 
                 let imagePicker = UIImagePickerController()
                 imagePicker.sourceType = .camera
@@ -893,7 +893,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
 
             print("Photo library selected....")
 
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) == true {
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) == true {
                 
                 let imagePicker = UIImagePickerController()
                        
@@ -965,7 +965,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
     
     func uploadImage(image: UIImage) -> Void{
         //Convert the image to a data blob
-        guard let png = UIImagePNGRepresentation(image) else{
+        guard let png = image.pngData() else{
             print("error")
             return
         }
@@ -1020,7 +1020,7 @@ class ProfileViewController: UIViewController,UITextFieldDelegate, ProfileQuesti
         
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
-        let imageData = UIImageJPEGRepresentation(image, 1)
+        let imageData = image.jpegData(compressionQuality: 1)
         if (imageData == nil) {
             print("UIImageJPEGRepresentation return nil")
             return
@@ -1139,10 +1139,15 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         print("\(info)")
 
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        /* taken out for 1.5.1 fail fix - needed??
+        if let image = infoConvertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage) as? UIImage {
             //userImage.image = image
             print ("The image is \(image)")
             
@@ -1152,6 +1157,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             uploadImageOld(image: image)
             //uploadImage(image: image)
         }
+         */
     }
 }
 
@@ -1168,3 +1174,13 @@ func updateUserProfileQuestions(userid: String, pq: String, pqa: String){
 }
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}

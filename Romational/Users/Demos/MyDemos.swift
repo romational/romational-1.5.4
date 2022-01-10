@@ -25,7 +25,10 @@ class MyDemos: NSObject, URLSessionDataDelegate {
         //let urlPath = "http://romadmin.com/userDemos.php?userId=\(userid)"
         print ("download demo user \(userid)")
         
+        // production
         let urlPath = "https://www.romdat.com/user/\(userid)"
+        // dev
+        //let urlPath = "http://www.romdat-dev.com/user/\(userid)"
         
         let url: URL = URL(string: urlPath)!
         
@@ -70,18 +73,17 @@ class MyDemos: NSObject, URLSessionDataDelegate {
         
         for i in 0..<myProfileInfo.count {
            
-           
-           // print (fid)
-           jsonElement = myProfileInfo[i] as! NSDictionary
+            jsonElement = myProfileInfo[i] as! NSDictionary
+            
+            print (jsonElement)
             
             let myProfile = MyDemosModel()
-            
-             //print (jsonElement)
         
             if
                 let nickName    = jsonElement["nickName"] as? String,
                 let nameFirst    = jsonElement["nameFirst"] as? String,
                 let nameLast     = jsonElement["nameLast"] as? String,
+                let romMeCode    = jsonElement["romMeCode"] as? String,
                 let userImage    = jsonElement["userImage"] as? String,
                 let bday         = jsonElement["bday"] as? String,
                 let location     = jsonElement["location"] as? String
@@ -92,6 +94,7 @@ class MyDemos: NSObject, URLSessionDataDelegate {
                 myProfile.nickName      = nickName
                 myProfile.nameFirst     = nameFirst
                 myProfile.nameLast      = nameLast
+                myProfile.romMeCode     = romMeCode
                 myProfile.userImage     = userImage
                 myProfile.bday          = bday
                 myProfile.location      = location

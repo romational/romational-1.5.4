@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+//import Charts
 
 class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, FactorIconsProtocol, FactorSelectivityProtocol {
 
@@ -61,10 +61,10 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
         for factor in myFactors {
         //for (index,factor) in factors.enumerated() {
         
-            var factorAnswer = factor as! MyFactorAnswersModel
+            let factorAnswer = factor as! MyFactorAnswersModel
             //print (factorAnswer)
             
-            let answer = Int(factorAnswer.answerId!)!
+            //let answer = Int(factorAnswer.answerId!)!
             //print (answer)
             
             let importance = Double(factorAnswer.selectivity!)!
@@ -79,7 +79,7 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
                 
                 //print (thisRange!["low"]!)
                 
-                let rangeName = thisRange!["name"] as? String
+                //let rangeName = thisRange!["name"] as? String
                 let lowRange  = Double((thisRange!["low"] as? String)!)! / 100.0
                 let highRange = Double((thisRange!["high"] as? String)!)! / 100.0
                 
@@ -129,7 +129,7 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
         printFactorColumns()
         
         printSelectivityPieChart(dataPoints: types, values: myVals)
-        
+        self.removeSpinner()
     }
     
     
@@ -167,7 +167,7 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
     
     @IBAction func showSlideout(_ sender: Any) {
     
-        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as? UserOptionsViewController
            
             
         let height = self.view.frame.height
@@ -204,7 +204,7 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -235,7 +235,7 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
     @IBAction func summaryButton(_ sender: Any) {
     
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let destination = storyboard.instantiateViewController(withIdentifier: "SelectivityRankings") as! UIViewController
+        let destination = storyboard.instantiateViewController(withIdentifier: "SelectivityRankings")
         
         destination.modalPresentationStyle = .fullScreen
         self.present(destination, animated: false, completion: nil)
@@ -267,8 +267,11 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
     @IBOutlet weak var analysisTitle: UILabel!
     @IBOutlet weak var analysisIntro: UILabel!
     
-    @IBOutlet weak var selectivityPieChart: PieChartView!
+    @IBOutlet weak var selectivityPieChart: UIView!
     
+    var colors: [UIColor] = []
+   
+   
     
     // columns
     @IBOutlet weak var colHead1: UILabel!
@@ -312,8 +315,18 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
         factorIconList.delegate = self
         factorIconList.downloadIcons()
         
+        // turn on spinner for pie chart loading
+        self.showSpinner(onView: self.view)
         
-        // swiping nav
+        // used for pie chart
+        colors.append(romTeal)
+        colors.append(green)
+        colors.append(yellow)
+        colors.append(romOrange)
+        colors.append(romPink)
+        
+        
+        // swiping nav 
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
             
@@ -366,18 +379,21 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
     }
     
     
+    
 
+    
     func printSelectivityPieChart(dataPoints: [String], values: [Double]) {
-        
+        /* Charts IO taken out for 1.5.1
+         
          // 1. Set ChartDataEntry
           var dataEntries: [ChartDataEntry] = []
           for i in 0..<dataPoints.count {
-             let dataEntry = PieChartDataEntry(value: values[i], label: nil)
+             let dataEntry = PieChartDataEntry(value: values[i], label: "")
             dataEntries.append(dataEntry)
           }
          
           // 2. Set ChartDataSet
-         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
+         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "")
           pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
          
          pieChartDataSet.drawValuesEnabled = false
@@ -392,7 +408,7 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
          selectivityPieChart.holeRadiusPercent = 0
          selectivityPieChart.transparentCircleRadiusPercent = 0.0
          
-         let formatter = DefaultValueFormatter(formatter: format)
+        //let formatter = DefaultValueFormatter(formatter: format)
         //pieChartData.setValueFormatter(formatter)
         
         
@@ -402,10 +418,31 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
          
           // 4. Assign it to the chart’s data
           selectivityPieChart.data = pieChartData
-         
+         */
+        
+        let pieChartView = PieChartView()
+        pieChartView.frame = CGRect(x: 0, y: 0, width: selectivityPieChart.frame.size.width, height: selectivityPieChart.frame.size.height)
+        
+        var pieSegments : [Segment] = []
+        for i in 0..<dataPoints.count {
+            
+            pieSegments.append(Segment(color: colors[i], value: values[i]))
+        }
+        pieChartView.segments = pieSegments
+        /*
+        pieChartView.segments = [
+            
+            Segment(color: .red, value: 57),
+            Segment(color: .blue, value: 30),
+            Segment(color: .green, value: 25),
+            Segment(color: .yellow, value: 40)
+        ]
+         */
+        selectivityPieChart.addSubview(pieChartView)
+        
      }
 
-     
+     /* used for charts io taken out for 1.5.1
      private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
          var colors: [UIColor] = []
         
@@ -417,7 +454,7 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
          
          return colors
      }
-    
+    */
     
     var factorCols = [UIView]()
     var factorLegend = [UILabel]()
@@ -479,8 +516,8 @@ class SelectivityAnalysisViewController: UIViewController, MyFactorsProtocol, Fa
                 let factId = Int((factorId as! NSString) as String)
                 //print (factId)
                 
-                if factorIconList[factId] != nil {
-                    let thisFactor = factorIconList[factId] as! FactorIconModel
+                if factorIconList[factId as Any] != nil {
+                    let thisFactor = factorIconList[factId!] as! FactorIconModel
                 
                     let factorImage = UIImage(named: thisFactor.image!)
                     

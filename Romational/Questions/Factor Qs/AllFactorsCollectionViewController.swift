@@ -110,9 +110,9 @@ class AllFactorsCollectionViewController: UICollectionViewController, FactorList
         
         let FQ = indexPath[1] + 1
         
-        let factorId = thisFactor?.id as! Int
-        let factorName = thisFactor?.name as! String
-        let factorImage = thisFactor?.image as! String
+        let factorId = thisFactor?.id 
+        let factorName = (thisFactor?.name)!
+        let factorImage = (thisFactor?.image)!
      
      
         cell.displayFactorIcons(fq: FQ, factor: factorName, image: factorImage, status:qstatus)

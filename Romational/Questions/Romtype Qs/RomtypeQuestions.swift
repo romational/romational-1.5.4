@@ -20,8 +20,11 @@ class RomtypeQuestions: NSObject, URLSessionDataDelegate {
     weak var delegate: RomtypeQuestionProtocol!
     
     //let urlPath = "http://romadmin.com/romtypeQuestions.php"
+    // prod
     let urlPath = "https://romdat.com/romtypes/questions"
-    
+    // dev 12.9.21
+    //let urlPath = "http://romdat-dev.com/romtypes/questions"
+
     func downloadQuestions() {
         
         let url: URL = URL(string: urlPath)!
@@ -80,16 +83,24 @@ class RomtypeQuestions: NSObject, URLSessionDataDelegate {
                 let name     = jsonElement[2] as? String,
                 let image    = jsonElement[3] as? String,
                 let question = jsonElement[4] as? String,
-                let info     = jsonElement[5] as? String,
-                let answers  = jsonElement[6] as? NSArray
+                let b4image  = jsonElement[5] as? String,
+                let b4title  = jsonElement[6] as? String,
+                let b4text   = jsonElement[7] as? String,
+                let b4button = jsonElement[8] as? String,
+                let info     = jsonElement[9] as? String,
+                let answers  = jsonElement[10] as? NSArray
             {
-                romQs.id        = Int(id)
-                romQs.order     = Int(order)
-                romQs.name      = name
-                romQs.image     = image
-                romQs.question  = question
-                romQs.info      = info
-                romQs.answers   = answers as? Array
+                romQs.id            = Int(id)
+                romQs.order         = Int(order)
+                romQs.name          = name
+                romQs.image         = image
+                romQs.question      = question
+                romQs.beforeImage   = b4image
+                romQs.beforeTitle   = b4title
+                romQs.beforeText    = b4text
+                romQs.beforeButton  = b4button
+                romQs.info          = info
+                romQs.answers       = answers as? Array
                 
             }
             

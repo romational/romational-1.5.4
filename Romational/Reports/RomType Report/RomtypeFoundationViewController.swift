@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+//import Charts
 
 class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
    
@@ -20,6 +20,7 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
         
         myRomtype = myRomtypeInfo
         //print (myRomtype)
+        /* take out swift says not used 11.171.21
         if let first = myRomtype[0] as? [String: Any] {
     
             let firstImage  = first["image"] as? String
@@ -28,7 +29,7 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
             let firstDefine = first["define"] as? String
             
             //let second = myRomtype[1] as? Array<Any>
-        }
+        }*/
         
         if let stats = myRomtype[2] as? [String: Any] {
             
@@ -63,18 +64,18 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
                     //print (question.key)
                     //print (question)
                 
-                    var rtqIcon = UIImageView()
+                    let rtqIcon = UIImageView()
                     
                     rtqIcon.frame = CGRect(x: 10, y: posY, width: 60, height: 60)
                     
-                    var label = UILabel(frame: CGRect(x: 80, y: posY+20, width: 100, height: 20))
+                    let label = UILabel(frame: CGRect(x: 80, y: posY+20, width: 100, height: 20))
                     
-                    
-                    if let answerStats = question as?  [String:Any] {
-                        
+                    // take out for 11.171.21 build
+                    //if let answerStats = question as?  [String:Any] {
+                    let answerStats = question
                             
                         // rtq label
-                        label.text = answerStats["name"] as! String
+                        label.text = answerStats["name"] as? String
                      
                         breakdownView.addSubview(label)
                         
@@ -131,7 +132,6 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
                             
                         }
                         
-                    }
                     
                     posY = posY + 70
                     
@@ -151,7 +151,7 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
     
     @IBAction func gotoUserMenu(_ sender: Any) {
     
-        controller = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        controller = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as? UserOptionsViewController
             
         
          
@@ -188,7 +188,7 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
              
          self.view.insertSubview(self.controller.view, at: 20)
              //addChildViewController(controller)
-         self.controller.didMove(toParentViewController: self)
+         self.controller.didMove(toParent: self)
              
          showMenu = true
         
@@ -253,7 +253,7 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
     @IBOutlet weak var breakdownView: UIView!
     @IBOutlet weak var questionBreakdown: UILabel!
     
-    @IBOutlet weak var SugBalChartView: BarChartView!
+   // @IBOutlet weak var SugBalChartView: BarChartView!
     
     
     // load view
@@ -325,6 +325,7 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
     
     func createSugBalChart(dataPoints: [String], values: [Double]) {
            
+        /*
         // 1. Set ChartDataEntry
          var dataEntries: [ChartDataEntry] = []
          for i in 0..<dataPoints.count {
@@ -353,14 +354,17 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
     
         let chartFormatter = SugBalChartLabelFormatter()
 
+        // take out for 11.17.21 build fixes
+        /*
         for i in 0..<dataPoints.count {
             chartFormatter.stringForValue(Double(i), axis: xAxis)
-        }
-
+         }
+*/
+        
         SugBalChartView.xAxis.valueFormatter = chartFormatter
         
         
-        let leftAxisFormatter = NumberFormatter()
+        //let leftAxisFormatter = NumberFormatter()
         
         let leftAxis = SugBalChartView.leftAxis
         leftAxis.enabled = false
@@ -391,7 +395,7 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
         // 4. Assign it to the chart’s data
          SugBalChartView.data = barChartData
         
-        
+        */
     }
     
     
@@ -421,8 +425,9 @@ class RomtypeFoundationViewController: UIViewController, MyRomtypeProtocol {
     
     
 }
-
-final class SugBalChartLabelFormatter: NSObject, IAxisValueFormatter {
+    
+/*
+final class SugBalChartLabelFormatter: NSObject, AxisValueFormatter {
     
     var columnLabels: [String]! = ["Structured", "Balanced"]
     
@@ -430,4 +435,4 @@ final class SugBalChartLabelFormatter: NSObject, IAxisValueFormatter {
         return columnLabels[Int(value)]
     }
 }
-
+*/

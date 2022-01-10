@@ -76,7 +76,7 @@ class MyRomtypeDataViewController: UIViewController {
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -288,8 +288,11 @@ class MyRomtypeDataViewController: UIViewController {
             DispatchQueue.main.async(execute: { () -> Void in
 
                 // go to the link for the PDF report
-                UIApplication.shared.openURL(URL(string: pdflink)!)
-                
+                //UIApplication.shared.openURL(URL(string: pdflink)!)
+                guard let url = URL(string: pdflink) else {
+                  return //be safe
+                }
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             })
         }
     }

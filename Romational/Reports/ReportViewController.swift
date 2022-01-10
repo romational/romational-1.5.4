@@ -56,8 +56,8 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
 
             }
         }
-        //print ("selectivity is \(selectivity)")
-        //print ("factors is \(myFactors.count)")
+        print ("selectivity is \(selectivity)")
+        print ("factors is \(myFactors.count)")
         
         let selectivityIndex = Int(round(selectivity / Double(myFactors.count)))
         //print (selectivityIndex)
@@ -179,7 +179,15 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
             selectivityColorBox.isHidden = false
         }
     
-       
+       if (romtypeCompleted == "") || (flexibilityCompleted == ""){
+           //btnBkgd1.backgroundColor = medgray
+           shareLock.image = UIImage(named: "menu-lock-gray")
+       }
+       else {
+           //btnBkgd1.backgroundColor = lightgray
+           shareLock.image = UIImage(named: "")
+           shareButton.isEnabled = true
+       }
    }
     
     
@@ -222,6 +230,80 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
         
     }
     
+    @IBAction func shareOptions(_ sender: Any) {
+   
+        let alertController:UIAlertController = UIAlertController(title: "Sharing Options", message: "Select from Below", preferredStyle: UIAlertController.Style.alert)
+
+         
+         // add second button (with controller link)
+         alertController.addAction(UIAlertAction(title: "View Report", style: .default, handler: { (action) in
+         
+             self.getPDFlink()
+
+         }))
+        
+         // add second button (with controller link)
+         alertController.addAction(UIAlertAction(title: "Email Report", style: .default, handler: { (action) in
+         
+             self.emailPDFlink()
+             
+         }))
+        
+        /*
+        // add second button (with controller link)
+        alertController.addAction(UIAlertAction(title: "Share Image", style: .default, handler: { (action) in
+        
+            var design = "default"
+            
+            let innerAlert:UIAlertController = UIAlertController(title: "Shareable Image", message: "Choose Your Design", preferredStyle: UIAlertController.Style.alert)
+            
+            // add second button (with controller link)
+            innerAlert.addAction(UIAlertAction(title: "Normal", style: .default, handler: { (action) in
+                design = "normal"
+                let shareImageURL = "http://romadmin.com/createShareImage.php?userId=\(userId)&design=\(design)"
+                
+                DispatchQueue.main.async(execute: { () -> Void in
+                    UIApplication.shared.openURL(URL(string: shareImageURL)!)
+                    
+                })
+
+            }))
+           
+            innerAlert.addAction(UIAlertAction(title: "Retro 80s", style: .default, handler: { (action) in
+                design = "abstract"
+                let shareImageURL = "http://romadmin.com/createShareImage.php?userId=\(userId)&design=\(design)"
+                
+                DispatchQueue.main.async(execute: { () -> Void in
+                    UIApplication.shared.openURL(URL(string: shareImageURL)!)
+                    
+                })
+
+            }))
+  
+            
+            innerAlert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (action) in
+               
+
+            }))
+            
+            
+            
+            self.present(innerAlert, animated: true, completion: nil)
+            
+           
+            
+        }))
+        */
+        
+        
+        alertController.addAction(UIAlertAction(title: "Close", style: .default, handler: { (action) in
+               
+                   
+        }))
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
     
     var slideController : UserOptionsViewController!
     
@@ -264,7 +346,7 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -379,16 +461,18 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
     @IBOutlet weak var romtypeButton: UIButton!
     @IBOutlet weak var flexibilityButton: UIButton!
     @IBOutlet weak var myAnswersButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     @IBOutlet weak var romtypeLock: UIImageView!
     @IBOutlet weak var flexibilityLock: UIImageView!
+    @IBOutlet weak var shareLock: UIImageView!
     
     var buttons = [UIButton]()
-    
     
     @IBOutlet weak var btnBkgd1: UIView!
     @IBOutlet weak var btnBkgd2: UIView!
     @IBOutlet weak var btnBkgd3: UIView!
+    @IBOutlet weak var btnBkgd4: UIView!
     
     var bkgds = [UIView]()
     
@@ -424,6 +508,7 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
         bkgds.append(btnBkgd1)
         bkgds.append(btnBkgd2)
         bkgds.append(btnBkgd3)
+        bkgds.append(btnBkgd4)
         
         bkgds.forEach { bkgd in
         
@@ -443,6 +528,7 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
         buttons.append(romtypeButton)
         buttons.append(flexibilityButton)
         buttons.append(myAnswersButton)
+        buttons.append(shareButton)
         
         // add button styling
         buttons.forEach { button in
@@ -467,6 +553,8 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
         
         myRomtypeBox.isHidden = true
         selectivityColorBox.isHidden = true
+        
+        shareButton.isEnabled = false
         
         userTypeImage.image = UIImage(named:"profile-placeholder-sq.png")
         userTypeImage.addBkgdShadowToImage(color: romDarkGray, offsetX: 4, offsetY: 4, opacity: 80, shadowSize: 4)
@@ -608,6 +696,105 @@ class ReportViewController: UIViewController,  UserLogsProtocol, MyDemosProtocol
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func emailPDFlink() {
+        let urlPath = "http://romadmin.com/createEmailPDF.php?userid=\(userId)"
+        
+        let url: URL = URL(string: urlPath)!
+        
+        var request = URLRequest(url: url)
+        request.addValue(myApiKey, forHTTPHeaderField: "APIKey")
+        
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("PDF emailed ")
+                print (data)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let attrString1 = NSAttributedString(string: "Check Email")
+                    self.shareButton.setAttributedTitle(attrString1, for: .normal)
+                    //self.shareButton.setTitle("Emailed", for: .normal)
+                    self.shareButton.backgroundColor = orange
+                    self.shareButton.setTitleColor(white, for: .normal)
+                    self.shareButton.tintColor = white
+                    self.shareButton.layer.cornerRadius = 30
+                    
+                    /*
+                    self.shareButton.setImage(nil, for: .normal)
+                    self.shareButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+                    self.shareButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+                    self.shareButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+                    */
+                    
+                    self.view.setNeedsLayout()
+                    
+                })
+                
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    
+    func getPDFlink() {
+        let urlPath = "http://www.romadmin.com/createPDF.php?userid=\(userId)"
+        
+        let url: URL = URL(string: urlPath)!
+        
+        var request = URLRequest(url: url)
+        request.addValue(myApiKey, forHTTPHeaderField: "APIKey")
+        
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("PDF link created")
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.parseJSON(data!)
+                })
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    
+    func parseJSON(_ data:Data) {
+        
+        var jsonResult = String()
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! String
+            
+        } catch let error as NSError {
+            print(error)
+            
+        }
+        
+        if jsonResult != "" {
+            let pdflink = jsonResult
+            print (pdflink)
+            DispatchQueue.main.async(execute: { () -> Void in
+
+                // go to the link for the PDF report
+                //UIApplication.shared.openURL(URL(string: pdflink)!)
+                guard let url = URL(string: pdflink) else {
+                  return //be safe
+                }
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            })
+        }
     }
 
 

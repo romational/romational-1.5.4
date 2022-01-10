@@ -115,13 +115,13 @@ class AllRomtypesCollectionViewController: UICollectionViewController, UICollect
         
         let FQ = indexPath[1] + 1
         
-        let romtypeId = thisRomtype?.id as! Int
-        let romtypeTitle = thisRomtype?.name as! String
-        let romtypeName = ("\(romtypeTitle)")
-        let romtypeImage = thisRomtype?.image as! String
+        let romtypeId = thisRomtype?.id 
+        let romtypeTitle = thisRomtype?.name! ?? "n/a"
+        //let romtypeName = ("\(String(describing: romtypeTitle))")
+        let romtypeImage = thisRomtype?.image ?? "profile.jpg"
         
         
-        cell.displayRomtypeIcons(fq: FQ, romtype: romtypeName, image: romtypeImage, status:qstatus)
+        cell.displayRomtypeIcons(fq: FQ, romtype: romtypeTitle, image: romtypeImage, status:qstatus)
         //print (romtypeName)
         return cell
         

@@ -17,6 +17,7 @@ class RangeModel: NSObject {
     var name: String?
     var low: Int?
     var high: Int?
+    var ranking: Int?
     var info: String?
     
     
@@ -29,12 +30,13 @@ class RangeModel: NSObject {
     
     //construct with @name, @address, @latitude, and @longitude parameters
     
-    init(id: Int,  name: String, low: Int, high: Int, info: String) {
+    init(id: Int,  name: String, low: Int, high: Int, ranking: Int, info: String) {
         
         self.id         = id
         self.name       = name
         self.low        = low
         self.high       = high
+        self.ranking    = ranking // "default" ranking
         self.info       = info
         
     }
@@ -43,7 +45,7 @@ class RangeModel: NSObject {
     //prints object's current state
     
     override var description: String {
-        return "ID: \(String(describing: id)), Name: \(String(describing: name)), Low: \(String(describing: low)), High: \(describing: String(describing: high)), Info: \(String(describing: info))"
+        return "ID: \(String(describing: id)), Name: \(String(describing: name)), Low: \(String(describing: low)), High: \(String(describing: high)), Default Ranking: \(String(describing: ranking)),  Info: \(String(describing: info))"
         
     }
     

@@ -20,7 +20,7 @@ class FactorQuestionList: NSObject, URLSessionDataDelegate {
     weak var delegate: FactorQuestionProtocol!
     
     //let urlPath = "http://romadmin.com/factorQuestions.php"
-    let urlPath = "http://www.romdat.com/factors/questions"
+    let urlPath = "https://www.romdat.com/factors/questions"
     
     func downloadQuestions() {
         
@@ -77,22 +77,30 @@ class FactorQuestionList: NSObject, URLSessionDataDelegate {
             
             //the following insures none of the JsonElement values are nil through optional binding
             if
-                let id       = jsonElement[0] as? String,
-                let order    = jsonElement[1] as? String,
-                let name     = jsonElement[2] as? String,
-                let image    = jsonElement[3] as? String,
-                let question = jsonElement[4] as? String,
-                let info     = jsonElement[5] as? String,
-                let answers  = jsonElement[6] as? NSArray
+                let id           = jsonElement[0] as? String,
+                let order        = jsonElement[1] as? String,
+                let name         = jsonElement[2] as? String,
+                let image        = jsonElement[3] as? String,
+                let question     = jsonElement[4] as? String,
+                let beforeImage  = jsonElement[5] as? String,
+                let beforeTitle  = jsonElement[6] as? String,
+                let beforeText   = jsonElement[7] as? String,
+                let beforeButton = jsonElement[8] as? String,
+                let info         = jsonElement[9] as? String,
+                let answers      = jsonElement[10] as? NSArray
             {
                
-                factorQs.id         = Int(id)
-                factorQs.name       = name
-                factorQs.order      = Int(order)
-                factorQs.image      = image
-                factorQs.question   = question
-                factorQs.info       = info
-                factorQs.answers    = answers as? Array
+                factorQs.id             = Int(id)
+                factorQs.name           = name
+                factorQs.order          = Int(order)
+                factorQs.image          = image
+                factorQs.question       = question
+                factorQs.beforeImage    = beforeImage
+                factorQs.beforeTitle    = beforeTitle
+                factorQs.beforeText     = beforeText
+                factorQs.beforeButton   = beforeButton
+                factorQs.info           = info
+                factorQs.answers        = answers as? Array
 
                 //print (answers[0])
                 //print (answers[1])

@@ -35,7 +35,7 @@ class SSRadioButtonsController : NSObject
     init(buttons: UIButton...) {
         super.init()
         for aButton in buttons {
-            aButton.addTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControlEvents.touchUpInside)
+            aButton.addTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControl.Event.touchUpInside)
         }
         self.buttonsArray = buttons
     }
@@ -46,7 +46,7 @@ class SSRadioButtonsController : NSObject
      */
     func addButton(_ aButton: UIButton) {
         buttonsArray.append(aButton)
-        aButton.addTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControlEvents.touchUpInside)
+        aButton.addTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControl.Event.touchUpInside)
     }
     /**
      Remove a UIButton from controller.
@@ -60,8 +60,8 @@ class SSRadioButtonsController : NSObject
             iteratingButton = aButton
         }
         if(iteratingButton != nil) {
-            buttonsArray.remove(at: buttonsArray.index(of: iteratingButton!)!)
-            iteratingButton!.removeTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControlEvents.touchUpInside)
+            buttonsArray.remove(at: buttonsArray.firstIndex(of: iteratingButton!)!)
+            iteratingButton!.removeTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControl.Event.touchUpInside)
             iteratingButton!.isSelected = false
         }
     }
@@ -72,7 +72,7 @@ class SSRadioButtonsController : NSObject
      */
     func setButtonsArray(_ aButtonsArray: [UIButton]) {
         for aButton in aButtonsArray {
-            aButton.addTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControlEvents.touchUpInside)
+            aButton.addTarget(self, action: #selector(SSRadioButtonsController.pressed(_:)), for: UIControl.Event.touchUpInside)
         }
         buttonsArray = aButtonsArray
     }
@@ -99,7 +99,7 @@ class SSRadioButtonsController : NSObject
      - returns: Currenlty selected button.
      */
     func selectedButton() -> UIButton? {
-        guard let index = buttonsArray.index(where: { button in button.isSelected }) else { return nil }
+        guard let index = buttonsArray.firstIndex(where: { button in button.isSelected }) else { return nil }
         
         return buttonsArray[index]
     }

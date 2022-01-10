@@ -34,13 +34,14 @@ class CompareLevelOneViewController: UIViewController, MyDemosProtocol, MyRomtyp
             }
             
             // async download
-            let urlString = "http://romadmin.com/images/users/\(profile.userImage!)"
-            //print (urlString)
+            //let urlString = "http://romadmin.com/images/users/\(profile.userImage!)"
+           
+            /*
             if let url = URL(string: urlString) {
      
-                //downloadImage(from: url)
+                downloadImage(from: url)
             }
-            
+            */
        
         }
         
@@ -55,18 +56,20 @@ class CompareLevelOneViewController: UIViewController, MyDemosProtocol, MyRomtyp
     
     func myRomtypeDownloaded(myRomtypeInfo: NSArray) {
         
+        
         myRomtype = myRomtypeInfo
         //print (myRomtype)
-        if let first = myRomtype[0] as? [String: Any] {
+       if let first = myRomtype[0] as? [String: Any] {
     
-            let firstImage  = first["image"] as? String
-            let firstName   = first["name"] as? String
+            //let firstImage  = first["image"] as? String
+            //let firstName   = first["name"] as? String
             romtype1 = (first["type"] as? String)!
-            let firstInfo   = first["info"] as? String
-            let firstDefine = first["define"] as? String
+            //let firstInfo   = first["info"] as? String
+            //let firstDefine = first["define"] as? String
             
      
         }
+        
         
         // download romtype info
         let getCompareRomtype = CompareRomtype()
@@ -87,11 +90,10 @@ class CompareLevelOneViewController: UIViewController, MyDemosProtocol, MyRomtyp
         //print (myRomtype)
         if let first = compareRomtype[0] as? [String: Any] {
     
-            let firstImage  = first["image"] as? String
-            let firstName   = first["name"] as? String
+            //let firstName   = first["name"] as? String
             romtype2 = (first["type"] as? String)!
-            let firstInfo   = first["info"] as? String
-            let firstDefine = first["define"] as? String
+            //let firstInfo   = first["info"] as? String
+            //let firstDefine = first["define"] as? String
             
         }
         
@@ -133,7 +135,7 @@ class CompareLevelOneViewController: UIViewController, MyDemosProtocol, MyRomtyp
     
     @IBAction func showSlideout(_ sender: Any) {
     
-        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as? UserOptionsViewController
            
             
         let height = self.view.frame.height
@@ -170,7 +172,7 @@ class CompareLevelOneViewController: UIViewController, MyDemosProtocol, MyRomtyp
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -369,7 +371,7 @@ class CompareLevelOneViewController: UIViewController, MyDemosProtocol, MyRomtyp
     
     func compareRomtypes(romtype1: String, romtype2: String) {
         
-        let compareType = "intro"
+       // let compareType = "intro"
         let compareURLString = "https://romdat.com/compare/romtypes/\(romtype1)/\(romtype2)"
         print (compareURLString)
         
@@ -380,7 +382,7 @@ class CompareLevelOneViewController: UIViewController, MyDemosProtocol, MyRomtyp
             if result["success"] as! String == "yes" {
                 
                 print ("compare users")
-                self.compareResult.text = result["result"] as! String
+                self.compareResult.text = result["result"] as? String
                 self.compareUserImage.image = UIImage(named: "\(result["image"] as! String)")
             }
             

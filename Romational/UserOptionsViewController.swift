@@ -29,7 +29,7 @@ class UserOptionsViewController: UIViewController {
             buttons.isHidden = true
         }
         
-        let width = self.view.frame.width
+        //let width = self.view.frame.width
         let height = self.view.frame.height
         
         // animate slide back

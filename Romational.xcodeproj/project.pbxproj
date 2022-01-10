@@ -115,7 +115,6 @@
 		10CB8A7223E21E260036804C /* RomtypeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8A7123E21E260036804C /* RomtypeInfo.swift */; };
 		10CB8A7523EA15890036804C /* FactorQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8A7423EA15890036804C /* FactorQuestions.swift */; };
 		10CB8A7723EA15990036804C /* FactorQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8A7623EA15990036804C /* FactorQuestionModel.swift */; };
-		10CE31842686425500752B71 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 105997C82686376400473038 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		10D0367F24E45BF5009941D7 /* SpinnerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0367E24E45BF4009941D7 /* SpinnerExtension.swift */; };
 		10D0368324E46ECA009941D7 /* gifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0368224E46ECA009941D7 /* gifImage.swift */; };
 		10D0368524E48233009941D7 /* RomtypeFoundationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0368424E48233009941D7 /* RomtypeFoundationViewController.swift */; };
@@ -130,19 +129,21 @@
 		10EA893E242A911E00CA633D /* RomtypeCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA893D242A911E00CA633D /* RomtypeCompleteViewController.swift */; };
 		10EA8941242A996100CA633D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA8940242A996100CA633D /* globals.swift */; };
 		10EDD053241ACCB5002752EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD052241ACCB5002752EC /* LoginViewController.swift */; };
+		8D37167B274C293300374B92 /* pieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D37167A274C28D900374B92 /* pieChart.swift */; };
+		8D37167D274C375400374B92 /* EnterCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D37167C274C375400374B92 /* EnterCodeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		105997C72686376400473038 /* PBXContainerItemProxy */ = {
+		8D371675274C280900374B92 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 105997C22686376400473038 /* Charts.xcodeproj */;
+			containerPortal = 8D371670274C280900374B92 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
 		};
-		105997C92686376400473038 /* PBXContainerItemProxy */ = {
+		8D371677274C280900374B92 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 105997C22686376400473038 /* Charts.xcodeproj */;
+			containerPortal = 8D371670274C280900374B92 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
@@ -152,11 +153,10 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		108B245B23DA13C600C6F775 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				10CE31842686425500752B71 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +213,6 @@
 		1054485326975DC3004AD33A /* myComparesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myComparesModel.swift; sourceTree = "<group>"; };
 		10544855269762DE004AD33A /* MyComparesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComparesTableViewCell.swift; sourceTree = "<group>"; };
 		1056391A24917E140080A796 /* MethodologyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodologyViewController.swift; sourceTree = "<group>"; };
-		105997C22686376400473038 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		105BB982268626CB00E93A95 /* HelloTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloTwoViewController.swift; sourceTree = "<group>"; };
 		106009A8264D7BE200E66BA5 /* innerShadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = innerShadows.swift; sourceTree = "<group>"; };
 		1063D36223CD18E1003F46D9 /* FactorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorList.swift; sourceTree = "<group>"; };
@@ -290,6 +289,9 @@
 		10EA893D242A911E00CA633D /* RomtypeCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomtypeCompleteViewController.swift; sourceTree = "<group>"; };
 		10EA8940242A996100CA633D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		10EDD052241ACCB5002752EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8D371670274C280900374B92 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		8D37167A274C28D900374B92 /* pieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pieChart.swift; sourceTree = "<group>"; };
+		8D37167C274C375400374B92 /* EnterCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,7 +378,7 @@
 			path = "Factor Qs";
 			sourceTree = "<group>";
 		};
-		10457936242BF48F00FF27B1 /* Romtype Report */ = {
+		10457936242BF48F00FF27B1 /* RomType Report */ = {
 			isa = PBXGroup;
 			children = (
 				109F668F242434DD008832CF /* RomtypeReportViewController.swift */,
@@ -389,10 +391,10 @@
 				108B244A23D7740900C6F775 /* RomtypeInfoViewController.swift */,
 				10CB8A7123E21E260036804C /* RomtypeInfo.swift */,
 			);
-			path = "Romtype Report";
+			path = "RomType Report";
 			sourceTree = "<group>";
 		};
-		10457937242BF4A400FF27B1 /* Selectivity Report */ = {
+		10457937242BF4A400FF27B1 /* FlexScore Report */ = {
 			isa = PBXGroup;
 			children = (
 				109DD57C23B29EA9008F94BC /* SelectivityViewController.swift */,
@@ -400,6 +402,7 @@
 				10E560D52669371700A5EFDE /* gradientCircle.swift */,
 				10B5C7B324479D14008588E2 /* FactorIcons.swift */,
 				10B5C7B524479D22008588E2 /* FactorIconModel.swift */,
+				8D37167A274C28D900374B92 /* pieChart.swift */,
 				1031C2B724576E6D00BAF996 /* SelectivityAnalysisViewController.swift */,
 				101BA20B23FF2D890056C2BB /* FactorSelectivity.swift */,
 				101BA20D23FF2DB20056C2BB /* FactorSelectivityModel.swift */,
@@ -409,7 +412,7 @@
 				101DD769245225E700F5C229 /* FactorAnswerTableViewController.swift */,
 				101DD76224520FD600F5C229 /* FactorAnswerTableViewCell.swift */,
 			);
-			path = "Selectivity Report";
+			path = "FlexScore Report";
 			sourceTree = "<group>";
 		};
 		10457938242BF4B000FF27B1 /* My Data Report */ = {
@@ -425,9 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				1045ABA3238C5BBB0093A3B7 /* ReportViewController.swift */,
-				105997C22686376400473038 /* Charts.xcodeproj */,
-				10457936242BF48F00FF27B1 /* Romtype Report */,
-				10457937242BF4A400FF27B1 /* Selectivity Report */,
+				10457936242BF48F00FF27B1 /* RomType Report */,
+				10457937242BF4A400FF27B1 /* FlexScore Report */,
 				1031C2C9245B37D700BAF996 /* Exlusivity Report */,
 				10457938242BF4B000FF27B1 /* My Data Report */,
 			);
@@ -460,6 +462,7 @@
 		1045AB7B23745B290093A3B7 = {
 			isa = PBXGroup;
 			children = (
+				8D371670274C280900374B92 /* Charts.xcodeproj */,
 				1045AB8623745B290093A3B7 /* Romational */,
 				1045AB8523745B290093A3B7 /* Products */,
 				107F3973249947450016445F /* Frameworks */,
@@ -541,21 +544,13 @@
 			children = (
 				10BA54C9268529AF005CA48B /* ConnectViewController.swift */,
 				105448492694DEAD004AD33A /* MyQRCodeViewController.swift */,
+				8D37167C274C375400374B92 /* EnterCodeViewController.swift */,
 				1046FA85268B9AE000809E9D /* ScannerViewController.swift */,
 				10DF88F326EBC9F100DC152A /* Compare Reports */,
 				10DF88F226EBC9CE00DC152A /* My Connections */,
 				10DB1135268E566100DBEEE6 /* CompareOptionsViewController.swift */,
 			);
 			path = Connect;
-			sourceTree = "<group>";
-		};
-		105997C32686376400473038 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				105997C82686376400473038 /* Charts.framework */,
-				105997CA2686376400473038 /* ChartsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		107F3973249947450016445F /* Frameworks */ = {
@@ -621,6 +616,15 @@
 			path = "Compare Reports";
 			sourceTree = "<group>";
 		};
+		8D371671274C280900374B92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D371676274C280900374B92 /* Charts.framework */,
+				8D371678274C280900374B92 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -651,11 +655,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "Paholo Inc";
 				TargetAttributes = {
 					1045AB8323745B290093A3B7 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -675,8 +680,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 105997C32686376400473038 /* Products */;
-					ProjectRef = 105997C22686376400473038 /* Charts.xcodeproj */;
+					ProductGroup = 8D371671274C280900374B92 /* Products */;
+					ProjectRef = 8D371670274C280900374B92 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -687,18 +692,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		105997C82686376400473038 /* Charts.framework */ = {
+		8D371676274C280900374B92 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 105997C72686376400473038 /* PBXContainerItemProxy */;
+			remoteRef = 8D371675274C280900374B92 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		105997CA2686376400473038 /* ChartsTests.xctest */ = {
+		8D371678274C280900374B92 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 105997C92686376400473038 /* PBXContainerItemProxy */;
+			remoteRef = 8D371677274C280900374B92 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -771,6 +776,7 @@
 				101BA213240736DD0056C2BB /* MyDemosModel.swift in Sources */,
 				1063D36F23CE656B003F46D9 /* RomtypeQuestionModel.swift in Sources */,
 				1063D36323CD18E1003F46D9 /* FactorList.swift in Sources */,
+				8D37167B274C293300374B92 /* pieChart.swift in Sources */,
 				1063D36B23CE542D003F46D9 /* RomtypeQuestions.swift in Sources */,
 				10C9A53A2464807D0073192D /* MyRomtypeDataModel.swift in Sources */,
 				1094BC4F2421630000A78451 /* UserOptionsViewController.swift in Sources */,
@@ -825,6 +831,7 @@
 				1045ABAE2396FA390093A3B7 /* MyFactorDataCollectionViewCell.swift in Sources */,
 				102A56232435266700D50FBE /* RomtypeWeightsModel.swift in Sources */,
 				1045AB9C237706B50093A3B7 /* FactorViewController.swift in Sources */,
+				8D37167D274C375400374B92 /* EnterCodeViewController.swift in Sources */,
 				1094BC4D242005E300A78451 /* ProfileQuestionModel.swift in Sources */,
 				103CDAA526A08E3C00C0E46D /* MyRequestsViewController.swift in Sources */,
 				107811FD23F5DE050010598A /* MyFactorAnswers.swift in Sources */,
@@ -878,6 +885,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -885,8 +893,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -912,7 +922,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -935,6 +945,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -942,8 +953,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -963,7 +976,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -981,10 +994,10 @@
 				DEVELOPMENT_TEAM = HU346F8TSZ;
 				INFOPLIST_FILE = Romational/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = romational.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -999,10 +1012,10 @@
 				DEVELOPMENT_TEAM = HU346F8TSZ;
 				INFOPLIST_FILE = Romational/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = romational.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

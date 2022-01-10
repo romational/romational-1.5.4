@@ -75,7 +75,7 @@ class FactorCompleteViewController: UIViewController, FactorListProtocol, MyFact
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -123,7 +123,7 @@ class FactorCompleteViewController: UIViewController, FactorListProtocol, MyFact
             let answer = thisAnswer.answerId!
             let selectivity = thisAnswer.selectivity!
             
-            if Int(answer) == 0 || Double(selectivity) == 0.50 {
+            if Int(answer) == 0  {
                 unlock = "no"
                 unanswered.append(factorCount)
                 answerCount += 1
@@ -140,13 +140,16 @@ class FactorCompleteViewController: UIViewController, FactorListProtocol, MyFact
                 updateUserLogs(userid: userId, item: "flexibility-completed")
             }
         }
+        
         else {
+            
             //confirmBox.isHidden = true
             let errorBox : UIScrollView = UIScrollView()
             
-            errorBox.frame = CGRect(x: 20, y: 120, width: 350, height: 400)
+            errorBox.frame = CGRect(x: 20, y: 150, width: 350, height: 400)
             errorBox.backgroundColor = romLightGray
             
+            errorBox.layer.cornerRadius = 8
             background.addSubview(errorBox)
             
             errorBox.translatesAutoresizingMaskIntoConstraints = false

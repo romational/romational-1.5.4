@@ -64,11 +64,11 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
             let importance = Double(factorAnswer.selectivity!)!
            
             // add to calcs if not let empty
-            if (importance != 0.50) {
-                print ("importance is \(importance)")
-                selectivity += importance * 100
+            //if (importance != 0.50) {
+            print ("importance is \(importance)")
+            selectivity += importance * 100
                 
-            }
+            //}
             runTot = runTot + 1
             
             //print ("ranges here")
@@ -178,6 +178,7 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
             }
         }
    
+        self.removeSpinner()
         
     }
 
@@ -253,7 +254,7 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -291,7 +292,7 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
     
     @IBAction func summaryButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let destination = storyboard.instantiateViewController(withIdentifier: "SelectivityRankings") as! UIViewController
+        let destination = storyboard.instantiateViewController(withIdentifier: "SelectivityRankings") 
         
         destination.modalPresentationStyle = .fullScreen
         self.present(destination, animated: false, completion: nil)
@@ -322,6 +323,20 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
     @IBOutlet weak var mySelectivity: UILabel!
     @IBOutlet weak var mySelectivityInfo: UITextView!
     
+    @IBOutlet weak var viewAnswersButton: UIButton!
+    @IBOutlet weak var viewShareButton: UIButton!
+    
+    @IBAction func reviewAnswers(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let destination = storyboard.instantiateViewController(withIdentifier: "MyFactorData") as! MyFactorDataViewController
+        destination.modalPresentationStyle = .fullScreen
+        self.present(destination, animated: false)
+    }
+    
+    @IBAction func viewPDFReport(_ sender: Any) {
+        self.getPDFlink()
+        
+    }
     
     // MARK: view did load
     
@@ -348,7 +363,25 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
         factorIconList.delegate = self
         factorIconList.downloadIcons()
   
+        // turn on spinner for guage loading
+        self.showSpinner(onView: self.view)
+        
         //mySelectivity.font = UIFont.italicSystemFont(ofSize: 21)
+        
+        // style bottom buttons
+        viewAnswersButton.layer.masksToBounds = false
+        viewAnswersButton.layer.shadowColor = romDarkGray.cgColor
+        viewAnswersButton.layer.shadowOpacity = 0.3
+        viewAnswersButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        viewAnswersButton.layer.shadowRadius = 4
+        viewAnswersButton.layer.cornerRadius = 30
+        
+        viewShareButton.layer.masksToBounds = false
+        viewShareButton.layer.shadowColor = romDarkGray.cgColor
+        viewShareButton.layer.shadowOpacity = 0.3
+        viewShareButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        viewShareButton.layer.shadowRadius = 4
+        viewShareButton.layer.cornerRadius = 30
         
         // swiping nav
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -359,6 +392,8 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
 
         view.addGestureRecognizer(leftSwipe)
         view.addGestureRecognizer(rightSwipe)
+        
+        
         
     }
     
@@ -382,5 +417,103 @@ class SelectivityViewController: UIViewController, MyFactorsProtocol, FactorIcon
              self.summaryButton((Any).self)
          }
      }
+    
+    
+    func emailPDFlink() {
+        let urlPath = "http://romadmin.com/createEmailPDF.php?userid=\(userId)"
+        
+        let url: URL = URL(string: urlPath)!
+        
+        var request = URLRequest(url: url)
+        request.addValue(myApiKey, forHTTPHeaderField: "APIKey")
+        
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("PDF emailed ")
+                print (data)
+                DispatchQueue.main.async(execute: { () -> Void in
+                
+                    self.viewShareButton.setTitle("Emailed", for: .normal)
+                    self.viewShareButton.backgroundColor = orange
+                    self.viewShareButton.setTitleColor(white, for: .normal)
+                    self.viewShareButton.tintColor = white
+                    self.viewShareButton.layer.cornerRadius = 20
+                    
+                    /*
+                    self.shareButton.setImage(nil, for: .normal)
+                    self.shareButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+                    self.shareButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+                    self.shareButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+                    */
+                    
+                    self.view.setNeedsLayout()
+                    
+                })
+                
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func getPDFlink() {
+        let urlPath = "http://www.romadmin.com/createPDF.php?userid=\(userId)"
+        
+        let url: URL = URL(string: urlPath)!
+        
+        var request = URLRequest(url: url)
+        request.addValue(myApiKey, forHTTPHeaderField: "APIKey")
+        
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: request) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("PDF link created")
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.parseJSON(data!)
+                })
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    
+    func parseJSON(_ data:Data) {
+        
+        var jsonResult = String()
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! String
+            
+        } catch let error as NSError {
+            print(error)
+            
+        }
+        
+        if jsonResult != "" {
+            let pdflink = jsonResult
+            print (pdflink)
+            DispatchQueue.main.async(execute: { () -> Void in
+
+                // go to the link for the PDF report
+                //UIApplication.shared.openURL(URL(string: pdflink)!)
+                guard let url = URL(string: pdflink) else {
+                  return //be safe
+                }
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            })
+        }
+    }
     
 }

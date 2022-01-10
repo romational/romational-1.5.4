@@ -100,7 +100,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
     
     @IBAction func showSlideout(_ sender: Any) {
     
-        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        slideController = (storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController)
            
             
         let height = self.view.frame.height
@@ -137,7 +137,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -169,7 +169,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             goBack = ""
          
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let destination = storyboard.instantiateViewController(withIdentifier: "SelectivityRankings") as! UIViewController
+            let destination = storyboard.instantiateViewController(withIdentifier: "SelectivityRankings") 
             
             destination.modalPresentationStyle = .fullScreen
             self.present(destination, animated: false, completion: nil)
@@ -226,10 +226,13 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             ckb.layer.borderWidth = 0
             ckb.layer.cornerRadius = 10
             ckb.layer.backgroundColor = UIColor.clear.cgColor
-            ckb.textContainerInset = UIEdgeInsetsMake(5, 10, 5, 10);
+            ckb.textContainerInset = UIEdgeInsets.init(top: 5, left: 10, bottom: 5, right: 10);
             ckb.centerVertically()
          }
-         
+        
+         answered = false
+         pushed = false
+        
          sliderBox.layer.borderWidth = 0.0
          sliderBox.backgroundColor = UIColor.clear
          
@@ -270,13 +273,19 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             ckb.layer.borderWidth = 0
             ckb.layer.cornerRadius = 10
             ckb.layer.backgroundColor = UIColor.clear.cgColor
-            ckb.textContainerInset = UIEdgeInsetsMake(5, 10, 5, 10);
+            ckb.textContainerInset = UIEdgeInsets.init(top: 5, left: 10, bottom: 5, right: 10);
             ckb.centerVertically()
          }
          
+         // reset the  prev nex
+         answered = false
+         pushed = false
+         
+         // reset the slider box
          sliderBox.layer.borderWidth = 0.0
          sliderBox.backgroundColor = UIColor.clear
          
+         // bring in answers fresh
          let freshAnswers = MyFactorAnswers()
          freshAnswers.delegate = self
          freshAnswers.downloadMyFactorAnswers(userid: userId)
@@ -292,8 +301,9 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
     var FQIndex = Int()
     var QID = Int()
     var currentSelectivity = Float()
+    
     var answered = false
-
+    var pushed = false
     
     // MARK: question info
     
@@ -372,17 +382,19 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
     }
    
     // slider labels
+
+    
+    var sliderLabels = [UILabel]()
+    
+   // slider button labels
     @IBOutlet weak var sliderLabel1: UILabel!
     @IBOutlet weak var sliderLabel2: UILabel!
     @IBOutlet weak var sliderLabel3: UILabel!
     @IBOutlet weak var sliderLabel4: UILabel!
     @IBOutlet weak var sliderLabel5: UILabel!
     
-    var sliderLabels = [UILabel]()
-    
     
     // MARK: view did load
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -392,6 +404,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             updateUserLogs(userid: userId, item: "flexibility-started")
         }
         
+        self.showSpinner(onView: self.view)
         
         // create button arrays
         answerBkgds.append(A1View)
@@ -418,13 +431,56 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         sliderLabels.append(sliderLabel4)
         sliderLabels.append(sliderLabel5)
         
+        // round the corners to make button
+        sliderLabels.forEach { slide in
+            slide.layer.cornerRadius = 8
+            slide.layer.masksToBounds = true
+        }
+        
+        //round box so it doesn't jar so much
+        sliderBox.layer.cornerRadius = 10
+        sliderBox.layer.masksToBounds = true
+        
+        
         for i in 0..<Ranges.count {
             
             let thisRange = Ranges[i] as? NSDictionary
             
             //print (thisRange!["low"]!)
+            
+            let font = UIFont(name: "HelveticaNeue", size: 10)!
+            
             let rangeName = thisRange!["name"] as? String
+       
             sliderLabels[i].text = rangeName!
+            
+            let tap = MyTapGesture(target: self, action: #selector(tapped))
+
+            let ranking = thisRange!["ranking"] as? String
+            //print (ranking)
+            
+            tap.ranking = ranking!
+            tap.numberOfTapsRequired = 1
+
+            if i == 0 {
+                tap.color = "teal"
+            }
+            if i == 1 {
+                tap.color = "green"
+            }
+            if i == 2 {
+                tap.color = "yellow"
+            }
+            if i == 3 {
+                tap.color = "orange"
+            }
+            if i == 4 {
+                tap.color = "pink"
+            }
+            
+            sliderLabels[i].addGestureRecognizer(tap)
+            sliderLabels[i].isUserInteractionEnabled = true
+
         }
         
         // import factor data
@@ -440,7 +496,8 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         //sliderValue.keyboardType = .numberPad
         
         importanceSlider.thumbTintColor = yellow
-        importanceSlider.value = 0.50
+        //importanceSlider.value = 0.50
+        importanceSlider.value = 0.0
         importanceSlider.addTarget(self, action:#selector(sliderDidEndSliding), for: [.touchUpInside, .touchUpOutside, .touchCancel])
         
         // put ring around the slider value text
@@ -448,7 +505,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         sliderValue.layer.borderWidth = 1
         
         // return links
-        print (goBack)
+        //print (goBack)
         
         goBackButton.layer.cornerRadius = 20
         goBackButton.layer.masksToBounds = false
@@ -484,6 +541,177 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
     }
 
     
+    // MARK:  TextFields
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // resign keyboard on return
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        // scroll to box for editing
+        
+        let point = self.sliderBox.frame.origin
+        
+        DispatchQueue.main.async {
+            
+            self.thisScrollView.contentOffset = CGPoint(x: 0, y: point.y)
+        }
+        
+        //print (point)
+        
+        // highlight colors
+        textField.backgroundColor = romLightGray
+       
+        textField.layer.borderColor = romDarkGray.cgColor
+        textField.layer.borderWidth = 0
+        textField.layer.cornerRadius = 20
+        
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        // default color
+        textField.layer.borderWidth = 1
+        
+        //textField.addBottomBorder(height: 1, color: romDarkGray)
+        textField.backgroundColor = UIColor.clear
+        textField.layer.cornerRadius = 20
+        
+        guard let selectivity = textField.text else {
+           
+            return
+        }
+        
+        print (selectivity)
+        
+        // ** stilll need to allow for decimal (float) entries **!!
+        let newSelectivity = Float(Int(selectivity)!) / 100
+        
+        //print ("TextField Edited: \(newSelectivity)")
+        
+        // make updates to slider and storage
+        importanceSlider.value = newSelectivity
+        
+        updateSelectivity(userid: userId, factor: String(QID), selectivity: newSelectivity)
+        
+        adjustSlider(selectivity: newSelectivity)
+        
+        // update button enabled
+        if (answered == true) {
+            nextButton.isEnabled = true
+            prevButton.isEnabled = true
+        }
+        
+        // clear label border
+        sliderLabels.forEach { label in
+            label.layer.borderWidth = 0
+        }
+        
+        for i in 0..<Ranges.count {
+            
+            let thisRange = Ranges[i] as? NSDictionary
+            
+            //print (thisRange!["low"]!)
+            let rangeName = thisRange!["name"] as? String
+            let lowRange  = Float((thisRange!["low"] as? String)!)! / 100.0
+            let highRange = Float((thisRange!["high"] as? String)!)! / 100.0
+            
+            if newSelectivity > lowRange && newSelectivity <= highRange  {
+                
+                //flexibilityLabel.text = rangeName!
+                
+                if i == 0 {
+                    sliderLabels[0].layer.borderWidth = 2
+                    sliderLabels[0].layer.borderColor = romDarkGray.cgColor
+                  
+                    importanceSlider.thumbTintColor = romTeal
+                    importanceSlider.minimumTrackTintColor = romTeal
+                    sliderValue.layer.borderColor = romTeal.cgColor
+                }
+                if i == 1 {
+                    sliderLabels[1].layer.borderWidth = 2
+                    sliderLabels[1].layer.borderColor = romDarkGray.cgColor
+                    importanceSlider.thumbTintColor = green
+                    importanceSlider.minimumTrackTintColor = green
+                    sliderValue.layer.borderColor = green.cgColor
+                }
+                if i == 2 {
+                    sliderLabels[2].layer.borderWidth = 2
+                    sliderLabels[2].layer.borderColor = romDarkGray.cgColor
+                    importanceSlider.thumbTintColor = yellow
+                    importanceSlider.minimumTrackTintColor = yellow
+                    sliderValue.layer.borderColor = yellow.cgColor
+                }
+                if i == 3 {
+                    sliderLabels[3].layer.borderWidth = 2
+                    sliderLabels[3].layer.borderColor = romDarkGray.cgColor
+                    importanceSlider.thumbTintColor = romOrange
+                    importanceSlider.minimumTrackTintColor = romOrange
+                    sliderValue.layer.borderColor = romOrange.cgColor
+                }
+                if i == 4 {
+                    sliderLabels[4].layer.borderWidth = 2
+                    sliderLabels[4].layer.borderColor = romDarkGray.cgColor
+                    importanceSlider.thumbTintColor = romPink
+                    importanceSlider.minimumTrackTintColor = romPink
+                    sliderValue.layer.borderColor = romPink.cgColor
+                }
+                
+            }
+                
+        }
+        
+        
+        
+    }
+    
+    /*
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+            let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
+            
+            return string.rangeOfCharacter(from: invalidCharacters) == nil
+        }
+    */
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        // check decimal restriction
+        let replacementStringIsLegal = string.rangeOfCharacter(from: CharacterSet(charactersIn:"0123456789").inverted ) == nil
+
+        if !replacementStringIsLegal {
+            return false
+        }
+        let nsString = textField.text as NSString?
+        let newString = nsString!.replacingCharacters(in: range, with: string)
+
+        // check maximum length
+        if newString.count > 2 {
+            return false
+        }
+        return true
+
+    }
+    
+        
+    // =======================================================
+    //                  IN VIEW FUNCTIONS
+    // =======================================================
+
+    
+    // these variables are for the popup overlay before question is displayed
+    var beforeView = UIView()
+    
+    var beforeTitle = UILabel()
+    var beforeTextView = UITextView()
+    var logoView = UIImageView()
+    
+    
     // MARK: question answer functions
     
     // create factor questions
@@ -494,18 +722,25 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             ck.layer.borderWidth = 0.5
         }*/
         
+        // style out the checkboxes
         answerTexts.forEach { ckb in
             ckb.layer.borderColor = romDarkGray.cgColor
             ckb.layer.borderWidth = 0
             ckb.layer.cornerRadius = 10
             ckb.layer.backgroundColor = UIColor.clear.cgColor
-            ckb.textContainerInset = UIEdgeInsetsMake(5, 10, 5, 10);
+            ckb.textContainerInset = UIEdgeInsets.init(top: 5, left: 10, bottom: 5, right: 10);
             ckb.centerVertically()
-            ckb.font = UIFont(name:"HelveticaNeue", size: 17.0)
+            ckb.font = UIFont(name:"HelveticaNeue", size: 16.0)
+        }
+        
+        //clear out the slider label highlight
+        sliderLabels.forEach { label in
+            label.layer.borderWidth = 0
         }
         
         //let offImage = UIImage(named: "radio-button-off-200x200.png") as UIImage?
         
+        // reset radio button images
         radios.forEach { radio in
             radio.image = UIImage(named:  "radio-button-off-200x200.png")
             
@@ -564,7 +799,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         
         FQIndex = FQ - 1
         
-        print ("\(totalQs) Questions - fq is \(fq) - FQ is \(FQ) - FQIndex is \(FQIndex)")
+       // print ("\(totalQs) Questions - fq is \(fq) - FQ is \(FQ) - FQIndex is \(FQIndex)")
         
         
         var questions = FactorQuestionModel()
@@ -577,9 +812,107 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             QID = questions.id!
             let qId = questions.id!
             let qName = questions.name!.uppercased()
-            let qOrder = questions.order!
-            let qQuestion = questions.question!
-            let qImage = questions.image!
+            //let qOrder = questions.order!
+            //let qQuestion = questions.question!
+            
+            // yes I used this old variable to bring in a title 12.1.21
+            var beforeTitleImage = questions.beforeImage ?? "romational-icon-v4"
+            if beforeTitleImage == "" {
+                beforeTitleImage = "romational-icon-v4"
+            }
+            
+            
+            var beforeTitleText = questions.beforeTitle ?? "Did You Know?"
+            if beforeTitleText == "" {
+                beforeTitleText = "Did You Know?"
+            }
+            
+            let beforeText = questions.beforeText!
+            
+            var beforeButton = questions.beforeButton ?? "OK"
+            if beforeButton == "" {
+                beforeButton = "OK"
+            }
+            
+            //print (beforeText)
+           
+            
+            if beforeText != "" {
+                
+                self.beforeView.isHidden = false
+                
+                let vcWidth   = view.bounds.width
+                let vcHeight = view.bounds.height
+                
+                let navHeight = navBar.frame.height
+                
+                // moved outside function for access by objc func for button
+                //var myView = UIView(frame: CGRect(x: 0, y: 0, width: vcWidth, height: vcHeight))
+                
+                beforeView.frame = CGRect(x: vcWidth, y: 100, width: vcWidth, height: vcHeight)
+                beforeView.backgroundColor = romBkgd
+                beforeView.alpha = 0.0
+                
+                // logo
+                //var logoView : UIImageView
+                logoView  = UIImageView(frame: CGRect(x: ((vcWidth-320)/2)+80, y: 100, width: 160, height: 160));
+                logoView.image = UIImage(named: beforeTitleImage)
+               
+                beforeView.addSubview(logoView)
+                
+                // before title
+              
+                beforeTitle.frame = CGRect(x: 30, y: 300, width: vcWidth-60, height: 30)
+                
+                beforeTitle.layer.backgroundColor = UIColor.clear.cgColor
+                beforeTitle.text = beforeTitleText
+                beforeTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 24.0)
+                beforeTitle.textColor = romDarkGray
+                beforeTitle.textAlignment = .center
+                
+                beforeView.addSubview(beforeTitle)
+                
+                // before text
+                //let beforeTextView = UITextView(frame: CGRect(x: 30, y: 400, width: vcWidth-60, height: 200))
+                beforeTextView.frame = CGRect(x: 30, y: 350, width: vcWidth-60, height: 120)
+                beforeTextView.centerVertically()
+                beforeTextView.backgroundColor = .clear
+                beforeTextView.text = beforeText
+                beforeTextView.font = UIFont(name:"HelveticaNeue", size: 18.0)
+                beforeTextView.textColor = romDarkGray
+                beforeTextView.textAlignment = .center
+                
+                beforeView.addSubview(beforeTextView)
+                
+                // before text
+                let beforeTextOK = UIButton(frame: CGRect(x: 60, y: 500, width: vcWidth-120, height: 60))
+                beforeTextOK.setTitle(beforeButton, for: .normal)
+                beforeTextOK.addTarget(self, action: "okButtonClicked:", for: .touchUpInside)
+                beforeTextOK.setTitleColor(romRed, for: .normal)
+                beforeTextOK.backgroundColor = romBkgd
+
+                beforeTextOK.layer.masksToBounds = false
+                beforeTextOK.layer.shadowColor = romDarkGray.cgColor
+                beforeTextOK.layer.shadowOpacity = 0.3
+                beforeTextOK.layer.shadowOffset = CGSize(width: 4, height: 4)
+                beforeTextOK.layer.shadowRadius = 4
+            
+                beforeTextOK.layer.cornerRadius = 30
+                
+                
+                beforeView.addSubview(beforeTextOK)
+                
+                view.addSubview(beforeView)
+                UIView.animate(withDuration: 0.25) { () -> Void in
+                    self.beforeView.alpha = 1.0
+                    self.beforeView.frame = CGRect(x: 0, y: 100, width: vcWidth, height: vcHeight-100)
+                }
+                
+                
+            }
+            
+            
+            //let qImage = questions.image!
             
             // load up the question
             questionNumber.text = ("Question \(FQ) of \(totalQs)")
@@ -611,7 +944,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
                         if factorAnswer.answerId! != "" {
                             answer = Int(factorAnswer.answerId!)!
                         }
-                        var selectivityDouble = 0.50
+                        var selectivityDouble = 0.0
                         print ("flex is \(factorAnswer.selectivity!)")
                         
                         selectivityDouble = Double(factorAnswer.selectivity!)!
@@ -620,9 +953,42 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
                         importanceSlider.thumbTintColor = romTeal
                         
                         importanceSlider.value = Float(selectivityDouble)
+                       //print (factorAnswer.selectivity)
                         
-                        if (importanceSlider.value == 0.50) && (answer != 0) {
-                           
+                        if (factorAnswer.selectivity != nil) {
+                            
+                            let flexibilityRanking = Int(selectivityDouble * 100)
+                            
+                            pushed = true
+
+                            //print ("ranges here")
+                            for i in 0..<Ranges.count {
+                                
+                                let thisRange = Ranges[i] as? NSDictionary
+                                
+                                //print (thisRange!["low"]!)
+                                let rangeName = thisRange!["name"] as? String
+                                let lowRange  = thisRange!["low"] as? String
+                                let highRange = thisRange!["high"] as? String
+                                
+                                //print ("\(rangeName) \(lowRange) \(highRange)")
+                            
+                                // high light the active
+                                if flexibilityRanking > Int(lowRange!)! && flexibilityRanking <= Int(highRange!)!  {
+                                    
+                                    //flexibilityLabel.text = rangeName!
+                                    sliderLabels[i].layer.borderWidth = 2
+                                    sliderLabels[i].layer.borderColor = romDarkGray.cgColor
+                                    
+                                    
+                                }
+                                    
+                            }
+                        }
+                        // take out the .50 changed to button defaults 12.8.21
+                       /*if (importanceSlider.value == 0.50) && (answer != 0) {
+                       
+                               
                             answered = true
                             
                             nextButton.isEnabled = false
@@ -634,6 +1000,8 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
                                 
                             sliderBox.backgroundColor = graphgray
                         }
+                        */
+                        
                         
                         // configure the slider
                         adjustSlider(selectivity: importanceSlider.value)
@@ -643,7 +1011,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             }
         
             // now the answers
-            let qAnswers = questions.answers as? Array<Any>
+            let qAnswers = questions.answers
             let totalAnswers = qAnswers?.count
             
             // show hide based on answers number
@@ -663,7 +1031,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             }
             
             if Int(totalAnswers!) > 0 {
-                let qAnswer = qAnswers?[0] as? [String:Any]
+                
                 
                 // no answer selected
                 if (answer == 0 ) {
@@ -756,24 +1124,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
     }
     
     
-    // when slider is moved
-    @objc func sliderDidEndSliding() {
         
-        print ("end sliding")
-        
-        updateSelectivity(userid: userId, factor: String(QID), selectivity: importanceSlider.value)
-        
-        print ("\(importanceSlider.value) %")
-        
-        if (answered == true) {
-            nextButton.isEnabled = true
-            prevButton.isEnabled = true
-        }
-        //nextButton.backgroundColor = UIColor.clear
-        //prevButton.backgroundColor = UIColor.clear
-    }
-        
-    
     // adjust the slider
     func adjustSlider(selectivity: Float) {
         
@@ -796,9 +1147,6 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
             let rangeName = thisRange!["name"] as? String
             let lowRange  = Float((thisRange!["low"] as? String)!)! / 100.0
             let highRange = Float((thisRange!["high"] as? String)!)! / 100.0
-            
-            print ("\(rangeName) \(lowRange) \(highRange)")
-        
             
             if selectivity > lowRange && selectivity <= highRange  {
                 
@@ -854,105 +1202,7 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
     }
        
     
-    // MARK:  TextFields
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        // resign keyboard on return
-        textField.resignFirstResponder()
-        
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        // scroll to box for editing
-        
-        let point = self.sliderBox.frame.origin
-        
-        DispatchQueue.main.async {
-            
-            self.thisScrollView.contentOffset = CGPoint(x: 0, y: point.y)
-        }
-        
-        
-        print (point)
-        
-        // highlight colors
-        textField.backgroundColor = romLightGray
-       
-        textField.layer.borderColor = romDarkGray.cgColor
-        textField.layer.borderWidth = 0
-        textField.layer.cornerRadius = 20
-        
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        // default color
-        textField.layer.borderWidth = 1
-        
-        //textField.addBottomBorder(height: 1, color: romDarkGray)
-        textField.backgroundColor = UIColor.clear
-        
-        textField.layer.cornerRadius = 20
-        
-        
-        guard let selectivity = textField.text else {
-           
-            return
-        }
-        
-        print (selectivity)
-        
-        // ** stilll need to allow for decimal (float) entries **!!
-        let newSelectivity = Float(Int(selectivity)!) / 100
-        
-        print ("TextField Edited: \(newSelectivity)")
-        
-        // make updates to slider and storage
-        importanceSlider.value = newSelectivity
-        
-        updateSelectivity(userid: userId, factor: String(QID), selectivity: newSelectivity)
-        
-        adjustSlider(selectivity: newSelectivity)
-        
-    
-        if (answered == true) {
-            nextButton.isEnabled = true
-            prevButton.isEnabled = true
-        }
-        
-        
-    }
-    
-    /*
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-            let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
-            
-            return string.rangeOfCharacter(from: invalidCharacters) == nil
-        }
-    */
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        // check decimal restriction
-        let replacementStringIsLegal = string.rangeOfCharacter(from: CharacterSet(charactersIn:"0123456789").inverted ) == nil
-
-        if !replacementStringIsLegal {
-            return false
-        }
-        let nsString = textField.text as NSString?
-        let newString = nsString!.replacingCharacters(in: range, with: string)
-
-        // check maximum length
-        if newString.characters.count > 2 {
-            return false
-        }
-        return true
-
-    }
+ 
     
     
     // saving answers
@@ -967,13 +1217,144 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         
     }
        
+    // ok button on before text display
+    @objc func okButtonClicked(_ sender: AnyObject?) {
+        
+        
+        let vcWidth   = self.view.bounds.width
+        let vcHeight = self.view.bounds.height
+        
+        
+        UIView.animate(withDuration: 0.25) { () -> Void in
+            self.beforeView.alpha = 0.0
+            self.beforeView.frame = CGRect(x: -vcWidth, y: 100, width: vcWidth, height: vcHeight-100)
+            self.beforeView.isHidden = true
+        }
+        
+        
+        self.beforeTextView.text = ""
+        
+    }
+    
+    
+    // when a flexibility button is chosen (tapped)
+    @objc func tapped(sender : MyTapGesture) {
+
+        pushed = true
+        
+        if (answered == true) && (pushed == true) {
+            nextButton.isEnabled = true
+            prevButton.isEnabled = true
+        }
+        
+        self.sliderValue.text = sender.ranking
+        self.importanceSlider.value = Float(Int(sender.ranking)!) / 100.0
+        
+        //clear out the slider label highlight
+        sliderLabels.forEach { label in
+            label.layer.borderWidth = 0
+        }
+        
+        updateSelectivity(userid: userId, factor: String(QID), selectivity: importanceSlider.value)
+        
+        if sender.color == "teal" {
+            //clear out the slider label highlight
+          
+            sliderLabels[0].layer.borderWidth = 2
+            sliderLabels[0].layer.borderColor = romDarkGray.cgColor
+            importanceSlider.thumbTintColor = romTeal
+            importanceSlider.minimumTrackTintColor = romTeal
+            sliderValue.layer.borderColor = romTeal.cgColor
+        }
+        if sender.color == "green" {
+            sliderLabels[1].layer.borderWidth = 2
+            sliderLabels[1].layer.borderColor = romDarkGray.cgColor
+            importanceSlider.thumbTintColor = green
+            importanceSlider.minimumTrackTintColor = green
+            sliderValue.layer.borderColor = green.cgColor
+        }
+        if sender.color == "yellow" {
+            sliderLabels[2].layer.borderWidth = 2
+            sliderLabels[2].layer.borderColor = romDarkGray.cgColor
+            importanceSlider.thumbTintColor = yellow
+            importanceSlider.minimumTrackTintColor = yellow
+            sliderValue.layer.borderColor = yellow.cgColor
+        }
+        if sender.color == "orange" {
+            sliderLabels[3].layer.borderWidth = 2
+            sliderLabels[3].layer.borderColor = romDarkGray.cgColor
+            importanceSlider.thumbTintColor = romOrange
+            importanceSlider.minimumTrackTintColor = romOrange
+            sliderValue.layer.borderColor = romOrange.cgColor
+        }
+        if sender.color == "pink" {
+            sliderLabels[4].layer.borderWidth = 2
+            sliderLabels[4].layer.borderColor = romDarkGray.cgColor
+            importanceSlider.thumbTintColor = romPink
+            importanceSlider.minimumTrackTintColor = romPink
+            sliderValue.layer.borderColor = romPink.cgColor
+        }
+        
+    }
+    
+    
+    // when slider is moved
+    @objc func sliderDidEndSliding() {
+        
+        print ("end sliding")
+        
+        updateSelectivity(userid: userId, factor: String(QID), selectivity: importanceSlider.value)
+        
+        print ("\(importanceSlider.value) %")
+        
+        pushed = true
+        
+        if (answered == true) && (pushed == true ) {
+            nextButton.isEnabled = true
+            prevButton.isEnabled = true
+        }
+        //nextButton.backgroundColor = UIColor.clear
+        //prevButton.backgroundColor = UIColor.clear
+        
+        //clear out the slider label highlight
+        sliderLabels.forEach { label in
+            label.layer.borderWidth = 0
+        }
+        
+        // cycle the ranges for the current
+        for i in 0..<Ranges.count {
+            
+            let thisRange = Ranges[i] as? NSDictionary
+            
+            let lowRange  = Float((thisRange!["low"] as? String)!)! / 100.0
+            let highRange = Float((thisRange!["high"] as? String)!)! / 100.0
+            
+ 
+            if importanceSlider.value > lowRange && importanceSlider.value <= highRange  {
+                
+                //flexibilityLabel.text = rangeName!
+                
+                sliderLabels[i].layer.borderWidth = 2
+                sliderLabels[i].layer.borderColor = romDarkGray.cgColor
+                
+            }
+        }
+            
+    }
+    
     
     // when a question is chosen (tapped)
     @objc func tappedMe(sender : MyTapGesture) {
 
         answered = true
-        // adjust prompts for if slider value exists
-        if (importanceSlider.value == 0.50) {
+        
+        if (answered == true) && (pushed == true) {
+            nextButton.isEnabled = true
+            prevButton.isEnabled = true
+        }
+        
+        // if not answered and pushed highlight the box
+        else {
             
             sliderBox.layer.borderWidth = 1.0
             sliderBox.layer.borderColor = medgray.cgColor
@@ -984,65 +1365,59 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
  
             
         }
-        else {
-            nextButton.isEnabled = true
-            prevButton.isEnabled = true
-            //nextButton.backgroundColor = UIColor.clear
-            //prevButton.backgroundColor = UIColor.clear
-        }
         
     
         // clear out button styles
         answerTexts.forEach { ck in
-            //ck.layer.borderColor = black.cgColor
-            //ck.layer.borderWidth = 0.0
+     
             ck.backgroundColor = UIColor.clear
-            
             ck.layer.borderWidth = 0.0
             ck.layer.borderColor = romDarkGray.cgColor
-            ck.font = UIFont(name:"HelveticaNeue", size: 17.0)
-            
+            ck.font = UIFont(name:"HelveticaNeue", size: 16.0)
+            ck.textContainerInset = UIEdgeInsets.init(top: 5, left: 10, bottom: 5, right: 10);
+            ck.centerVertically()
+       
         }
         
         radios.forEach { radio in
             radio.image = UIImage(named:"radio-button-off-200x200.png")
         }
        
-        print(sender.title)
-        print(sender.value)
+        //print(sender.title)
+        //print(sender.value)
         
         
         if (sender.title == "A1") {
             //A1text.layer.backgroundColor = romLightGray.cgColor
-            A1text.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+            A1text.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
             A1text.layer.borderWidth = 0.0
             radio1.image = UIImage(named:"radio-button-on-200x200.png")
             saveFactorAnswer(userid: userId, factor: String(sender.fq), answer: String(sender.value), selectivity: currentSelectivity)
         }
         if (sender.title == "A2") {
             //A2text.layer.backgroundColor = romLightGray.cgColor
-            A2text.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+            A2text.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
             A2text.layer.borderWidth = 0.0
             radio2.image = UIImage(named:"radio-button-on-200x200.png")
             saveFactorAnswer(userid: userId, factor: String(sender.fq), answer: String(sender.value), selectivity: currentSelectivity)
         }
         if (sender.title == "A3") {
             //A3text.layer.backgroundColor = romLightGray.cgColor
-            A3text.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+            A3text.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
             A3text.layer.borderWidth = 0.0
             radio3.image = UIImage(named:"radio-button-on-200x200.png")
             saveFactorAnswer(userid: userId, factor: String(sender.fq), answer: String(sender.value), selectivity: currentSelectivity)
         }
         if (sender.title == "A4") {
             //A4text.layer.backgroundColor = romLightGray.cgColor
-            A4text.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+            A4text.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
             A4text.layer.borderWidth = 0.0
             radio4.image = UIImage(named:"radio-button-on-200x200.png")
             saveFactorAnswer(userid: userId, factor: String(sender.fq), answer: String(sender.value), selectivity: currentSelectivity)
         }
         if (sender.title == "A5") {
             //A5text.layer.backgroundColor = romLightGray.cgColor
-            A5text.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+            A5text.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
             A5text.layer.borderWidth = 0.0
             radio5.image = UIImage(named:"radio-button-on-200x200.png")
             saveFactorAnswer(userid: userId, factor: String(sender.fq), answer: String(sender.value), selectivity: currentSelectivity)
@@ -1079,6 +1454,8 @@ class FactorViewController: UIViewController, UITextFieldDelegate, FactorListPro
         var value = Int()
         var fq = Int()
         var sel = Float()
+        var ranking = String()
+        var color = String()
     }
 
 

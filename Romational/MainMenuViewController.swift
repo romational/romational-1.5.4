@@ -74,7 +74,7 @@ class MainMenuViewController: UIViewController, UserLogsProtocol {
     
     @IBAction func showSlideout(_ sender: Any) {
     
-        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as! UserOptionsViewController
+        slideController = storyboard!.instantiateViewController(withIdentifier: "UserOptions") as? UserOptionsViewController
            
             
         let height = self.view.frame.height
@@ -111,7 +111,7 @@ class MainMenuViewController: UIViewController, UserLogsProtocol {
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        

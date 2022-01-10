@@ -24,8 +24,11 @@ class SelectivityRanges: NSObject, URLSessionDataDelegate {
     func downloadSelectivityRanges() {
         
         //let urlPath = "http://romadmin.com/getSelectivityRanges.php"
-        let urlPath = "http://www.romdat.com/ranges"
-        
+        // prod path
+        let urlPath = "https://www.romdat.com/ranges"
+        // dev path (12.7.21 add default table column for slider buttons)
+        //let urlPath = "http://www.romdat-dev.com/ranges"
+    
         let url: URL = URL(string: urlPath)!
         
         var request = URLRequest(url: url)
@@ -62,7 +65,7 @@ class SelectivityRanges: NSObject, URLSessionDataDelegate {
             
         }
         
-        //print (jsonResult)
+        print (jsonResult)
         //print jsonResult[0]["prescreenStarted"]
         
         var jsonElement = NSDictionary()
@@ -80,6 +83,7 @@ class SelectivityRanges: NSObject, URLSessionDataDelegate {
             let name         = jsonElement["selectivity_name"] as? String,
             let low          = jsonElement["selectivity_low"] as? Int,
             let high         = jsonElement["selectivity_high"] as? Int,
+            let ranking      = jsonElement["selectivity_default"] as? Int,
             let info         = jsonElement["selectivity_info"] as? String
             
         {
@@ -88,6 +92,7 @@ class SelectivityRanges: NSObject, URLSessionDataDelegate {
             thisRange.name      = name
             thisRange.low       = low
             thisRange.high      = high
+            thisRange.ranking   = ranking
             thisRange.info      = info
     
         }

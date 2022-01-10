@@ -16,6 +16,7 @@ class MyDemosModel: NSObject {
     var nickName: String?
     var nameFirst : String?
     var nameLast : String?
+    var romMeCode : String?
     var userImage: String?
     var bday: String?
     var location: String?
@@ -30,11 +31,12 @@ class MyDemosModel: NSObject {
     
     //construct with @name, @address, @latitude, and @longitude parameters
     
-    init(nickName: String, nameFirst: String, nameLast: String, userImage: String, bday: String, location: String) {
+    init(nickName: String, nameFirst: String, nameLast: String, romMeCode: String, userImage: String, bday: String, location: String) {
         
         self.nickName       = nickName
         self.nameFirst      = nameFirst
         self.nameLast       = nameLast
+        self.romMeCode      = romMeCode
         self.userImage      = userImage
         self.bday           = bday
         self.location       = location
@@ -46,7 +48,7 @@ class MyDemosModel: NSObject {
     //prints object's current state
     
     override var description: String {
-        return "Nick name: \(nickName), First Name: \(nameFirst), Last Name: \(nameLast), User Image: \(userImage), Birthday: \(bday), Location: \(String(describing: location))"
+        return "Nick name: \(nickName), First Name: \(nameFirst), Last Name: \(nameLast), RomMeCode:, User Image: \(userImage), Birthday: \(bday), Location: \(String(describing: location))"
         
     }
     

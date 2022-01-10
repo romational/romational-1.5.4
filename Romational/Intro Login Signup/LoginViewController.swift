@@ -30,7 +30,7 @@ class LoginViewController: UIViewController, VCSInfoProtocol, SelectivityRangesP
     func SelectivityRangesDownloaded(ranges: NSArray) {
         Ranges = ranges
         
-        //print (Ranges)
+        print (Ranges)
     }
     
     @IBOutlet weak var loginIntroText: UILabel!

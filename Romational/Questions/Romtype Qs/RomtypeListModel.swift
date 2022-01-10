@@ -47,7 +47,7 @@ class RomtypeListModel: NSObject {
     //prints object's current state
     
     override var description: String {
-        return "ID: \(id), Order: \(order), Name: \(name), Code: \(code), Image: \(String(describing: image)), Definition: \(describing: definition), Info: \(String(describing: info))"
+        return "ID: \(String(describing: id)), Order: \(order), Name: \(name), Code: \(code), Image: \(String(describing: image)), Definition: \(definition), Info: \(String(describing: info))"
         
     }
     

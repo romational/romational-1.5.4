@@ -8,8 +8,9 @@
 
 import UIKit
 
-class FQIntroViewController: UIViewController, UserLogsProtocol {
-
+class FQIntroViewController: UIViewController, UserLogsProtocol, MyFactorsProtocol {
+    
+    
     var userLog : NSArray = NSArray()
     
     func UserLogsDownloaded(userLogs: NSArray) {
@@ -38,6 +39,28 @@ class FQIntroViewController: UIViewController, UserLogsProtocol {
     
        
    }
+    
+    var answerCount = 0
+    
+    @IBOutlet weak var progress: UILabel!
+    func myFactorAnswersDownloaded(factors: NSArray) {
+       
+        factors.forEach { factor in
+            
+            let myFactor = factor as! MyFactorAnswersModel
+            
+            print (myFactor.answerId!)
+            
+            // it is only 0 if no results for answer in array
+            if Int(myFactor.answerId!)! != 0 {
+                
+                //FQ =  Int(myFactor.factorId!)!
+                answerCount = answerCount + 1
+            }
+            
+        }
+        progress.text = ("\(answerCount) out of \(factors.count) completed")
+    }
     
     
     // nav links
@@ -110,7 +133,7 @@ class FQIntroViewController: UIViewController, UserLogsProtocol {
             
         self.view.insertSubview(self.slideController.view, at: 30)
             //addChildViewController(controller)
-        self.slideController.didMove(toParentViewController: self)
+        self.slideController.didMove(toParent: self)
             
         showMenu = true
        
@@ -210,7 +233,12 @@ class FQIntroViewController: UIViewController, UserLogsProtocol {
             
             fqIntroText.text = pageInfo!.info
         }
-          
+        
+        
+        let myFactorAnswers = MyFactorAnswers()
+        myFactorAnswers.delegate = self
+        myFactorAnswers.downloadMyFactorAnswers(userid: userId)
+        
         
         let popupInfo   = pageInfo!.popup ?? "n/a"
         let popupTitle  = pageInfo!.popupTitle ?? "More Info"
